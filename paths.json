@@ -4,6 +4,7 @@
       "@": ["src"],
       "@components/*": ["components/*"],
       "@constants/*": ["constants/*"],
+      "@reducers": ["reducers"],
       "@theme/*": ["theme/*"]
     }
   }
