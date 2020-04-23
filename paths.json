@@ -5,6 +5,7 @@
       "@components/*": ["components/*"],
       "@constants/*": ["constants/*"],
       "@reducers": ["reducers"],
+      "@actions/*": ["actions/*"],
       "@theme/*": ["theme/*"],
       "@tsTypes/*": ["tsTypes/*"],
       "@utils/*": ["utils/*"]

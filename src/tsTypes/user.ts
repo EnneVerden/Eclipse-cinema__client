@@ -1,3 +1,5 @@
+import { IFetchUserSuccess } from "@actions/login/login";
+
 type TRoles = {
   _id: string;
   name: string;
@@ -22,3 +24,5 @@ export interface IUser {
   roles: Array<TRoles>;
   tickets: Array<TTickets | []>;
 }
+
+export type TUserAction = IFetchUserSuccess;
