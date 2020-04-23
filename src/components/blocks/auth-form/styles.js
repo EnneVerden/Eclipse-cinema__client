@@ -1,9 +1,5 @@
 import { makeStyles } from "@material-ui/core/styles";
-import {
-  color_dark_l2,
-  color_red,
-  color_white,
-} from "../../../theme/variables";
+import { color_dark_l2, color_red, color_white } from "@theme/variables";
 
 const styles = makeStyles({
   form: {

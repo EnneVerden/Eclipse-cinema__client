@@ -2,7 +2,7 @@ import React, { useState, useEffect, useRef, ChangeEvent } from "react";
 import TextField from "@material-ui/core/TextField";
 import Button from "@material-ui/core/Button";
 
-import FormChanger from "../../blocks/form-changer";
+import FormChanger from "@components/blocks/form-changer";
 import useStyles from "./styles";
 
 interface IProps {

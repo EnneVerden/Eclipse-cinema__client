@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-import AuthForm from "../../blocks/auth-form";
+import AuthForm from "@components/blocks/auth-form";
 import useStyles from "./styles";
 
 const AuthPage: React.FC = () => {

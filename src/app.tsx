@@ -1,7 +1,7 @@
 import React from "react";
 
 import Router from "./router";
-import "./theme/style-reset.css";
+import "@theme/style-reset.css";
 
 const App = () => <Router />;
 

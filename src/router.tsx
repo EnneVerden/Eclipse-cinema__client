@@ -1,9 +1,9 @@
 import React, { Suspense, lazy } from "react";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
 
-import { ROOT_PATH } from "./constants/paths";
+import { ROOT_PATH } from "@constants/paths";
 
-const AuthPage = lazy(() => import("./components/pages/auth"));
+const AuthPage = lazy(() => import("@components/pages/auth"));
 
 const Router = () => (
   <BrowserRouter>
