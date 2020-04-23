@@ -35,6 +35,12 @@
     "test": "react-app-rewired test",
     "eject": "react-scripts eject"
   },
+  "jest": {
+    "moduleNameMapper": {
+      "^@constants(.*)$": "<rootDir>/src/constants$1",
+      "^@utils(.*)$": "<rootDir>/src/utils$1"
+    }
+  },
   "eslintConfig": {
     "extends": "react-app"
   },

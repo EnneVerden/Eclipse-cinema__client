@@ -5,7 +5,9 @@
       "@components/*": ["components/*"],
       "@constants/*": ["constants/*"],
       "@reducers": ["reducers"],
-      "@theme/*": ["theme/*"]
+      "@theme/*": ["theme/*"],
+      "@tsTypes/*": ["tsTypes/*"],
+      "@utils/*": ["utils/*"]
     }
   }
 }
