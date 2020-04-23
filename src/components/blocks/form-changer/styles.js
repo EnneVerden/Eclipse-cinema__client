@@ -1,18 +1,23 @@
 import { makeStyles } from "@material-ui/core/styles";
+import {
+  font_information,
+  color_white,
+  color_red,
+} from "../../../theme/variables";
 
 const useStyles = makeStyles({
   changer: {
-    fontFamily: "'Roboto', sans-serif",
+    fontFamily: `${font_information}, sans-serif`,
     fontWeight: "300",
     display: "flex",
     justifyContent: "center",
     margin: "10px 0",
   },
   changerTitle: {
-    color: "#ffffff",
+    color: color_white,
   },
   changerLink: {
-    color: "#de5059",
+    color: color_red,
     textDecoration: "none",
     display: "flex",
     alignItems: "center",

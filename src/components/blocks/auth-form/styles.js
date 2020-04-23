@@ -1,4 +1,9 @@
 import { makeStyles } from "@material-ui/core/styles";
+import {
+  color_dark_l2,
+  color_red,
+  color_white,
+} from "../../../theme/variables";
 
 const styles = makeStyles({
   form: {
@@ -8,7 +13,7 @@ const styles = makeStyles({
     textAlign: "center",
     backgroundColor: "rgba(38, 38, 43, 0.9)",
     padding: "15px 20px",
-    boxShadow: "0 0 3px 1px #26262b",
+    boxShadow: `0 0 3px 1px ${color_dark_l2}`,
   },
   form_signIn: {
     width: "420px",
@@ -24,25 +29,25 @@ const styles = makeStyles({
     margin: "10px 0",
 
     "& label": {
-      color: "#ffffff",
+      color: color_white,
       fontWeight: 300,
 
       "&.Mui-focused": {
-        color: "#de5059",
+        color: color_red,
       },
     },
 
     "& .MuiOutlinedInput-root": {
-      color: "#ffffff",
+      color: color_white,
 
       "& fieldset": {
-        borderColor: "#ffffff",
+        borderColor: color_white,
       },
       "&:hover fieldset": {
-        borderColor: "#de5059",
+        borderColor: color_red,
       },
       "&.Mui-focused fieldset": {
-        borderColor: "#de5059",
+        borderColor: color_red,
       },
     },
   },
@@ -57,8 +62,8 @@ const styles = makeStyles({
     opacity: 1,
   },
   btn: {
-    color: "#de5059",
-    borderColor: "#de5059",
+    color: color_red,
+    borderColor: color_red,
     margin: "20px 0",
   },
   moveBtn: {
