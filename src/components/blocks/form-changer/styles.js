@@ -8,6 +8,13 @@ const useStyles = makeStyles({
     display: "flex",
     justifyContent: "center",
     margin: "10px 0",
+
+    "@media(max-width: 960px) and (max-height: 440px)": {
+      margin: "5px 0",
+    },
+    "@media(max-width: 600px) and (max-height: 340px)": {
+      margin: "5px 0",
+    },
   },
   changerTitle: {
     color: color_white,
@@ -22,6 +29,10 @@ const useStyles = makeStyles({
   move: {
     transform: "translateY(120px)",
     transition: "transform 0.5s",
+
+    "@media(max-width: 600px) and (max-height: 340px)": {
+      transform: "translateY(100px)",
+    },
   },
   cancelMove: {
     transform: "translateY(0)",
