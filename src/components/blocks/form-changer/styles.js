@@ -18,6 +18,14 @@ const useStyles = makeStyles({
     alignItems: "center",
     marginLeft: "5px",
   },
+  move: {
+    transform: "translateY(120px)",
+    transition: "transform 0.5s",
+  },
+  cancelMove: {
+    transform: "translateY(0)",
+    transition: "transform 0s",
+  },
 });
 
 export default useStyles;

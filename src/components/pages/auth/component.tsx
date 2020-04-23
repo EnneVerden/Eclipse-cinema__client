@@ -13,7 +13,7 @@ const AuthPage: React.FC = () => {
 
   return (
     <div className={styles.wrapper}>
-      <AuthForm changeFormKind={changeFormKind} />
+      <AuthForm changeFormKind={changeFormKind} isLoginForm={isLoginForm} />
     </div>
   );
 };

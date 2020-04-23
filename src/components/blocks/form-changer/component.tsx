@@ -4,9 +4,15 @@ import useStyles from "./styles";
 
 interface IProps {
   changeFormKind: () => void;
+  isLoginForm: boolean;
+  isVisible: boolean;
 }
 
-const FormChanger: React.FC<IProps> = ({ changeFormKind }) => {
+const FormChanger: React.FC<IProps> = ({
+  changeFormKind,
+  isLoginForm,
+  isVisible,
+}) => {
   const styles = useStyles();
 
   const handleClick = (e: MouseEvent<HTMLAnchorElement>): void => {
@@ -15,10 +21,16 @@ const FormChanger: React.FC<IProps> = ({ changeFormKind }) => {
   };
 
   return (
-    <div className={styles.changer}>
-      <span className={styles.changerTitle}>Don't have an account yet?</span>
+    <div
+      className={`${styles.changer} ${
+        !isLoginForm && !isVisible ? styles.move : styles.cancelMove
+      }`}
+    >
+      <span className={styles.changerTitle}>
+        {isLoginForm ? "Don't have an account yet?" : "Do you have an account?"}
+      </span>
       <a href="#" className={styles.changerLink} onClick={handleClick}>
-        Registration
+        {isLoginForm ? "Sign up" : "Sign in"}
       </a>
     </div>
   );
