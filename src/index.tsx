@@ -1,10 +1,8 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import * as serviceWorker from "./serviceWorker";
-import AuthPage from "./components/pages/auth";
+import App from "./app";
 
-import "./theme/style-reset.css";
-
-ReactDOM.render(<AuthPage />, document.getElementById("root"));
+ReactDOM.render(<App />, document.getElementById("root"));
 
 serviceWorker.unregister();
