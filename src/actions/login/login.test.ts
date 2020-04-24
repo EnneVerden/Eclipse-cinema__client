@@ -1,6 +1,6 @@
 import { FETCH_USER } from "@constants/users";
 import { userTestData } from "@utils/user";
-import { fetchUserSuccess } from "./login";
+import { loginSuccess } from "./login";
 
 describe("Fetch user action creator", () => {
   it("Should create an action to fetch user", () => {
@@ -9,6 +9,6 @@ describe("Fetch user action creator", () => {
       user: userTestData,
     };
 
-    expect(fetchUserSuccess(userTestData)).toEqual(expectedAction);
+    expect(loginSuccess(userTestData)).toEqual(expectedAction);
   });
 });

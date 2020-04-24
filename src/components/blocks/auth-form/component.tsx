@@ -2,21 +2,26 @@ import React, { useState, useEffect, ChangeEvent } from "react";
 import TextField from "@material-ui/core/TextField";
 import Button from "@material-ui/core/Button";
 
+import { IMapDispatchToProps } from "./container";
 import FormChanger from "@components/blocks/form-changer";
 import useStyles from "./styles";
 
-interface IProps {
+interface IProps extends IMapDispatchToProps {
   changeFormKind: () => void;
   isLoginForm: boolean;
 }
 
-const AuthForm: React.FC<IProps> = ({ changeFormKind, isLoginForm }) => {
+const AuthForm: React.FC<IProps> = ({ changeFormKind, isLoginForm, login }) => {
   const styles = useStyles();
   const [email, setEmail] = useState<string>("");
   const [fullName, setFullName] = useState<string>("");
   const [password, setPassword] = useState<string>("");
   const [confirmPassword, setConfirmPassword] = useState<string>("");
   const [isVisible, setIsVisible] = useState<boolean>(false);
+
+  const handleClick = (): void => {
+    if (isLoginForm) login(email, password);
+  };
 
   const handleChange = (e: ChangeEvent<HTMLInputElement>): void => {
     const { name, value } = e.target;
@@ -108,6 +113,7 @@ const AuthForm: React.FC<IProps> = ({ changeFormKind, isLoginForm }) => {
         className={`${styles.btn} ${
           !isLoginForm && !isVisible ? styles.moveBtn : styles.cancelMoveBtn
         }`}
+        onClick={handleClick}
       >
         {isLoginForm ? "Login" : "Create account"}
       </Button>

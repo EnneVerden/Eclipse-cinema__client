@@ -4,26 +4,26 @@ import { Dispatch } from "redux";
 import { ThunkAction } from "redux-thunk";
 import { TAppState } from "@reducers";
 
-export interface IFetchUserSuccess {
+export interface ILoginSuccess {
   type: typeof FETCH_USER;
   user: IUser;
 }
 
-type TDispatch = Dispatch<IFetchUserSuccess>;
+type TDispatch = Dispatch<ILoginSuccess>;
 
-type TThunk = ThunkAction<
-  Promise<IFetchUserSuccess | undefined>,
+export type TThunk = ThunkAction<
+  Promise<ILoginSuccess | undefined>,
   TAppState,
   unknown,
-  IFetchUserSuccess
+  ILoginSuccess
 >;
 
-export const fetchUserSuccess = (user: IUser): IFetchUserSuccess => ({
+export const loginSuccess = (user: IUser): ILoginSuccess => ({
   type: FETCH_USER,
   user,
 });
 
-export const fetchUser = (email: string, password: string): TThunk => async (
+export const login = (email: string, password: string): TThunk => async (
   dispatch: TDispatch
 ) => {
   try {
@@ -40,7 +40,7 @@ export const fetchUser = (email: string, password: string): TThunk => async (
     );
     const user = await response.json();
 
-    return dispatch(fetchUserSuccess(user));
+    return dispatch(loginSuccess(user));
   } catch (error) {
     console.log(error);
   }

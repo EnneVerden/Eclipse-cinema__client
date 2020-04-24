@@ -1,3 +1,3 @@
-import AuthForm from "./component";
+import AuthForm from "./container";
 
 export default AuthForm;
