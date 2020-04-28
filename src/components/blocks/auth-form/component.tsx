@@ -108,6 +108,7 @@ const AuthForm: React.FC<IProps> = ({ changeFormKind, isLoginForm, login }) => {
         onChange={handleChange}
       />
       <Button
+        type="submit"
         variant="outlined"
         size="large"
         className={`${styles.btn} ${
