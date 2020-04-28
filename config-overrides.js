@@ -7,7 +7,11 @@ module.exports = function override(config, env) {
     "@": path.resolve(__dirname, "./src"),
     "@components": path.resolve(__dirname, "./src/components"),
     "@constants": path.resolve(__dirname, "./src/constants"),
+    "@reducers": path.resolve(__dirname, "./src/reducers"),
+    "@actions": path.resolve(__dirname, "./src/actions"),
     "@theme": path.resolve(__dirname, "./src/theme"),
+    "@tsTypes": path.resolve(__dirname, "./src/tsTypes"),
+    "@utils": path.resolve(__dirname, "./src/utils"),
   })(config, env);
 
   return config;

@@ -4,7 +4,11 @@
       "@": ["src"],
       "@components/*": ["components/*"],
       "@constants/*": ["constants/*"],
-      "@theme/*": ["theme/*"]
+      "@reducers": ["reducers"],
+      "@actions/*": ["actions/*"],
+      "@theme/*": ["theme/*"],
+      "@tsTypes/*": ["tsTypes/*"],
+      "@utils/*": ["utils/*"]
     }
   }
 }
