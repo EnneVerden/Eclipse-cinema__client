@@ -9,9 +9,16 @@ import useStyles from "./styles";
 interface IProps extends IMapDispatchToProps {
   changeFormKind: () => void;
   isLoginForm: boolean;
+  login: (email: string, password: string) => void;
+  registration: (fullName: string, email: string, password: string) => void;
 }
 
-const AuthForm: React.FC<IProps> = ({ changeFormKind, isLoginForm, login }) => {
+const AuthForm: React.FC<IProps> = ({
+  changeFormKind,
+  isLoginForm,
+  login,
+  registration,
+}) => {
   const styles = useStyles();
   const [email, setEmail] = useState<string>("");
   const [fullName, setFullName] = useState<string>("");
@@ -20,7 +27,16 @@ const AuthForm: React.FC<IProps> = ({ changeFormKind, isLoginForm, login }) => {
   const [isVisible, setIsVisible] = useState<boolean>(false);
 
   const handleClick = (): void => {
-    if (isLoginForm) login(email, password);
+    if (isLoginForm) {
+      login(email, password);
+    } else {
+      if (password !== confirmPassword) {
+        alert("Password mismatch!");
+        return;
+      }
+
+      registration(fullName, email, password);
+    }
   };
 
   const handleChange = (e: ChangeEvent<HTMLInputElement>): void => {
