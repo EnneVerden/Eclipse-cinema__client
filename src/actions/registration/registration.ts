@@ -1,27 +1,29 @@
-import { FETCH_USER } from "@constants/users";
 import { IUser } from "@tsTypes/user";
+import { FETCH_USER } from "@constants/users";
 import {
   IUserFetchAction,
   TUserFetchThunk,
   TUserFetchDispatch,
 } from "@tsTypes/fetchUser";
 
-export const loginSuccess = (user: IUser): IUserFetchAction => ({
+export const registrationSuccess = (user: IUser): IUserFetchAction => ({
   type: FETCH_USER,
   user,
 });
 
-export const login = (
+export const registration = (
+  fullName: string,
   email: string,
   password: string
 ): TUserFetchThunk => async (dispatch: TUserFetchDispatch) => {
   try {
     const response = await fetch(
-      "https://eclipse-cinema-server.herokuapp.com/login",
+      "https://eclipse-cinema-server.herokuapp.com/registration",
       {
         method: "POST",
         headers: { "Content-type": "application/json" },
         body: JSON.stringify({
+          fullName,
           email,
           password,
         }),
@@ -29,7 +31,7 @@ export const login = (
     );
     const user = await response.json();
 
-    return dispatch(loginSuccess(user));
+    return dispatch(registrationSuccess(user));
   } catch (error) {
     console.log(error);
   }
