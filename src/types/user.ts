@@ -1,4 +1,5 @@
 import { IUserFetchAction } from "./fetchUser";
+import { ISetErrorAction } from "./error";
 
 interface IRoles {
   _id: string;
@@ -25,4 +26,4 @@ export interface IUser {
   tickets: Array<ITickets | []>;
 }
 
-export type TUserAction = IUserFetchAction;
+export type TUserAction = IUserFetchAction | ISetErrorAction;

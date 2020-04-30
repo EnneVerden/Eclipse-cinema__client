@@ -11,6 +11,7 @@ const AuthForm: React.FC<TProps> = ({
   isLoginForm,
   login,
   registration,
+  setError,
 }) => {
   const styles = useStyles();
   const [email, setEmail] = useState<string>("");
@@ -24,7 +25,7 @@ const AuthForm: React.FC<TProps> = ({
       login(email, password);
     } else {
       if (password !== confirmPassword) {
-        alert("Password mismatch!");
+        setError({ type: "error", message: "Password mismatch!" });
         return;
       }
 

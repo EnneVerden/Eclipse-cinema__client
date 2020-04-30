@@ -32,6 +32,8 @@ export const login = (email: string, password: string): TAppThunk => async (
 
     return dispatch(loginSuccess(data.auth.user));
   } catch (error) {
-    console.log(error);
+    return dispatch(
+      setError({ type: "error", message: "Something is wrong! Try again." })
+    );
   }
 };
