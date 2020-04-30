@@ -1,14 +1,11 @@
 import { IUser, TUserAction } from "@tsTypes/user";
 import { FETCH_USER } from "@constants/users";
 
-type TInitialState = IUser | {};
+type TState = IUser | {};
 
-const initialState: TInitialState = {};
+const initialState: TState = {};
 
-const user = (
-  state: TInitialState = initialState,
-  action: TUserAction
-): TInitialState => {
+const user = (state = initialState, action: TUserAction): TState => {
   switch (action.type) {
     case FETCH_USER:
       return action.user;

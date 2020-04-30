@@ -10,6 +10,7 @@ module.exports = function override(config, env) {
     "@reducers": path.resolve(__dirname, "./src/reducers"),
     "@actions": path.resolve(__dirname, "./src/actions"),
     "@theme": path.resolve(__dirname, "./src/theme"),
+    "@selectors": path.resolve(__dirname, "./src/selectors"),
     "@tsTypes": path.resolve(__dirname, "./src/tsTypes"),
     "@utils": path.resolve(__dirname, "./src/utils"),
   })(config, env);

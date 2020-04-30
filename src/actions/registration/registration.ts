@@ -1,10 +1,7 @@
 import { IUser } from "@tsTypes/user";
 import { FETCH_USER } from "@constants/users";
-import {
-  IUserFetchAction,
-  TUserFetchThunk,
-  TUserFetchDispatch,
-} from "@tsTypes/fetchUser";
+import { IUserFetchAction } from "@tsTypes/fetchUser";
+import { TAppThunk } from "@tsTypes/thunk";
 
 export const registrationSuccess = (user: IUser): IUserFetchAction => ({
   type: FETCH_USER,
@@ -15,7 +12,7 @@ export const registration = (
   fullName: string,
   email: string,
   password: string
-): TUserFetchThunk => async (dispatch: TUserFetchDispatch) => {
+): TAppThunk => async (dispatch) => {
   try {
     const response = await fetch(
       "https://eclipse-cinema-server.herokuapp.com/registration",
@@ -29,9 +26,9 @@ export const registration = (
         }),
       }
     );
-    const user = await response.json();
+    const data = await response.json();
 
-    return dispatch(registrationSuccess(user));
+    return dispatch(registrationSuccess(data.auth.user));
   } catch (error) {
     console.log(error);
   }

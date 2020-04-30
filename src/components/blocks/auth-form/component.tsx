@@ -2,18 +2,11 @@ import React, { useState, useEffect, ChangeEvent } from "react";
 import TextField from "@material-ui/core/TextField";
 import Button from "@material-ui/core/Button";
 
-import { IMapDispatchToProps } from "./container";
 import FormChanger from "@components/blocks/form-changer";
 import useStyles from "./styles";
+import { TProps } from "./container";
 
-interface IProps extends IMapDispatchToProps {
-  changeFormKind: () => void;
-  isLoginForm: boolean;
-  login: (email: string, password: string) => void;
-  registration: (fullName: string, email: string, password: string) => void;
-}
-
-const AuthForm: React.FC<IProps> = ({
+const AuthForm: React.FC<TProps> = ({
   changeFormKind,
   isLoginForm,
   login,
