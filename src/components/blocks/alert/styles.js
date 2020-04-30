@@ -1,5 +1,5 @@
 import { makeStyles } from "@material-ui/core";
-import { color_red, font_information, color_white } from "@theme/variables";
+import { color_red, font_information, color_white } from "theme/variables";
 
 const styles = makeStyles({
   wrapper: {

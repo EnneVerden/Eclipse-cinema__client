@@ -1,4 +1,4 @@
-import { SET_ERROR } from "@constants/error";
+import { SET_ERROR } from "constants/error";
 
 export interface IError {
   type?: "error" | "warning";

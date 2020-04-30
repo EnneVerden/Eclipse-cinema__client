@@ -1,5 +1,5 @@
-import { FETCH_USER } from "@constants/users";
-import { userTestData } from "@utils/user";
+import { FETCH_USER } from "constants/users";
+import { userTestData } from "utils/user";
 import userReducer from "./user";
 
 describe("Users reducer", () => {

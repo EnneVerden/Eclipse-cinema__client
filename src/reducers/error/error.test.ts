@@ -1,6 +1,6 @@
-import { SET_ERROR } from "@constants/error";
+import { SET_ERROR } from "constants/error";
 import errorReducer from "./error";
-import { errorTestData } from "@utils/error";
+import { errorTestData } from "utils/error";
 
 describe("Error reducer", () => {
   it("Should return state with user data if receiving type", () => {

@@ -1,5 +1,5 @@
-import { SET_ERROR } from "@constants/error";
-import { IError, TErrorAction } from "@tsTypes/error";
+import { SET_ERROR } from "constants/error";
+import { IError, TErrorAction } from "types/error";
 
 const initialState: IError = {};
 

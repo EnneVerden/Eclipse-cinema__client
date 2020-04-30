@@ -1,4 +1,3 @@
-import { TRootState } from "@reducers";
-import { IError } from "@tsTypes/error";
+import { TRootState } from "reducers";
 
 export const getError = (state: TRootState) => state.error;

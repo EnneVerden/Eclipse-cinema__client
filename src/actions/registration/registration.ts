@@ -1,7 +1,7 @@
-import { IUser } from "@tsTypes/user";
-import { FETCH_USER } from "@constants/users";
-import { IUserFetchAction } from "@tsTypes/fetchUser";
-import { TAppThunk } from "@tsTypes/thunk";
+import { IUser } from "types/user";
+import { FETCH_USER } from "constants/users";
+import { IUserFetchAction } from "types/fetchUser";
+import { TAppThunk } from "types/thunk";
 
 export const registrationSuccess = (user: IUser): IUserFetchAction => ({
   type: FETCH_USER,

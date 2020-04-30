@@ -1,5 +1,5 @@
-import { SET_ERROR } from "@constants/error";
-import { errorTestData } from "@utils/error";
+import { SET_ERROR } from "constants/error";
+import { errorTestData } from "utils/error";
 import setError from "./set-error";
 
 describe("Set error action creator", () => {

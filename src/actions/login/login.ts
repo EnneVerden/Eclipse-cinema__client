@@ -1,8 +1,8 @@
-import { FETCH_USER } from "@constants/users";
-import { IUser } from "@tsTypes/user";
-import { IUserFetchAction } from "@tsTypes/fetchUser";
-import setError from "@actions/set-error/set-error";
-import { TAppThunk } from "@tsTypes/thunk";
+import { FETCH_USER } from "constants/users";
+import { IUser } from "types/user";
+import { IUserFetchAction } from "types/fetchUser";
+import setError from "actions/set-error/set-error";
+import { TAppThunk } from "types/thunk";
 
 export const loginSuccess = (user: IUser): IUserFetchAction => ({
   type: FETCH_USER,

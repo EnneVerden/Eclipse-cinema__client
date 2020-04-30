@@ -1,10 +1,10 @@
-import { login } from "@actions/login/login";
-import { registration } from "@actions/registration/registration";
+import { login } from "actions/login/login";
+import { registration } from "actions/registration/registration";
 import { connect, ConnectedProps } from "react-redux";
 import AuthForm from "./component";
-import { TRootState } from "@reducers";
+import { TRootState } from "reducers";
 import { ThunkDispatch } from "redux-thunk";
-import { IUserFetchAction } from "@tsTypes/fetchUser";
+import { IUserFetchAction } from "types/fetchUser";
 
 type TDispatch = ThunkDispatch<TRootState, unknown, IUserFetchAction>;
 

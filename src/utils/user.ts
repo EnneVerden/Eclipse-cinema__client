@@ -1,4 +1,4 @@
-import { IUser } from "@tsTypes/user";
+import { IUser } from "types/user";
 
 export const userTestData: IUser = {
   avatar: "https://image.flaticon.com/icons/svg/236/236831.svg",

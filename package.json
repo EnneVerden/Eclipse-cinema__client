@@ -37,9 +37,9 @@
   },
   "jest": {
     "moduleNameMapper": {
-      "^@constants(.*)$": "<rootDir>/src/constants$1",
-      "^@actions(.*)$": "<rootDir>/src/actions$1",
-      "^@utils(.*)$": "<rootDir>/src/utils$1"
+      "^constants(.*)$": "<rootDir>/src/constants$1",
+      "^actions(.*)$": "<rootDir>/src/actions$1",
+      "^utils(.*)$": "<rootDir>/src/utils$1"
     }
   },
   "eslintConfig": {

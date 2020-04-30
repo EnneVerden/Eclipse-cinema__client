@@ -1,5 +1,5 @@
-import { IUser, TUserAction } from "@tsTypes/user";
-import { FETCH_USER } from "@constants/users";
+import { IUser, TUserAction } from "types/user";
+import { FETCH_USER } from "constants/users";
 
 type TState = IUser | {};
 

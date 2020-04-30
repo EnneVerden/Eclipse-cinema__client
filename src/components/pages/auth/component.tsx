@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 
-import AuthForm from "@components/blocks/auth-form";
+import AuthForm from "components/blocks/auth-form";
 import useStyles from "./styles";
-import Alert from "@components/blocks/alert";
+import Alert from "components/blocks/alert";
 
 const AuthPage: React.FC = () => {
   const styles = useStyles();
