@@ -1,10 +1,8 @@
-import { IUser } from "@tsTypes/user";
-import { FETCH_USER } from "@constants/users";
-import {
-  IUserFetchAction,
-  TUserFetchThunk,
-  TUserFetchDispatch,
-} from "@tsTypes/fetchUser";
+import { IUser } from "types/user";
+import { FETCH_USER } from "constants/users";
+import { IUserFetchAction } from "types/fetchUser";
+import { TAppThunk } from "types/thunk";
+import setError from "actions/set-error/set-error";
 
 export const registrationSuccess = (user: IUser): IUserFetchAction => ({
   type: FETCH_USER,
@@ -15,7 +13,7 @@ export const registration = (
   fullName: string,
   email: string,
   password: string
-): TUserFetchThunk => async (dispatch: TUserFetchDispatch) => {
+): TAppThunk => async (dispatch) => {
   try {
     const response = await fetch(
       "https://eclipse-cinema-server.herokuapp.com/registration",
@@ -29,10 +27,16 @@ export const registration = (
         }),
       }
     );
-    const user = await response.json();
+    const data = await response.json();
 
-    return dispatch(registrationSuccess(user));
+    if (data.error) {
+      return dispatch(setError({ type: "error", message: data.error.message }));
+    }
+
+    return dispatch(registrationSuccess(data.auth.user));
   } catch (error) {
-    console.log(error);
+    return dispatch(
+      setError({ type: "error", message: "Something is wrong! Try again." })
+    );
   }
 };

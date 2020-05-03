@@ -1,13 +1,8 @@
 import { makeStyles } from "@material-ui/core/styles";
-import { color_dark_l3 } from "@theme/variables";
 
 const styles = makeStyles({
-  background: {
-    height: "100vh",
-    backgroundColor: color_dark_l3,
-  },
   loader: {
-    position: "relative",
+    position: "absolute",
     top: "50%",
     left: "50%",
     transform: "translate(-50%, -50%)",

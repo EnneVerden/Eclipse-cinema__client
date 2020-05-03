@@ -1,23 +1,18 @@
 import React, { useState, useEffect, ChangeEvent } from "react";
 import TextField from "@material-ui/core/TextField";
 import Button from "@material-ui/core/Button";
+import classNames from "classnames";
 
-import { IMapDispatchToProps } from "./container";
-import FormChanger from "@components/blocks/form-changer";
+import FormChanger from "components/blocks/form-changer";
 import useStyles from "./styles";
+import { TProps } from "./container";
 
-interface IProps extends IMapDispatchToProps {
-  changeFormKind: () => void;
-  isLoginForm: boolean;
-  login: (email: string, password: string) => void;
-  registration: (fullName: string, email: string, password: string) => void;
-}
-
-const AuthForm: React.FC<IProps> = ({
+const AuthForm: React.FC<TProps> = ({
   changeFormKind,
   isLoginForm,
   login,
   registration,
+  setError,
 }) => {
   const styles = useStyles();
   const [email, setEmail] = useState<string>("");
@@ -27,11 +22,33 @@ const AuthForm: React.FC<IProps> = ({
   const [isVisible, setIsVisible] = useState<boolean>(false);
 
   const handleClick = (): void => {
+    if (!email) {
+      setError({
+        type: "warning",
+        message: "Please, fill the email field",
+      });
+      return;
+    } else if (!password) {
+      setError({
+        type: "warning",
+        message: "Please, fill the password field",
+      });
+      return;
+    }
+
     if (isLoginForm) {
       login(email, password);
     } else {
+      if (!fullName) {
+        setError({
+          type: "warning",
+          message: "Please, fill the full name field",
+        });
+        return;
+      }
+
       if (password !== confirmPassword) {
-        alert("Password mismatch!");
+        setError({ type: "error", message: "Password mismatch!" });
         return;
       }
 
@@ -73,19 +90,28 @@ const AuthForm: React.FC<IProps> = ({
     }
   }, [isLoginForm]);
 
+  const hiddenInputClass = classNames(
+    styles.hide,
+    styles.input,
+    isVisible ? styles.show : null
+  );
+  const movingInputClass = classNames(
+    styles.input,
+    !isLoginForm && !isVisible ? styles.moveInput : styles.cancelMoveInput
+  );
+
   return (
     <form
       onSubmit={(e) => e.preventDefault()}
-      className={`${styles.form} ${
+      className={classNames(
+        styles.form,
         isLoginForm ? styles.form_signIn : styles.form_signUp
-      }`}
+      )}
     >
       <TextField
         label="Full name"
         variant="outlined"
-        className={`${styles.hide} ${styles.input} ${
-          isVisible ? styles.show : null
-        }`}
+        className={hiddenInputClass}
         size="small"
         id="fullName"
         name="fullName"
@@ -94,9 +120,7 @@ const AuthForm: React.FC<IProps> = ({
       <TextField
         label="Email"
         variant="outlined"
-        className={`${styles.input} ${
-          !isLoginForm && !isVisible ? styles.moveInput : styles.cancelMoveInput
-        }`}
+        className={movingInputClass}
         size="small"
         name="email"
         onChange={handleChange}
@@ -104,9 +128,7 @@ const AuthForm: React.FC<IProps> = ({
       <TextField
         label="Password"
         variant="outlined"
-        className={`${styles.input} ${
-          !isLoginForm && !isVisible ? styles.moveInput : styles.cancelMoveInput
-        }`}
+        className={movingInputClass}
         size="small"
         name="password"
         type="password"
@@ -115,9 +137,7 @@ const AuthForm: React.FC<IProps> = ({
       <TextField
         label="Confirm password"
         variant="outlined"
-        className={`${styles.hide} ${styles.input} ${
-          isVisible ? styles.show : null
-        }`}
+        className={hiddenInputClass}
         size="small"
         name="confirmPassword"
         type="password"
@@ -127,9 +147,10 @@ const AuthForm: React.FC<IProps> = ({
         type="submit"
         variant="outlined"
         size="large"
-        className={`${styles.btn} ${
+        className={classNames(
+          styles.btn,
           !isLoginForm && !isVisible ? styles.moveBtn : styles.cancelMoveBtn
-        }`}
+        )}
         onClick={handleClick}
       >
         {isLoginForm ? "Login" : "Create account"}

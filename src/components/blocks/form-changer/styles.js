@@ -1,5 +1,5 @@
 import { makeStyles } from "@material-ui/core/styles";
-import { font_information, color_white, color_red } from "@theme/variables";
+import { font_information, color_white, color_red } from "theme/variables";
 
 const useStyles = makeStyles({
   changer: {

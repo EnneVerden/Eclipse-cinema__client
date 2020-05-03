@@ -1,17 +1,18 @@
 import { IUserFetchAction } from "./fetchUser";
+import { ISetErrorAction } from "./error";
 
-type TRoles = {
+interface IRoles {
   _id: string;
   name: string;
-};
+}
 
-type TTickets = {
+interface ITickets {
   _id: string;
   name: string;
   poster: string;
   startDate: string;
   endDate: string;
-};
+}
 
 export interface IUser {
   _id: string;
@@ -21,8 +22,8 @@ export interface IUser {
   password?: string;
   accountStatus: string;
   balance: number;
-  roles: Array<TRoles>;
-  tickets: Array<TTickets | []>;
+  roles: Array<IRoles>;
+  tickets: Array<ITickets | []>;
 }
 
-export type TUserAction = IUserFetchAction;
+export type TUserAction = IUserFetchAction | ISetErrorAction;
