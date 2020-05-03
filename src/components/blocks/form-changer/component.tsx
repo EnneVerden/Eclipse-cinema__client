@@ -1,4 +1,5 @@
 import React, { MouseEvent } from "react";
+import classNames from "classnames";
 
 import useStyles from "./styles";
 
@@ -22,9 +23,10 @@ const FormChanger: React.FC<IProps> = ({
 
   return (
     <div
-      className={`${styles.changer} ${
+      className={classNames(
+        styles.changer,
         !isLoginForm && !isVisible ? styles.move : styles.cancelMove
-      }`}
+      )}
     >
       <span className={styles.changerTitle}>
         {isLoginForm ? "Don't have an account yet?" : "Do you have an account?"}

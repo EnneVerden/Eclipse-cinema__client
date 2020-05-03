@@ -1,12 +1,26 @@
 import { makeStyles } from "@material-ui/core";
-import { color_red, font_information, color_white } from "theme/variables";
+import {
+  color_error,
+  font_information,
+  color_white,
+  color_warning,
+  color_error_font,
+  color_warning_font,
+} from "theme/variables";
 
 const styles = makeStyles({
   wrapper: {
-    position: "absolute",
+    position: "fixed",
     bottom: `85%`,
     right: `0px`,
     overflow: "hidden",
+
+    "@media(max-width: 600px)": {
+      maxWidth: "90%",
+    },
+    "@media(max-width: 960px) and (max-height: 440px)": {
+      bottom: "80%",
+    },
   },
   background: {
     padding: "7px 10px",
@@ -14,7 +28,6 @@ const styles = makeStyles({
     borderBottomLeftRadius: "5px",
     display: "flex",
     alignItems: "center",
-    backgroundColor: color_red,
     transform: "translateX(101%)",
     transition: "transform 0.5s",
   },
@@ -28,14 +41,18 @@ const styles = makeStyles({
   },
   message: {
     fontFamily: `${font_information}, sans-serif`,
-    color: color_white,
     letterSpacing: "1px",
   },
   isVisible: {
     transform: "translateX(0)",
   },
   error: {
-    backgroundColor: color_red,
+    color: color_error_font,
+    backgroundColor: color_error,
+  },
+  warning: {
+    color: color_warning_font,
+    backgroundColor: color_warning,
   },
 });
 

@@ -1,8 +1,11 @@
 import React, { useEffect, useState } from "react";
 import ErrorIcon from "@material-ui/icons/ErrorOutline";
+import WarningIcon from "@material-ui/icons/ReportProblemOutlined";
+import classNames from "classnames";
 
 import useStyles from "./styles";
 import { TProps } from "./container";
+import { color_error_font, color_warning_font } from "theme/variables";
 
 const Alert: React.FC<TProps> = ({ error }) => {
   const styles = useStyles();
@@ -20,19 +23,25 @@ const Alert: React.FC<TProps> = ({ error }) => {
       timer = setTimeout(() => {
         setIsVisible(false);
         clearTimeout(timer);
-      }, 2500);
+      }, 3000);
     }
   }, [isVisible]);
 
   return (
     <div className={styles.wrapper}>
       <div
-        className={`error-handler ${styles.background} ${
-          isVisible ? styles.isVisible : null
-        }`}
+        className={classNames(
+          styles.background,
+          isVisible ? styles.isVisible : null,
+          error.type === "error" ? styles.error : styles.warning
+        )}
       >
         <span className={styles.icon}>
-          <ErrorIcon />
+          {error.type === "error" ? (
+            <ErrorIcon style={{ color: color_error_font }} />
+          ) : (
+            <WarningIcon style={{ color: color_warning_font }} />
+          )}
         </span>
         <span className={styles.message}>{error.message}</span>
       </div>
