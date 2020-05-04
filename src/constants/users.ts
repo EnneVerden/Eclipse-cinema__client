@@ -1,1 +1,3 @@
-export const FETCH_USER = "FETCH_USER";
+export const LOGIN = "LOGIN";
+export const REGISTRATION = "REGISTRATION";
+export const SET_USER_TO_STATE = "SET_USER_TO_STATE";

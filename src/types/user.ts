@@ -1,4 +1,4 @@
-import { IUserFetchAction } from "./fetchUser";
+import { ISetUserToState } from "./fetchUser";
 import { ISetErrorAction } from "./error";
 
 interface IRoles {
@@ -26,4 +26,4 @@ export interface IUser {
   tickets: Array<ITickets | []>;
 }
 
-export type TUserAction = IUserFetchAction | ISetErrorAction;
+export type TUserAction = ISetUserToState | ISetErrorAction;
