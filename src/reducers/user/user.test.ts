@@ -1,11 +1,11 @@
-import { FETCH_USER } from "constants/users";
+import { SET_USER_TO_STATE } from "constants/users";
 import { userTestData } from "utils/user";
 import userReducer from "./user";
 
 describe("Users reducer", () => {
   it("Should return state with user data if receiving type", () => {
     const state = userReducer(undefined, {
-      type: FETCH_USER,
+      type: SET_USER_TO_STATE,
       user: userTestData,
     });
 

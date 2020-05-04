@@ -44,7 +44,9 @@ function* registrationWorker(
 }
 
 export default function* registration(): TAuthWatcherGenerator {
-  const { fullName, email, password } = yield take(REGISTRATION);
+  while (true) {
+    const { fullName, email, password } = yield take(REGISTRATION);
 
-  yield call(registrationWorker, fullName, email, password);
+    yield call(registrationWorker, fullName, email, password);
+  }
 }

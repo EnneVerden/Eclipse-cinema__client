@@ -23,11 +23,11 @@ export function* loginWorker(
     const response = yield call(loginRequest, email, password);
     const data = yield response.json();
 
-    if (data !== undefined && data.error) {
+    if (data.error) {
       yield put(setError({ type: "error", message: data.error.message }));
     }
 
-    if (data !== undefined && data.auth) {
+    if (data.auth) {
       yield put(setUserToState(data.auth.user));
     }
   } catch (error) {
@@ -37,8 +37,10 @@ export function* loginWorker(
   }
 }
 
-export default function* login(): TAuthWatcherGenerator {
-  const { email, password } = yield take(LOGIN);
+export function* login(): TAuthWatcherGenerator {
+  while (true) {
+    const { email, password } = yield take(LOGIN);
 
-  yield call(loginWorker, email, password);
+    yield call(loginWorker, email, password);
+  }
 }
