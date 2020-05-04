@@ -2,6 +2,7 @@ import { call, put, take } from "redux-saga/effects";
 import setError from "actions/set-error/set-error";
 import { setUserToState } from "actions/auth";
 import { LOGIN } from "constants/users";
+import { TAuthWorkerGenerator, TAuthWatcherGenerator } from "types/fetchUser";
 
 const loginRequest = (email: string, password: string): Promise<Response> => {
   return fetch("https://eclipse-cinema-server.herokuapp.com/login", {
@@ -14,7 +15,10 @@ const loginRequest = (email: string, password: string): Promise<Response> => {
   });
 };
 
-function* loginWorker(email: string, password: string) {
+export function* loginWorker(
+  email: string,
+  password: string
+): TAuthWorkerGenerator {
   try {
     const response = yield call(loginRequest, email, password);
     const data = yield response.json();
@@ -33,7 +37,7 @@ function* loginWorker(email: string, password: string) {
   }
 }
 
-export default function* login() {
+export default function* login(): TAuthWatcherGenerator {
   const { email, password } = yield take(LOGIN);
 
   yield call(loginWorker, email, password);

@@ -2,6 +2,7 @@ import setError from "actions/set-error/set-error";
 import { setUserToState } from "actions/auth";
 import { call, put, take } from "redux-saga/effects";
 import { REGISTRATION } from "constants/users";
+import { TAuthWorkerGenerator, TAuthWatcherGenerator } from "types/fetchUser";
 
 const registrationRequest = (
   fullName: string,
@@ -23,14 +24,16 @@ function* registrationWorker(
   fullName: string,
   email: string,
   password: string
-) {
+): TAuthWorkerGenerator {
   try {
     const response = yield call(registrationRequest, fullName, email, password);
     const data = yield response.json();
 
     if (data.error) {
       yield put(setError({ type: "error", message: data.error.message }));
-    } else {
+    }
+
+    if (data.auth) {
       yield put(setUserToState(data.auth.user));
     }
   } catch (error) {
@@ -40,7 +43,7 @@ function* registrationWorker(
   }
 }
 
-export default function* registration() {
+export default function* registration(): TAuthWatcherGenerator {
   const { fullName, email, password } = yield take(REGISTRATION);
 
   yield call(registrationWorker, fullName, email, password);
