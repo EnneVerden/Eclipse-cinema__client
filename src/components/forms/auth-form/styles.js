@@ -1,5 +1,10 @@
 import { makeStyles } from "@material-ui/core/styles";
-import { color_dark_l2, color_red, color_white } from "theme/variables";
+import {
+  color_dark_l2,
+  color_red,
+  color_white,
+  font_information,
+} from "theme/variables";
 
 const styles = makeStyles({
   form: {
@@ -119,6 +124,42 @@ const styles = makeStyles({
     transition: "transform 0s",
   },
   cancelMoveInput: {
+    transform: "translateY(0)",
+    transition: "transform 0s",
+  },
+  changer: {
+    fontFamily: `${font_information}, sans-serif`,
+    fontWeight: "300",
+    display: "flex",
+    justifyContent: "center",
+    margin: "10px 0",
+
+    "@media(max-width: 960px) and (max-height: 440px)": {
+      margin: "5px 0",
+    },
+    "@media(max-width: 600px) and (max-height: 340px)": {
+      margin: "5px 0",
+    },
+  },
+  changerTitle: {
+    color: color_white,
+  },
+  changerLink: {
+    color: color_red,
+    textDecoration: "none",
+    display: "flex",
+    alignItems: "center",
+    marginLeft: "5px",
+  },
+  move: {
+    transform: "translateY(120px)",
+    transition: "transform 0.5s",
+
+    "@media(max-width: 600px) and (max-height: 340px)": {
+      transform: "translateY(100px)",
+    },
+  },
+  cancelMove: {
     transform: "translateY(0)",
     transition: "transform 0s",
   },
