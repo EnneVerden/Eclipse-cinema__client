@@ -48,7 +48,7 @@ const AuthForm: React.FC<TProps> = ({
       }
 
       if (password !== confirmPassword) {
-        setError({ type: "error", message: "Password mismatch!" });
+        setError({ type: "warning", message: "Password mismatch!" });
         return;
       }
 
