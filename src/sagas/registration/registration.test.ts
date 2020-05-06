@@ -1,24 +1,35 @@
 import { expectSaga, testSaga } from "redux-saga-test-plan";
-import { login, loginWorker, loginRequest } from "./login";
 import { userTestData } from "utils/user";
+import {
+  registrationWorker,
+  registration,
+  registrationRequest,
+} from "./registration";
 import { setUserToState } from "actions/auth";
 import setError from "actions/set-error/set-error";
-import { LOGIN } from "constants/users";
+import { REGISTRATION } from "constants/users";
 import { getUserResponse, getErrorResponse, errorMessage } from "utils/auth";
 
-describe("Login Saga", () => {
+describe("Registration Saga", () => {
+  const fullName = "test";
   const email = "test@gmail.com";
   const password = "1234567";
 
   describe("Worker", () => {
     it("With valid user data", () => {
-      expectSaga(loginWorker, getUserResponse, email, password)
+      expectSaga(registrationWorker, getUserResponse, fullName, email, password)
         .put(setUserToState(userTestData))
         .run();
     });
 
     it("With error", () => {
-      expectSaga(loginWorker, getErrorResponse, email, password)
+      expectSaga(
+        registrationWorker,
+        getErrorResponse,
+        fullName,
+        email,
+        password
+      )
         .put(setError({ type: "error", message: errorMessage }))
         .run();
     });
@@ -26,11 +37,17 @@ describe("Login Saga", () => {
 
   describe("Watcher", () => {
     it("Should complete without error", () => {
-      testSaga(login)
+      testSaga(registration)
         .next()
-        .take(LOGIN)
-        .next({ email, password })
-        .call(loginWorker, loginRequest, email, password);
+        .take(REGISTRATION)
+        .next({ fullName, email, password })
+        .call(
+          registrationWorker,
+          registrationRequest,
+          fullName,
+          email,
+          password
+        );
     });
   });
 });

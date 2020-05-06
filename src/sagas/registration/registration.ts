@@ -4,7 +4,7 @@ import { call, put, take } from "redux-saga/effects";
 import { REGISTRATION } from "constants/users";
 import { TAuthWorkerGenerator, TAuthWatcherGenerator } from "types/fetchUser";
 
-const registrationRequest = (
+export const registrationRequest = (
   fullName: string,
   email: string,
   password: string
@@ -20,7 +20,8 @@ const registrationRequest = (
   });
 };
 
-function* registrationWorker(
+export function* registrationWorker(
+  registrationRequest: any,
   fullName: string,
   email: string,
   password: string
@@ -43,10 +44,16 @@ function* registrationWorker(
   }
 }
 
-export default function* registration(): TAuthWatcherGenerator {
+export function* registration(): TAuthWatcherGenerator {
   while (true) {
     const { fullName, email, password } = yield take(REGISTRATION);
 
-    yield call(registrationWorker, fullName, email, password);
+    yield call(
+      registrationWorker,
+      registrationRequest,
+      fullName,
+      email,
+      password
+    );
   }
 }
