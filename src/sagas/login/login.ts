@@ -4,7 +4,10 @@ import { setUserToState } from "actions/auth";
 import { LOGIN } from "constants/users";
 import { TAuthWorkerGenerator, TAuthWatcherGenerator } from "types/fetchUser";
 
-const loginRequest = (email: string, password: string): Promise<Response> => {
+export const loginRequest = (
+  email: string,
+  password: string
+): Promise<Response> => {
   return fetch("https://eclipse-cinema-server.herokuapp.com/login", {
     method: "POST",
     headers: { "Content-type": "application/json" },
@@ -16,6 +19,7 @@ const loginRequest = (email: string, password: string): Promise<Response> => {
 };
 
 export function* loginWorker(
+  loginRequest: any,
   email: string,
   password: string
 ): TAuthWorkerGenerator {
@@ -41,6 +45,6 @@ export function* login(): TAuthWatcherGenerator {
   while (true) {
     const { email, password } = yield take(LOGIN);
 
-    yield call(loginWorker, email, password);
+    yield call(loginWorker, loginRequest, email, password);
   }
 }
