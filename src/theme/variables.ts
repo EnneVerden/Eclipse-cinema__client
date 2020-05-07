@@ -1,4 +1,4 @@
-export const color_dark_l1 = "#2f2f35";
+export const color_dark_l1 = "#2a2a30";
 export const color_dark_l2 = "#26262b";
 export const color_dark_l3 = "#272428";
 

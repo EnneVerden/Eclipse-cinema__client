@@ -7,7 +7,7 @@ const useStyles = makeStyles({
     justifyContent: "center",
     alignItems: "center",
     height: "100vh",
-    backgroundImage: "url(background.jpg)",
+    backgroundImage: "url(background.png)",
     backgroundRepeat: "no-repeat",
     backgroundSize: "cover",
     backgroundPositionX: "50%",

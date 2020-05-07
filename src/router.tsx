@@ -2,7 +2,7 @@ import React, { Suspense, lazy } from "react";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
 
 import { ROOT_PATH } from "constants/paths";
-import PageLoader from "components/blocks/page-loader/component";
+import PageLoader from "components/blocks/page-loader";
 
 const AuthPage = lazy(() => import("components/pages/auth"));
 
