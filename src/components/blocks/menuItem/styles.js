@@ -4,8 +4,8 @@ import { font_information, color_dark_l1 } from "theme/variables";
 const styles = makeStyles({
   item: {
     padding: "7px 10px",
-    fontFamily: `${font_information}, sans-serif`,
-    letterSpacing: "1px",
+    display: "flex",
+    alignItems: "center",
 
     "&:hover": {
       backgroundColor: color_dark_l1,
