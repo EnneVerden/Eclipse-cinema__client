@@ -5,6 +5,7 @@ import useStyles from "./styles";
 import Logo from "components/blocks/logo";
 import DropdownBtn from "components/blocks/dropdown-btn";
 import MenuList from "components/blocks/menuList";
+import MenuItem from "components/blocks/menuItem";
 
 const Header = () => {
   const styles = useStyles();
@@ -20,7 +21,11 @@ const Header = () => {
             avatarURL="https://image.flaticon.com/icons/svg/236/236831.svg"
             fullName="Test Name"
           />
-          <MenuList></MenuList>
+          <MenuList>
+            <MenuItem>Balance</MenuItem>
+            <MenuItem>Profile</MenuItem>
+            <MenuItem>Logout</MenuItem>
+          </MenuList>
         </div>
       </div>
     </header>
