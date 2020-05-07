@@ -3,6 +3,7 @@ import { Formik } from "formik";
 import classNames from "classnames";
 import TextField from "@material-ui/core/TextField";
 import Button from "@material-ui/core/Button";
+import Logo from "components/blocks/logo";
 
 import useStyles from "./styles";
 import { TProps } from "./container";
@@ -91,6 +92,7 @@ const AuthForm: React.FC<TProps> = ({
             isLoginForm ? styles.form_signIn : styles.form_signUp
           )}
         >
+          <Logo width={"230px"} />
           <TextField
             label="Full name"
             variant="outlined"
