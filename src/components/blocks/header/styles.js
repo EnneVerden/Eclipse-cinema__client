@@ -5,7 +5,6 @@ const styles = makeStyles({
   header: {
     display: "flex",
     justifyContent: "center",
-    padding: "15px 0",
     backgroundColor: color_dark_l1,
   },
   wrapper: {
@@ -17,6 +16,9 @@ const styles = makeStyles({
     "@media(max-width: 600px)": {
       width: "90%",
     },
+  },
+  padding: {
+    padding: "14px 0",
   },
 });
 
