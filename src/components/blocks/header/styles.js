@@ -20,6 +20,9 @@ const styles = makeStyles({
   padding: {
     padding: "14px 0",
   },
+  dropdown: {
+    position: "relative",
+  },
 });
 
 export default styles;
