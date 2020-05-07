@@ -92,7 +92,9 @@ const AuthForm: React.FC<TProps> = ({
             isLoginForm ? styles.form_signIn : styles.form_signUp
           )}
         >
-          <Logo width={"230px"} />
+          <div className={styles.logo}>
+            <Logo width={"230px"} />
+          </div>
           <TextField
             label="Full name"
             variant="outlined"
