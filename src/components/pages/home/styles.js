@@ -1,9 +1,5 @@
 import { makeStyles } from "@material-ui/core/styles";
 
-const styles = makeStyles({
-  logo: {
-    marginBottom: "20px",
-  },
-});
+const styles = makeStyles({});
 
 export default styles;
