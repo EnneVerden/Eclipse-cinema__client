@@ -8,7 +8,7 @@ const AuthPage: React.FC = () => {
   const styles = useStyles();
   const [isLoginForm, setIsLoginForm] = useState<boolean>(true);
 
-  const changeFormKind = () => {
+  const changeFormKind = (): void => {
     setIsLoginForm((prevState) => !prevState);
   };
 

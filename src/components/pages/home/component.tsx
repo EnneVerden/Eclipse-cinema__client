@@ -1,9 +1,9 @@
 import React from "react";
 
-import useStyles from "./styles";
 import Header from "components/blocks/Header";
+import useStyles from "./styles";
 
-const HomePage = () => {
+const HomePage: React.FC = () => {
   const styles = useStyles();
 
   return <Header />;

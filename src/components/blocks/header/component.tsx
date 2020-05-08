@@ -13,7 +13,7 @@ import DropdownBtn from "components/blocks/DropdownBtn";
 import MenuList from "components/blocks/MenuList";
 import MenuItem from "components/blocks/MenuItem";
 
-const Header = () => {
+const Header: React.FC = () => {
   const styles = useStyles();
   const [isVisible, setIsVisible] = useState<boolean>(false);
 
