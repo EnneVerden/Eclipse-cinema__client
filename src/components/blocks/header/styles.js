@@ -1,11 +1,10 @@
 import { makeStyles } from "@material-ui/core/styles";
-import { color_dark_l1 } from "theme/variables";
+import { color_dark_l1, color_white, font_gilroy } from "theme/variables";
 
 const styles = makeStyles({
   header: {
     display: "flex",
     justifyContent: "center",
-    padding: "15px 0",
     backgroundColor: color_dark_l1,
   },
   wrapper: {
@@ -17,6 +16,21 @@ const styles = makeStyles({
     "@media(max-width: 600px)": {
       width: "90%",
     },
+  },
+  padding: {
+    padding: "14px 0",
+  },
+  dropdown: {
+    position: "relative",
+  },
+  menuLink: {
+    textDecoration: "none",
+  },
+  menuText: {
+    fontFamily: `${font_gilroy}, sans-serif`,
+    color: color_white,
+    letterSpacing: "1px",
+    marginLeft: "7px",
   },
 });
 
