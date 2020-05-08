@@ -1,11 +1,12 @@
 import { makeStyles } from "@material-ui/core/styles";
-import { color_dark_l1, color_white, font_gilroy } from "theme/variables";
+import { color_dark_l1, color_white, font_gilroy, color_dark_l3 } from "theme/variables";
 
 const styles = makeStyles({
   header: {
     display: "flex",
     justifyContent: "center",
     backgroundColor: color_dark_l1,
+    boxShadow: `0 0px 10px 3px ${color_dark_l3}`
   },
   wrapper: {
     width: "1200px",

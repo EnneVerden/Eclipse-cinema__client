@@ -2,10 +2,10 @@ import React, { Suspense, lazy } from "react";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
 
 import { AUTH_PATH, HOME_PATH } from "constants/paths";
-import PageLoader from "components/blocks/page-loader";
+import PageLoader from "components/blocks/PageLoader";
 
-const AuthPage = lazy(() => import("components/pages/auth"));
-const HomePage = lazy(() => import("components/pages/home"));
+const AuthPage = lazy(() => import("components/pages/Auth"));
+const HomePage = lazy(() => import("components/pages/Home"));
 
 const Router = () => (
   <BrowserRouter>

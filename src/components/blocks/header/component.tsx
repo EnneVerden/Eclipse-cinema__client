@@ -8,10 +8,10 @@ import ExitToAppIcon from "@material-ui/icons/ExitToApp";
 
 import useStyles from "./styles";
 import { color_white } from "theme/variables";
-import Logo from "components/blocks/logo";
-import DropdownBtn from "components/blocks/dropdown-btn";
-import MenuList from "components/blocks/menuList";
-import MenuItem from "components/blocks/menuItem";
+import Logo from "components/blocks/Logo";
+import DropdownBtn from "components/blocks/DropdownBtn";
+import MenuList from "components/blocks/MenuList";
+import MenuItem from "components/blocks/MenuItem";
 
 const Header = () => {
   const styles = useStyles();

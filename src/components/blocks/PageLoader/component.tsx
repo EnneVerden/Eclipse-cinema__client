@@ -1,7 +1,7 @@
 import React from "react";
 
 import useStyles from "./styles";
-import Loader from "components/blocks/loader";
+import Loader from "components/blocks/Loader";
 
 const PageLoader = () => {
   const styles = useStyles();

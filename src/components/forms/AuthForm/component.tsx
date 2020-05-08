@@ -3,7 +3,7 @@ import { Formik } from "formik";
 import classNames from "classnames";
 import TextField from "@material-ui/core/TextField";
 import Button from "@material-ui/core/Button";
-import Logo from "components/blocks/logo";
+import Logo from "components/blocks/Logo";
 
 import useStyles from "./styles";
 import { TProps } from "./container";

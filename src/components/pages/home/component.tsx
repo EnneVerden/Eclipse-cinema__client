@@ -1,7 +1,7 @@
 import React from "react";
 
 import useStyles from "./styles";
-import Header from "components/blocks/header";
+import Header from "components/blocks/Header";
 
 const HomePage = () => {
   const styles = useStyles();
