@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import classNames from "classnames";
 import { Link } from "react-router-dom";
 import AccountBalanceWalletIcon from "@material-ui/icons/AccountBalanceWallet";
@@ -15,6 +15,11 @@ import MenuItem from "components/blocks/menuItem";
 
 const Header = () => {
   const styles = useStyles();
+  const [isVisible, setIsVisible] = useState<boolean>(false);
+
+  const handleToggle = (): void => {
+    setIsVisible((prevState) => !prevState);
+  };
 
   return (
     <header className={styles.header}>
@@ -25,13 +30,15 @@ const Header = () => {
         <div className={styles.dropdown}>
           <DropdownBtn
             avatarURL="https://image.flaticon.com/icons/svg/236/236831.svg"
-            fullName="Test Name"
+            fullName="Anatoly Magnatov"
+            handleToggle={handleToggle}
+            isVisible={isVisible}
           />
-          <MenuList>
+          <MenuList isVisible={isVisible}>
             <Link to="/profile" className={styles.menuLink}>
               <MenuItem>
                 <AccountBalanceWalletIcon style={{ color: color_white }} />
-                <p className={styles.menuText}>Balance</p>
+                <p className={styles.menuText}>Balance: 10$</p>
               </MenuItem>
             </Link>
             <Link to="/profile" className={styles.menuLink}>

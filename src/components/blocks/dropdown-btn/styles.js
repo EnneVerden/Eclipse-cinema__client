@@ -1,5 +1,5 @@
 import { makeStyles } from "@material-ui/core/styles";
-import { font_information, color_white, color_dark_l2 } from "theme/variables";
+import { font_gilroy, color_white, color_dark_l2 } from "theme/variables";
 
 const styles = makeStyles({
   button: {
@@ -21,9 +21,14 @@ const styles = makeStyles({
     borderRadius: "50%",
   },
   name: {
-    fontFamily: `${font_information}, sans-serif`,
+    fontFamily: `${font_gilroy}, sans-serif`,
     color: color_white,
     letterSpacing: "1px",
+    fontSize: "1.1rem",
+    marginLeft: "5px",
+  },
+  active: {
+    backgroundColor: color_dark_l2,
   },
 });
 

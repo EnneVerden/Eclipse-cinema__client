@@ -11,6 +11,9 @@ const styles = makeStyles({
     borderBottomLeftRadius: "3px",
     borderBottomRightRadius: "3px",
   },
+  hidden: {
+    display: "none",
+  },
 });
 
 export default styles;

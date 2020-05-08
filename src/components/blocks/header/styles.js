@@ -1,5 +1,5 @@
 import { makeStyles } from "@material-ui/core/styles";
-import { color_dark_l1, color_white, font_information } from "theme/variables";
+import { color_dark_l1, color_white, font_gilroy } from "theme/variables";
 
 const styles = makeStyles({
   header: {
@@ -27,7 +27,7 @@ const styles = makeStyles({
     textDecoration: "none",
   },
   menuText: {
-    fontFamily: `${font_information}, sans-serif`,
+    fontFamily: `${font_gilroy}, sans-serif`,
     color: color_white,
     letterSpacing: "1px",
     marginLeft: "7px",

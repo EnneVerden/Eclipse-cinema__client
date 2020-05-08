@@ -1,5 +1,5 @@
 import { makeStyles } from "@material-ui/core/styles";
-import { font_information, color_dark_l1 } from "theme/variables";
+import { color_dark_l1 } from "theme/variables";
 
 const styles = makeStyles({
   item: {
