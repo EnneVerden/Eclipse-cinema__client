@@ -1,28 +1,25 @@
 import React, { useState } from "react";
 import classNames from "classnames";
-import { Link } from "react-router-dom";
-import AccountBalanceWalletIcon from "@material-ui/icons/AccountBalanceWallet";
-import AccountCircleIcon from "@material-ui/icons/AccountCircle";
-import DashboardIcon from "@material-ui/icons/Dashboard";
-import ExitToAppIcon from "@material-ui/icons/ExitToApp";
 
 import useStyles from "./styles";
-import { color_white } from "theme/variables";
 import Logo from "components/blocks/Logo";
-import DropdownBtn from "components/blocks/DropdownBtn";
-import MenuList from "components/blocks/MenuList";
-import MenuItem from "components/blocks/MenuItem";
 import Container from "components/blocks/Container";
-import SignIn from "../SignIn";
+import SignIn from "components/blocks/SignIn";
+import Dropdown from "components/blocks/Dropdown";
+import { IUser } from "types/user";
 
-const Header: React.FC = () => {
+interface IProps {
+  user?: IUser | {};
+}
+
+const Header: React.FC<IProps> = ({ user = {} }) => {
   const styles = useStyles();
   const [isVisible, setIsVisible] = useState<boolean>(false);
 
   const handleToggle = (): void => {
     setIsVisible((prevState) => !prevState);
   };
-
+  console.log(Object.keys(user).length);
   return (
     <header className={styles.header}>
       <Container>
@@ -32,7 +29,11 @@ const Header: React.FC = () => {
               document.documentElement.clientWidth > 600 ? "110px" : "90px"
             }
           />
-          <SignIn />
+          {Object.keys(user).length ? (
+            <Dropdown handleToggle={handleToggle} isVisible={isVisible} />
+          ) : (
+            <SignIn />
+          )}
         </div>
       </Container>
     </header>

@@ -17,7 +17,7 @@ const protectRoute = (
 
 interface IProps {
   component: React.FC;
-  user?: IUser | object;
+  user?: IUser | {};
   url: string;
   exact: boolean;
   path: string;
@@ -25,7 +25,7 @@ interface IProps {
 
 const ProtectedRoute: React.FC<IProps> = ({
   component: Component,
-  user,
+  user = {},
   url,
   ...rest
 }) => (
