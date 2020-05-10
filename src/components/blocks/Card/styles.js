@@ -13,46 +13,55 @@ const styles = makeStyles({
     justifyContent: "space-between",
     fontFamily: `${font_gilroy}, sans-serif`,
 
+    "@media(max-width: 960px)": {
+      width: "100%",
+      margin: "20px 0",
+    },
+    "@media(max-width: 960px) and (max-height: 600px)": {
+      width: "100%",
+      margin: "20px 0",
+    },
     "@media(max-width: 600px)": {
       width: "100%",
       margin: "20px 0",
       flexDirection: "column",
       alignItems: "center",
     },
-    "@media(min-width: 601px) and (max-width: 960px) and (max-height: 600px)": {
-      width: "90%",
-      margin: "20px 0",
-    },
-    "@media(min-width: 568px) and (max-width: 568px) and (min-height: 320px) and (max-height: 320px)": {
+    "@media(max-width: 568px) and (max-height: 320px)": {
       flexDirection: "row",
       alignItems: "initial",
     },
   },
   poster: {
-    marginRight: "15px",
+    marginRight: "10px",
 
-    "@media(max-width: 600px)": {
+    "@media(max-width: 960px)": {
+      width: "100%",
+    },
+    "@media(max-width: 960px) and (max-height: 600px)": {
       width: "100%",
       margin: "0",
     },
-    "@media(min-width: 601px) and (max-width: 960px) and (max-height: 600px)": {
+    "@media(max-width: 600px)": {
       width: "100%",
       margin: "0",
-      marginRight: "10px",
     },
   },
   img: {
     width: "170px",
 
-    "@media(max-width: 600px)": {
+    "@media(max-width: 960px)": {
       width: "100%",
     },
-    "@media(min-width: 601px) and (max-width: 960px) and (max-height: 600px)": {
+    "@media(max-width: 960px) and (max-height: 600px)": {
+      width: "100%",
+    },
+    "@media(max-width: 600px)": {
       width: "100%",
     },
   },
   info: {
-    marginLeft: "15px",
+    marginLeft: "10px",
     display: "flex",
     flexDirection: "column",
 
@@ -60,9 +69,8 @@ const styles = makeStyles({
       margin: "0",
       marginTop: "20px",
     },
-    "@media(min-width: 568px) and (max-width: 568px) and (min-height: 320px) and (max-height: 320px)": {
+    "@media(max-width: 568px) and (max-height: 320px)": {
       margin: "0",
-      marginLeft: "10px",
     },
   },
   name: {
@@ -70,10 +78,13 @@ const styles = makeStyles({
     fontSize: "1.5rem",
     letterSpacing: "1px",
 
-    "@media(max-width: 600px)": {
+    "@media(max-width: 960px)": {
       fontSize: "2rem",
     },
-    "@media(min-width: 601px) and (max-width: 960px) and (max-height: 600px)": {
+    "@media(max-width: 960px) and (max-height: 600px)": {
+      fontSize: "2rem",
+    },
+    "@media(max-width: 600px)": {
       fontSize: "2rem",
     },
   },
@@ -83,10 +94,13 @@ const styles = makeStyles({
     fontSize: "0.9rem",
     letterSpacing: "1px",
 
-    "@media(max-width: 600px)": {
+    "@media(max-width: 960px)": {
       fontSize: "1rem",
     },
-    "@media(min-width: 601px) and (max-width: 960px) and (max-height: 600px)": {
+    "@media(max-width: 960px) and (max-height: 600px)": {
+      fontSize: "1rem",
+    },
+    "@media(max-width: 600px)": {
       fontSize: "1rem",
     },
   },
@@ -102,11 +116,15 @@ const styles = makeStyles({
     lineHeight: "1.2rem",
     letterSpacing: "1px",
 
-    "@media(max-width: 600px)": {
+    "@media(max-width: 960px)": {
       fontSize: "1.1rem",
       lineHeight: "1.3rem",
     },
-    "@media(min-width: 601px) and (max-width: 960px) and (max-height: 600px)": {
+    "@media(max-width: 960px) and (max-height: 600px)": {
+      fontSize: "1.1rem",
+      lineHeight: "1.3rem",
+    },
+    "@media(max-width: 600px)": {
       fontSize: "1.1rem",
       lineHeight: "1.3rem",
     },
@@ -125,11 +143,14 @@ const styles = makeStyles({
     fontSize: "2.2rem",
     color: color_red,
 
+    "@media(max-width: 960px)": {
+      fontSize: "3rem",
+    },
+    "@media(max-width: 960px) and (max-height: 600px)": {
+      fontSize: "3rem",
+    },
     "@media(max-width: 600px)": {
       fontSize: "2.3rem",
-    },
-    "@media(min-width: 601px) and (max-width: 960px) and (max-height: 600px)": {
-      fontSize: "3rem",
     },
   },
   date: {
@@ -140,11 +161,14 @@ const styles = makeStyles({
     color: color_red,
     borderColor: color_red,
 
+    "@media(max-width: 960px)": {
+      padding: "12px 30px",
+    },
+    "@media(max-width: 960px) and (max-height: 600px)": {
+      padding: "12px 30px",
+    },
     "@media(max-width: 600px)": {
       padding: "8px 20px",
-    },
-    "@media(min-width: 601px) and (max-width: 960px) and (max-height: 600px)": {
-      padding: "12px 30px",
     },
   },
 });

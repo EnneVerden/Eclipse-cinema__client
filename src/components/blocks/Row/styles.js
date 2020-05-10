@@ -7,13 +7,19 @@ const styles = makeStyles({
     alignItems: "center",
     margin: "50px 0",
 
+    "@media(max-width: 960px)": {
+      flexDirection: "column",
+      margin: "0",
+    },
+    "@media(max-width: 960px) and (max-height: 600px)": {
+      flexDirection: "column",
+      margin: "0",
+    },
     "@media(max-width: 600px)": {
       flexDirection: "column",
       justifyContent: "initial",
       alignItems: "center",
-    },
-    "@media(min-width: 601px) and (max-width: 960px) and (max-height: 600px)": {
-      flexDirection: "column",
+      margin: "0",
     },
   },
 });
