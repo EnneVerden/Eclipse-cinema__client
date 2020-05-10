@@ -117,7 +117,7 @@ const styles = makeStyles({
     transition: "transform 0s",
   },
   logo: {
-    marginBottom: "20px",
+    // marginBottom: "20px",
   },
 });
 

@@ -6,7 +6,7 @@ interface IProps {
 
 const Logo: React.FC<IProps> = ({ width }) => (
   <div>
-    <img src="title.png" alt="logo" style={{ width }} />
+    <img src="Logo.png" alt="logo" style={{ width }} />
   </div>
 );
 
