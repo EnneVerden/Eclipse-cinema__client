@@ -5,9 +5,9 @@ import {
   registration,
   registrationRequest,
 } from "./registration";
-import { setUserToState } from "actions/auth";
-import setError from "actions/set-error/set-error";
-import { REGISTRATION } from "constants/users";
+import setUserToState from "actions/set-user";
+import setError from "actions/set-error";
+import { REGISTRATION } from "constants/authorization";
 import { getUserResponse, getErrorResponse, errorMessage } from "utils/auth";
 
 describe("Registration Saga", () => {

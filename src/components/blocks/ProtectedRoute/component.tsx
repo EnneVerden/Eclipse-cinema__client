@@ -1,19 +1,7 @@
-import React from "react";
+import React, { useCallback } from "react";
 import { Route } from "react-router-dom";
 import { Redirect } from "react-router";
 import { IUser } from "types/user";
-
-const protectRoute = (
-  protectEntity: any,
-  url: string,
-  props: any,
-  Component: React.FC
-) =>
-  Object.keys(protectEntity).length ? (
-    <Redirect to={url} />
-  ) : (
-    <Component {...props} />
-  );
 
 interface IProps {
   component: React.FC;
@@ -27,12 +15,19 @@ const ProtectedRoute: React.FC<IProps> = ({
   component: Component,
   user = {},
   url,
-  ...rest
-}) => (
-  <Route
-    {...rest}
-    render={(props) => protectRoute(user, url, props, Component)}
-  />
-);
+  ...props
+}) => {
+  const protectRoute = useCallback(
+    () =>
+      Object.keys(user).length ? (
+        <Redirect to={url} />
+      ) : (
+        <Component {...props} />
+      ),
+    [user]
+  );
+
+  return <Route {...props} render={(props) => protectRoute()} />;
+};
 
 export default ProtectedRoute;

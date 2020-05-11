@@ -1,4 +1,4 @@
-import { SET_USER_TO_STATE } from "constants/users";
+import { SET_USER_TO_STATE } from "constants/authorization";
 import { userTestData } from "utils/user";
 import userReducer from "./user";
 

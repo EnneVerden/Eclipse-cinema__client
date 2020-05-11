@@ -1,6 +1,3 @@
-import { ISetUserToState, ILogout } from "./fetchUser";
-import { ISetErrorAction } from "./error";
-
 interface IRoles {
   _id: string;
   name: string;
@@ -25,5 +22,3 @@ export interface IUser {
   roles: Array<IRoles>;
   tickets: Array<ITickets | []>;
 }
-
-export type TUserAction = ISetUserToState | ILogout | ISetErrorAction;

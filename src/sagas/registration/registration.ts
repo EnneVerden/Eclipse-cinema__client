@@ -1,8 +1,11 @@
-import setError from "actions/set-error/set-error";
-import { setUserToState } from "actions/auth";
+import setError from "actions/set-error";
+import setUserToState from "actions/set-user";
 import { call, put, take } from "redux-saga/effects";
-import { REGISTRATION } from "constants/users";
-import { TAuthWorkerGenerator, TAuthWatcherGenerator } from "types/fetchUser";
+import { REGISTRATION } from "constants/authorization";
+import {
+  TAuthWorkerGenerator,
+  TAuthWatcherGenerator,
+} from "types/authorization";
 
 export const registrationRequest = (
   fullName: string,

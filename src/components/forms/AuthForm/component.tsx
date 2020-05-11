@@ -1,4 +1,4 @@
-import React, { useState, useEffect, MouseEvent } from "react";
+import React, { useState, useEffect, useCallback, MouseEvent } from "react";
 import { Formik } from "formik";
 import classNames from "classnames";
 import TextField from "@material-ui/core/TextField";
@@ -18,8 +18,10 @@ const AuthForm: React.FC<TProps> = ({
   const styles = useStyles();
   const [isVisible, setIsVisible] = useState<boolean>(false);
 
-  const setWarning = (message: string) =>
-    setError({ type: "warning", message });
+  const setWarning = useCallback(
+    (message: string) => setError({ type: "warning", message }),
+    []
+  );
 
   const hiddenInputClass = classNames(
     styles.hide,
@@ -31,10 +33,10 @@ const AuthForm: React.FC<TProps> = ({
     !isLoginForm && !isVisible ? styles.moveInput : styles.cancelMoveInput
   );
 
-  const changeForm = (e: MouseEvent<HTMLAnchorElement>): void => {
+  const changeForm = useCallback((e: MouseEvent<HTMLAnchorElement>) => {
     e.preventDefault();
     changeFormKind();
-  };
+  }, []);
 
   useEffect(() => {
     let timer: NodeJS.Timeout;

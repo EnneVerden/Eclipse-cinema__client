@@ -1,8 +1,11 @@
 import { call, put, take } from "redux-saga/effects";
-import setError from "actions/set-error/set-error";
-import { setUserToState } from "actions/auth";
-import { LOGIN } from "constants/users";
-import { TAuthWorkerGenerator, TAuthWatcherGenerator } from "types/fetchUser";
+import setError from "actions/set-error";
+import setUserToState from "actions/set-user";
+import { LOGIN } from "constants/authorization";
+import {
+  TAuthWorkerGenerator,
+  TAuthWatcherGenerator,
+} from "types/authorization";
 
 export const loginRequest = (
   email: string,

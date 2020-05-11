@@ -1,6 +1,6 @@
 import Dropdown from "./component";
 import { Dispatch } from "redux";
-import { logout } from "actions/auth";
+import logout from "actions/logout";
 import { connect, ConnectedProps } from "react-redux";
 
 const mapDispatchToProps = (dispatch: Dispatch) => ({

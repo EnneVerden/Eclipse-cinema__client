@@ -1,5 +1,6 @@
-import { IUser, TUserAction } from "types/user";
-import { SET_USER_TO_STATE, LOGOUT } from "constants/users";
+import { IUser } from "types/user";
+import { TUserAction } from "types/authorization";
+import { SET_USER_TO_STATE, LOGOUT } from "constants/authorization";
 
 type TState = IUser | {};
 

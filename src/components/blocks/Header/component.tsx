@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useCallback } from "react";
 import classNames from "classnames";
 
 import useStyles from "./styles";
@@ -16,9 +16,10 @@ const Header: React.FC<IProps> = ({ user = {} }) => {
   const styles = useStyles();
   const [isVisible, setIsVisible] = useState<boolean>(false);
 
-  const handleToggle = (): void => {
-    setIsVisible((prevState) => !prevState);
-  };
+  const handleToggle = useCallback(
+    () => setIsVisible((visible) => !visible),
+    []
+  );
 
   return (
     <header className={styles.header}>

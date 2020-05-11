@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useCallback } from "react";
 import { Link } from "react-router-dom";
 import AccountBalanceWalletIcon from "@material-ui/icons/AccountBalanceWallet";
 import AccountCircleIcon from "@material-ui/icons/AccountCircle";
@@ -9,7 +9,7 @@ import { color_white } from "theme/variables";
 import DropdownBtn from "components/blocks/DropdownBtn";
 import MenuList from "components/blocks/MenuList";
 import MenuItem from "components/blocks/MenuItem";
-import { logout } from "actions/auth";
+import logout from "actions/logout";
 import { TProps } from "./container";
 
 import useStyles from "./styles";
@@ -17,9 +17,7 @@ import useStyles from "./styles";
 const Dropdown: React.FC<TProps> = ({ handleToggle, isVisible, logout }) => {
   const styles = useStyles();
 
-  const handleClick = (): void => {
-    logout();
-  };
+  const handleClick = useCallback(() => logout(), []);
 
   return (
     <div className={styles.dropdown}>

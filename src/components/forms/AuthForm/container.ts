@@ -1,8 +1,9 @@
 import { connect, ConnectedProps } from "react-redux";
 import AuthForm from "./component";
 import { IError } from "types/error";
-import setError from "actions/set-error/set-error";
-import { login, registration } from "actions/auth";
+import setError from "actions/set-error";
+import login from "actions/login";
+import registration from "actions/registration";
 import { Dispatch } from "redux";
 
 const mapDispatchToProps = (dispatch: Dispatch) => ({

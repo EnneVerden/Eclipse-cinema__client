@@ -1,9 +1,9 @@
 import { expectSaga, testSaga } from "redux-saga-test-plan";
 import { login, loginWorker, loginRequest } from "./login";
 import { userTestData } from "utils/user";
-import { setUserToState } from "actions/auth";
-import setError from "actions/set-error/set-error";
-import { LOGIN } from "constants/users";
+import setUserToState from "actions/set-user";
+import setError from "actions/set-error";
+import { LOGIN } from "constants/authorization";
 import { getUserResponse, getErrorResponse, errorMessage } from "utils/auth";
 
 describe("Login Saga", () => {

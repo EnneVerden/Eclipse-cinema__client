@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useCallback } from "react";
 
 import AuthForm from "components/forms/AuthForm";
 import useStyles from "./styles";
@@ -8,9 +8,10 @@ const AuthPage: React.FC = () => {
   const styles = useStyles();
   const [isLoginForm, setIsLoginForm] = useState<boolean>(true);
 
-  const changeFormKind = (): void => {
-    setIsLoginForm((prevState) => !prevState);
-  };
+  const changeFormKind = useCallback(
+    () => setIsLoginForm((loginForm) => !loginForm),
+    []
+  );
 
   return (
     <div className={styles.wrapper}>
