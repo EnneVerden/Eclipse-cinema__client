@@ -1,5 +1,5 @@
 import { IUser } from "./user";
-import { SET_USER_TO_STATE } from "constants/users";
+import { SET_USER_TO_STATE, LOGOUT } from "constants/users";
 import { LOGIN, REGISTRATION } from "constants/users";
 import { CallEffect, PutEffect, TakeEffect } from "redux-saga/effects";
 
@@ -41,4 +41,8 @@ export interface IAuth {
 export interface ISetUserToState {
   type: typeof SET_USER_TO_STATE;
   user: IUser;
+}
+
+export interface ILogout {
+  type: typeof LOGOUT;
 }

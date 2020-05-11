@@ -1,3 +1,3 @@
-import Dropdown from "./component";
+import Dropdown from "./container";
 
 export default Dropdown;

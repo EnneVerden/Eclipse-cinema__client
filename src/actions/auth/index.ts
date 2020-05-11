@@ -1,6 +1,11 @@
-import { LOGIN, SET_USER_TO_STATE, REGISTRATION } from "constants/users";
+import {
+  LOGIN,
+  SET_USER_TO_STATE,
+  REGISTRATION,
+  LOGOUT,
+} from "constants/users";
 import { IUser } from "types/user";
-import { ISetUserToState, IAuth } from "types/fetchUser";
+import { ISetUserToState, IAuth, ILogout } from "types/fetchUser";
 
 export const login = (email: string, password: string): IAuth => ({
   type: LOGIN,
@@ -17,6 +22,10 @@ export const registration = (
   fullName,
   email,
   password,
+});
+
+export const logout = (): ILogout => ({
+  type: LOGOUT,
 });
 
 export const setUserToState = (user: IUser): ISetUserToState => ({

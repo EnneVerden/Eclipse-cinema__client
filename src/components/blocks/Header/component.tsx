@@ -19,7 +19,7 @@ const Header: React.FC<IProps> = ({ user = {} }) => {
   const handleToggle = (): void => {
     setIsVisible((prevState) => !prevState);
   };
-  console.log(Object.keys(user).length);
+
   return (
     <header className={styles.header}>
       <Container>

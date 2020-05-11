@@ -9,16 +9,17 @@ import { color_white } from "theme/variables";
 import DropdownBtn from "components/blocks/DropdownBtn";
 import MenuList from "components/blocks/MenuList";
 import MenuItem from "components/blocks/MenuItem";
+import { logout } from "actions/auth";
+import { TProps } from "./container";
 
 import useStyles from "./styles";
 
-interface IProps {
-  handleToggle: () => void;
-  isVisible: boolean;
-}
-
-const Dropdown: React.FC<IProps> = ({ handleToggle, isVisible }) => {
+const Dropdown: React.FC<TProps> = ({ handleToggle, isVisible, logout }) => {
   const styles = useStyles();
+
+  const handleClick = (): void => {
+    logout();
+  };
 
   return (
     <div className={styles.dropdown}>
@@ -47,7 +48,7 @@ const Dropdown: React.FC<IProps> = ({ handleToggle, isVisible }) => {
             <p className={styles.menuText}>Dashboard</p>
           </MenuItem>
         </Link>
-        <Link to="/auth" className={styles.menuLink}>
+        <Link to="/" className={styles.menuLink} onClick={handleClick}>
           <MenuItem>
             <ExitToAppIcon style={{ color: color_white }} />
             <p className={styles.menuText}>Logout</p>
