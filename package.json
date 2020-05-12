@@ -19,6 +19,7 @@
     "@types/react-router-dom": "^5.1.4",
     "classnames": "^2.2.6",
     "formik": "^2.1.4",
+    "moment": "^2.25.3",
     "react": "^16.13.1",
     "react-app-rewire-aliases": "^0.2.0",
     "react-app-rewired": "^2.1.5",

@@ -16,17 +16,17 @@ import { ITag } from "types/tags";
 const Filter: React.FC<TProps> = ({ tags, fetchTags }) => {
   const styles = useStyles();
   const [tagId, setTagId] = useState<number>(0);
-  const [content, setContent] = useState<Array<ReactElement> | []>([]);
+  const [content, setContent] = useState<ReactElement[] | []>([]);
 
   const changeTag = useCallback((newTagId: number) => setTagId(newTagId), []);
 
   useEffect(() => {
-    fetchTags();
+    if (!tags.length) fetchTags();
   }, []);
 
   useEffect(() => {
-    if (tags) {
-      const content = tags.map((tag: ITag, index: number) => (
+    if (tags.length) {
+      const newContent = tags.map((tag: ITag, index: number) => (
         <Tag
           key={tag._id}
           label={tag.name}
@@ -36,7 +36,7 @@ const Filter: React.FC<TProps> = ({ tags, fetchTags }) => {
         />
       ));
 
-      setContent(content);
+      setContent(newContent);
     }
   }, [tags]);
 

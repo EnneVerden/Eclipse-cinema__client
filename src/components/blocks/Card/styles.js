@@ -9,6 +9,7 @@ import {
 const styles = makeStyles({
   card: {
     width: "48%",
+    margin: "30px 0",
     display: "flex",
     justifyContent: "space-between",
     fontFamily: `${font_gilroy}, sans-serif`,

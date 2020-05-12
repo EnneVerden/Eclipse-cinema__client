@@ -5,7 +5,7 @@ export interface IAlert {
   message?: string;
 }
 
-export interface ISetAlertAction {
+export interface ISetAlertToStateAction {
   type: typeof SET_ALERT;
   alert: IAlert;
 }

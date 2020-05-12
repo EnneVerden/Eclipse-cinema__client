@@ -4,6 +4,7 @@ import { font_gilroy, color_white } from "theme/variables";
 const styles = makeStyles({
   dropdown: {
     position: "relative",
+    zIndex: 1,
   },
   menuLink: {
     textDecoration: "none",
