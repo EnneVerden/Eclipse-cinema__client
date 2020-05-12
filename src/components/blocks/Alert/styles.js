@@ -1,9 +1,11 @@
 import { makeStyles } from "@material-ui/core";
 import {
+  color_success,
   color_error,
   font_information,
   color_white,
   color_warning,
+  color_success_font,
   color_error_font,
   color_warning_font,
 } from "theme/variables";
@@ -45,6 +47,10 @@ const styles = makeStyles({
   },
   isVisible: {
     transform: "translateX(0)",
+  },
+  success: {
+    color: color_success_font,
+    backgroundColor: color_success,
   },
   error: {
     color: color_error_font,

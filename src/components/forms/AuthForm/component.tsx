@@ -1,4 +1,4 @@
-import React, { useState, useEffect, MouseEvent } from "react";
+import React, { useState, useEffect, useCallback, MouseEvent } from "react";
 import { Formik } from "formik";
 import classNames from "classnames";
 import TextField from "@material-ui/core/TextField";
@@ -11,15 +11,18 @@ import { TProps } from "./container";
 const AuthForm: React.FC<TProps> = ({
   changeFormKind,
   isLoginForm,
+  authorization,
   login,
   registration,
-  setError,
+  setAlert,
 }) => {
   const styles = useStyles();
   const [isVisible, setIsVisible] = useState<boolean>(false);
 
-  const setWarning = (message: string) =>
-    setError({ type: "warning", message });
+  const setWarning = useCallback(
+    (message: string) => setAlert({ type: "warning", message }),
+    [setAlert]
+  );
 
   const hiddenInputClass = classNames(
     styles.hide,
@@ -31,10 +34,17 @@ const AuthForm: React.FC<TProps> = ({
     !isLoginForm && !isVisible ? styles.moveInput : styles.cancelMoveInput
   );
 
-  const changeForm = (e: MouseEvent<HTMLAnchorElement>): void => {
-    e.preventDefault();
-    changeFormKind();
-  };
+  const changeForm = useCallback(
+    (e: MouseEvent<HTMLAnchorElement>) => {
+      e.preventDefault();
+      changeFormKind();
+    },
+    [changeFormKind]
+  );
+
+  useEffect(() => {
+    authorization();
+  }, []);
 
   useEffect(() => {
     let timer: NodeJS.Timeout;
@@ -152,7 +162,7 @@ const AuthForm: React.FC<TProps> = ({
                 ? "Don't have an account yet?"
                 : "Do you have an account?"}
             </span>
-            <a href="#" className={styles.changerLink} onClick={changeForm}>
+            <a href="/" className={styles.changerLink} onClick={changeForm}>
               {isLoginForm ? "Sign up" : "Sign in"}
             </a>
           </div>

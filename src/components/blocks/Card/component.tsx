@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useMemo } from "react";
 import Button from "@material-ui/core/Button";
 import ShoppingCartIcon from "@material-ui/icons/ShoppingCart";
 
@@ -25,7 +25,7 @@ const Card: React.FC<IProps> = ({
 }) => {
   const styles = useStyles();
 
-  const displayedTags = tags.join(", ");
+  const displayedTags = useMemo(() => tags.join(", "), [tags]);
 
   return (
     <div className={styles.card}>

@@ -1,13 +1,9 @@
 import { expectSaga, testSaga } from "redux-saga-test-plan";
 import { userTestData } from "utils/user";
-import {
-  registrationWorker,
-  registration,
-  registrationRequest,
-} from "./registration";
-import { setUserToState } from "actions/auth";
-import setError from "actions/set-error/set-error";
-import { REGISTRATION } from "constants/users";
+import { registrationWorker, registration, registrationRequest } from ".";
+import setUserToState from "actions/set-user";
+import setAlert from "actions/set-alert";
+import { REGISTRATION } from "constants/authorization";
 import { getUserResponse, getErrorResponse, errorMessage } from "utils/auth";
 
 describe("Registration Saga", () => {
@@ -30,7 +26,7 @@ describe("Registration Saga", () => {
         email,
         password
       )
-        .put(setError({ type: "error", message: errorMessage }))
+        .put(setAlert({ type: "error", message: errorMessage }))
         .run();
     });
   });

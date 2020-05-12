@@ -1,5 +1,6 @@
-import { IUser, TUserAction } from "types/user";
-import { SET_USER_TO_STATE } from "constants/users";
+import { IUser } from "types/user";
+import { TUserAction } from "types/authorization";
+import { SET_USER_TO_STATE, CLEAR_USER_STATE } from "constants/authorization";
 
 type TState = IUser | {};
 
@@ -9,6 +10,8 @@ const user = (state = initialState, action: TUserAction): TState => {
   switch (action.type) {
     case SET_USER_TO_STATE:
       return action.user;
+    case CLEAR_USER_STATE:
+      return initialState;
     default:
       return state;
   }

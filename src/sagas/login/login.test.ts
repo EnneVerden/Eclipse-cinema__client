@@ -1,9 +1,9 @@
 import { expectSaga, testSaga } from "redux-saga-test-plan";
-import { login, loginWorker, loginRequest } from "./login";
+import { login, loginWorker, loginRequest } from ".";
 import { userTestData } from "utils/user";
-import { setUserToState } from "actions/auth";
-import setError from "actions/set-error/set-error";
-import { LOGIN } from "constants/users";
+import setUserToState from "actions/set-user";
+import setAlert from "actions/set-alert";
+import { LOGIN } from "constants/authorization";
 import { getUserResponse, getErrorResponse, errorMessage } from "utils/auth";
 
 describe("Login Saga", () => {
@@ -19,7 +19,7 @@ describe("Login Saga", () => {
 
     it("With error", () => {
       expectSaga(loginWorker, getErrorResponse, email, password)
-        .put(setError({ type: "error", message: errorMessage }))
+        .put(setAlert({ type: "error", message: errorMessage }))
         .run();
     });
   });
