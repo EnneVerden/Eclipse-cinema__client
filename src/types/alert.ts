@@ -9,5 +9,3 @@ export interface ISetAlertAction {
   type: typeof SET_ALERT;
   alert: IAlert;
 }
-
-export type TAlertAction = ISetAlertAction;

@@ -1,16 +1,20 @@
-import React, { useState, useCallback } from "react";
+import React, { useState, useCallback, useEffect } from "react";
 import Tabs from "@material-ui/core/Tabs";
 import { color_pink, color_red } from "theme/variables";
-
-import useStyles from "./styles";
 import Tag from "components/blocks/Tag";
 import Container from "components/blocks/Container";
+import { TProps } from "./container";
+import useStyles from "./styles";
 
-const Filter: React.FC = () => {
+const Filter: React.FC<TProps> = ({ fetchTags }) => {
   const styles = useStyles();
   const [tagId, setTagId] = useState<number>(0);
 
   const changeTag = useCallback((newTagId: number) => setTagId(newTagId), []);
+
+  useEffect(() => {
+    fetchTags();
+  }, []);
 
   return (
     <div className={styles.filter}>
