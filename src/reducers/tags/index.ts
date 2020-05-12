@@ -1,9 +1,9 @@
-import { ITag, IFetchTagsAction, ISetTagsToStateAction } from "types/tags";
-import { FETCH_TAGS, SET_TAGS_TO_STATE } from "constants/tags";
+import { ITag, ISetTagsToStateAction } from "types/tags";
+import { SET_TAGS_TO_STATE } from "constants/tags";
 
-type TState = Array<ITag> | {};
+type TState = Array<ITag> | [];
 
-const initialState: TState = {};
+const initialState: TState = [];
 
 const tags = (state = initialState, action: ISetTagsToStateAction): TState => {
   switch (action.type) {
