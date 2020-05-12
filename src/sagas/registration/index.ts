@@ -20,6 +20,7 @@ export const registrationRequest = (
       email,
       password,
     }),
+    credentials: "include",
   });
 };
 

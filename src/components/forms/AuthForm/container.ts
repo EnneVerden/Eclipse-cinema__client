@@ -5,8 +5,10 @@ import setError from "actions/set-error";
 import login from "actions/login";
 import registration from "actions/registration";
 import { Dispatch } from "redux";
+import authorization from "actions/authorization";
 
 const mapDispatchToProps = (dispatch: Dispatch) => ({
+  authorization: () => dispatch(authorization()),
   login: (email: string, password: string) => dispatch(login(email, password)),
   registration: (fullName: string, email: string, password: string) =>
     dispatch(registration(fullName, email, password)),

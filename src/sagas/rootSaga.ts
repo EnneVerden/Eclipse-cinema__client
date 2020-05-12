@@ -1,10 +1,11 @@
 import { all, AllEffect, CallEffect, TakeEffect } from "redux-saga/effects";
 
-import { login } from "./login/login";
-import { registration } from "./registration/registration";
+import { authorization } from "./authorization";
+import { login } from "./login";
+import { registration } from "./registration";
 
 export default function* rootSaga(): Generator<
   AllEffect<Generator<TakeEffect | CallEffect>>
 > {
-  yield all([login(), registration()]);
+  yield all([login(), registration(), authorization()]);
 }

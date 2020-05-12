@@ -3,10 +3,15 @@ import {
   REGISTRATION,
   LOGOUT,
   SET_USER_TO_STATE,
+  AUTHORIZATION,
 } from "constants/authorization";
 import { IUser } from "./user";
 import { CallEffect, PutEffect, TakeEffect } from "redux-saga/effects";
 import { ISetErrorAction } from "./error";
+
+export interface IAuthorizationAction {
+  type: typeof AUTHORIZATION;
+}
 
 export interface ILoginAction {
   type: typeof LOGIN;

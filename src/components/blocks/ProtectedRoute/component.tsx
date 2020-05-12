@@ -24,7 +24,7 @@ const ProtectedRoute: React.FC<IProps> = ({
       ) : (
         <Component {...props} />
       ),
-    [user]
+    [user, url, props]
   );
 
   return <Route {...props} render={(props) => protectRoute()} />;

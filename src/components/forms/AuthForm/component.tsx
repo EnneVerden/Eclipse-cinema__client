@@ -11,6 +11,7 @@ import { TProps } from "./container";
 const AuthForm: React.FC<TProps> = ({
   changeFormKind,
   isLoginForm,
+  authorization,
   login,
   registration,
   setError,
@@ -20,7 +21,7 @@ const AuthForm: React.FC<TProps> = ({
 
   const setWarning = useCallback(
     (message: string) => setError({ type: "warning", message }),
-    []
+    [setError]
   );
 
   const hiddenInputClass = classNames(
@@ -33,9 +34,16 @@ const AuthForm: React.FC<TProps> = ({
     !isLoginForm && !isVisible ? styles.moveInput : styles.cancelMoveInput
   );
 
-  const changeForm = useCallback((e: MouseEvent<HTMLAnchorElement>) => {
-    e.preventDefault();
-    changeFormKind();
+  const changeForm = useCallback(
+    (e: MouseEvent<HTMLAnchorElement>) => {
+      e.preventDefault();
+      changeFormKind();
+    },
+    [changeFormKind]
+  );
+
+  useEffect(() => {
+    authorization();
   }, []);
 
   useEffect(() => {
@@ -154,7 +162,7 @@ const AuthForm: React.FC<TProps> = ({
                 ? "Don't have an account yet?"
                 : "Do you have an account?"}
             </span>
-            <a href="#" className={styles.changerLink} onClick={changeForm}>
+            <a href="/" className={styles.changerLink} onClick={changeForm}>
               {isLoginForm ? "Sign up" : "Sign in"}
             </a>
           </div>

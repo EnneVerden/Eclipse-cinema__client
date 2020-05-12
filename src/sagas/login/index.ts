@@ -18,6 +18,7 @@ export const loginRequest = (
       email,
       password,
     }),
+    credentials: "include",
   });
 };
 
@@ -28,6 +29,7 @@ export function* loginWorker(
 ): TAuthWorkerGenerator {
   try {
     const response = yield call(loginRequest, email, password);
+    console.log(response);
     const data = yield response.json();
 
     if (data.error) {
@@ -37,7 +39,7 @@ export function* loginWorker(
     if (data.auth) {
       yield put(setUserToState(data.auth.user));
     }
-  } catch (error) {
+  } catch {
     yield put(
       setError({ type: "error", message: "Something wrong! Try again later." })
     );

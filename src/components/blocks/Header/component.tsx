@@ -1,4 +1,4 @@
-import React, { useState, useCallback } from "react";
+import React, { useState, useCallback, useEffect } from "react";
 import classNames from "classnames";
 
 import useStyles from "./styles";
@@ -6,13 +6,9 @@ import Logo from "components/blocks/Logo";
 import Container from "components/blocks/Container";
 import SignIn from "components/blocks/SignIn";
 import Dropdown from "components/blocks/Dropdown";
-import { IUser } from "types/user";
+import { TProps } from "./container";
 
-interface IProps {
-  user?: IUser | {};
-}
-
-const Header: React.FC<IProps> = ({ user = {} }) => {
+const Header: React.FC<TProps> = ({ user = {}, authorization }) => {
   const styles = useStyles();
   const [isVisible, setIsVisible] = useState<boolean>(false);
 
@@ -20,6 +16,10 @@ const Header: React.FC<IProps> = ({ user = {} }) => {
     () => setIsVisible((visible) => !visible),
     []
   );
+
+  useEffect(() => {
+    if (!Object.keys(user).length) authorization();
+  }, []);
 
   return (
     <header className={styles.header}>

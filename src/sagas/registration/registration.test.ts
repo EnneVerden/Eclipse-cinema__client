@@ -1,10 +1,6 @@
 import { expectSaga, testSaga } from "redux-saga-test-plan";
 import { userTestData } from "utils/user";
-import {
-  registrationWorker,
-  registration,
-  registrationRequest,
-} from "./registration";
+import { registrationWorker, registration, registrationRequest } from ".";
 import setUserToState from "actions/set-user";
 import setError from "actions/set-error";
 import { REGISTRATION } from "constants/authorization";
