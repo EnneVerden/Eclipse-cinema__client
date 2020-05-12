@@ -3,7 +3,7 @@ import { userTestData } from "utils/user";
 import { ISetUserToStateAction } from "types/authorization";
 import setUserToState from ".";
 
-describe("Set user action creator", () => {
+describe("SetUser action creator", () => {
   it("Should create an action to set user", () => {
     const expectedAction: ISetUserToStateAction = {
       type: SET_USER_TO_STATE,

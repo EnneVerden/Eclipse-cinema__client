@@ -1,6 +1,6 @@
-import { IError } from "types/error";
+import { IAlert } from "types/alert";
 
-export const errorTestData: IError = {
+export const errorTestData: IAlert = {
   type: "error",
   message: "Error message!",
 };

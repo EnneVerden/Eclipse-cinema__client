@@ -3,7 +3,7 @@ import {
   TAuthWatcherGenerator,
 } from "types/authorization";
 import { call, put, take } from "redux-saga/effects";
-import setError from "actions/set-error";
+import setAlert from "actions/set-alert";
 import setUserToState from "actions/set-user";
 import { AUTHORIZATION } from "constants/authorization";
 
@@ -19,7 +19,7 @@ export function* authWorker(authRequest: any): TAuthWorkerGenerator {
     const data = yield response.json();
 
     if (data.error) {
-      yield put(setError({ type: "error", message: data.error.message }));
+      yield put(setAlert({ type: "error", message: data.error.message }));
     }
 
     if (data.auth) {
@@ -27,7 +27,7 @@ export function* authWorker(authRequest: any): TAuthWorkerGenerator {
     }
   } catch {
     yield put(
-      setError({ type: "error", message: "Something wrong! Try again later." })
+      setAlert({ type: "error", message: "Something wrong! Try again later." })
     );
   }
 }

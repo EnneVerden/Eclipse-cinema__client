@@ -1,3 +1,3 @@
-import ErrorHandler from "./container";
+import Alert from "./container";
 
-export default ErrorHandler;
+export default Alert;

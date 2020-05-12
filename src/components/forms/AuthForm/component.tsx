@@ -14,14 +14,14 @@ const AuthForm: React.FC<TProps> = ({
   authorization,
   login,
   registration,
-  setError,
+  setAlert,
 }) => {
   const styles = useStyles();
   const [isVisible, setIsVisible] = useState<boolean>(false);
 
   const setWarning = useCallback(
-    (message: string) => setError({ type: "warning", message }),
-    [setError]
+    (message: string) => setAlert({ type: "warning", message }),
+    [setAlert]
   );
 
   const hiddenInputClass = classNames(

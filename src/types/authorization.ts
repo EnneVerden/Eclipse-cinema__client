@@ -4,10 +4,11 @@ import {
   LOGOUT,
   SET_USER_TO_STATE,
   AUTHORIZATION,
+  CLEAR_USER_STATE,
 } from "constants/authorization";
 import { IUser } from "./user";
 import { CallEffect, PutEffect, TakeEffect } from "redux-saga/effects";
-import { ISetErrorAction } from "./error";
+import { ISetAlertAction } from "./alert";
 
 export interface IAuthorizationAction {
   type: typeof AUTHORIZATION;
@@ -35,17 +36,24 @@ export interface ISetUserToStateAction {
   user: IUser;
 }
 
+export interface IClearUserStateAction {
+  type: typeof CLEAR_USER_STATE;
+}
+
 export type TUserAction =
   | ISetUserToStateAction
-  | ILogoutAction
-  | ISetErrorAction;
+  | IClearUserStateAction
+  | ISetAlertAction;
 
 interface IWorkerNext {
   json: () => CallEffect | PutEffect;
   auth: {
+    name: string;
     user: IUser;
+    message: string;
   };
   error: {
+    name: string;
     message: string;
   };
 }

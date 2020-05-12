@@ -1,5 +1,11 @@
 import { userTestData } from "./user";
 
+export const getLogoutResponse = (): Response => {
+  const json = JSON.stringify({ auth: { name: "Logout" } });
+
+  return new Response(json, { status: 201 });
+};
+
 export const getUserResponse = (): Response => {
   const json = JSON.stringify({ auth: { user: userTestData } });
 

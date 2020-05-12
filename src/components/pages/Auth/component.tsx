@@ -2,7 +2,6 @@ import React, { useState, useCallback } from "react";
 
 import AuthForm from "components/forms/AuthForm";
 import useStyles from "./styles";
-import Alert from "components/blocks/Alert";
 
 const AuthPage: React.FC = () => {
   const styles = useStyles();
@@ -16,7 +15,6 @@ const AuthPage: React.FC = () => {
   return (
     <div className={styles.wrapper}>
       <AuthForm changeFormKind={changeFormKind} isLoginForm={isLoginForm} />
-      <Alert />
     </div>
   );
 };
