@@ -14,7 +14,7 @@ const styles = makeStyles({
     justifyContent: "center",
   },
   wrapper: {
-    padding: "15px 0",
+    padding: "20px 0",
     display: "flex",
   },
   title: {

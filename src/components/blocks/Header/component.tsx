@@ -27,7 +27,7 @@ const Header: React.FC<TProps> = ({ user = {}, authorization }) => {
         <div className={classNames(styles.wrapper)}>
           <Logo
             width={
-              document.documentElement.clientWidth > 600 ? "110px" : "90px"
+              document.documentElement.clientWidth > 600 ? "100px" : "90px"
             }
           />
           {Object.keys(user).length ? (
