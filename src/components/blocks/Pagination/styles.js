@@ -4,6 +4,7 @@ import {
   color_white,
   color_pink,
   font_gilroy,
+  color_dark_l1,
   color_dark_l3,
 } from "theme/variables";
 
@@ -11,6 +12,12 @@ const styles = makeStyles({
   pagination: {
     display: "flex",
     justifyContent: "center",
+    backgroundColor: color_dark_l1,
+    padding: "15px 0",
+
+    "@media(max-width: 600px)": {
+      padding: "20px 0",
+    },
 
     "& .MuiPagination-ul": {
       boxShadow: `0 0 10px 3px ${color_dark_l3}`,

@@ -43,27 +43,26 @@ const Filter: React.FC<TProps> = ({ tags, fetchTags }) => {
   return (
     <div className={styles.filter}>
       <Container>
-        <div>
-          <div className={styles.wrapper}>
-            <h2 className={styles.title}>Movies</h2>
-          </div>
-          <Tabs
-            value={tagId}
-            TabIndicatorProps={{
-              style: {
-                background: `linear-gradient(to right, ${color_pink}, ${color_red})`,
-              },
-            }}
-          >
-            <Tag
-              label="All movies"
-              tagId={0}
-              changeTag={changeTag}
-              selected={tagId === 0 ? true : false}
-            />
-            {content}
-          </Tabs>
+        <div className={styles.wrapper}>
+          <h2 className={styles.title}>Movies</h2>
         </div>
+        <Tabs
+          value={tagId}
+          TabIndicatorProps={{
+            style: {
+              background: `linear-gradient(to right, ${color_pink}, ${color_red})`,
+            },
+          }}
+          variant="scrollable"
+        >
+          <Tag
+            label="All movies"
+            tagId={0}
+            changeTag={changeTag}
+            selected={tagId === 0 ? true : false}
+          />
+          {content}
+        </Tabs>
       </Container>
     </div>
   );

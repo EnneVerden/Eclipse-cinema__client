@@ -24,7 +24,7 @@ const styles = makeStyles({
     },
     "@media(max-width: 600px)": {
       width: "100%",
-      margin: "20px 0",
+      margin: "30px 0",
       flexDirection: "column",
       alignItems: "center",
     },

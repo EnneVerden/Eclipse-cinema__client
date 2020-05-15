@@ -4,6 +4,7 @@ import {
   font_gilroy,
   color_white,
   color_dark_l3,
+  color_metallic,
 } from "theme/variables";
 
 const styles = makeStyles({
@@ -12,6 +13,12 @@ const styles = makeStyles({
     boxShadow: `0 0 10px 3px ${color_dark_l3}`,
     display: "flex",
     justifyContent: "center",
+    overflow: "auto",
+
+    "& .MuiTabs-scrollButtons": {
+      color: color_metallic,
+      width: "auto",
+    },
   },
   wrapper: {
     padding: "20px 0",
