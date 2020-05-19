@@ -1,11 +1,11 @@
-import { IMovie, ISetMoviesToStateAction } from "types/movies";
+import { ISetMoviesToStateAction, IMoviesData } from "types/movies";
 import { SET_MOVIES_TO_STATE } from "constants/movies";
 
-type TState = Array<IMovie> | [];
+export type TState = IMoviesData | {};
 
-const initialState: TState = [];
+const initialState: TState = {};
 
-const tags = (
+const movies = (
   state = initialState,
   action: ISetMoviesToStateAction
 ): TState => {
@@ -17,4 +17,4 @@ const tags = (
   }
 };
 
-export default tags;
+export default movies;

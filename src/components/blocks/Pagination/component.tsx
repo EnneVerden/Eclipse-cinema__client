@@ -1,11 +1,13 @@
 import React, { useState, useEffect } from "react";
 import MPagination from "@material-ui/lab/Pagination";
+import Container from "components/blocks/Container";
+import { TProps } from "./container";
 
 import useStyles from "./styles";
-import { Container } from "@material-ui/core";
 
-const Pagination: React.FC = () => {
+const Pagination: React.FC<TProps> = ({ movies, fetchMovies }) => {
   const styles = useStyles();
+  const [currentPage, setCurrentPage] = useState<number>(1);
   const [pagesCount, setPagesCount] = useState<number>(2);
   const [pagesSize, setPagesSize] = useState<"medium" | "large">("large");
 
@@ -21,14 +23,25 @@ const Pagination: React.FC = () => {
     }
   }, []);
 
+  useEffect(() => {
+    if (!movies.pagesCount) fetchMovies();
+  }, []);
+
+  useEffect(() => {
+    fetchMovies(currentPage);
+
+    window.scrollTo(0, 0);
+  }, [currentPage]);
+
   return (
     <div className={styles.pagination}>
       <Container>
         <MPagination
-          count={10}
+          count={movies.pagesCount}
           className={styles.pagination}
           siblingCount={pagesCount}
           size={pagesSize}
+          onChange={(event, page) => setCurrentPage(page)}
         />
       </Container>
     </div>

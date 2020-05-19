@@ -15,16 +15,21 @@ export interface IMovie {
 
 export interface IFetchMoviesAction {
   type: typeof FETCH_MOVIES;
+  page?: number;
+}
+
+export interface IMoviesData {
+  movies?: Array<IMovie>;
+  pagesCount?: number;
 }
 
 export interface ISetMoviesToStateAction {
   type: typeof SET_MOVIES_TO_STATE;
-  movies: Array<IMovie>;
+  movies: IMoviesData;
 }
 
 interface IWorkerNext {
   json: () => CallEffect | PutEffect;
-  movies: Array<IMovie>;
   error: {
     name: string;
     message: string;
@@ -34,7 +39,15 @@ interface IWorkerNext {
 export type TFetchMoviesWorker = Generator<
   CallEffect | PutEffect,
   any,
-  IWorkerNext
+  IWorkerNext & IMoviesData
 >;
 
-export type TFetchMoviesWatcher = Generator<TakeEffect | CallEffect, any>;
+interface IWatcherNext {
+  page?: number;
+}
+
+export type TFetchMoviesWatcher = Generator<
+  TakeEffect | CallEffect,
+  any,
+  IWatcherNext
+>;

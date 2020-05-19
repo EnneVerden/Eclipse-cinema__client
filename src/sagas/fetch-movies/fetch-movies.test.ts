@@ -22,12 +22,14 @@ describe("FetchMovies saga", () => {
   });
 
   describe("Watcher", () => {
+    const page = 1;
+
     it("Should complete without error", () => {
       testSaga(fetchMovies)
         .next()
         .take(FETCH_MOVIES)
-        .next()
-        .call(fetchMoviesWorker, fetchMoviesRequest);
+        .next({ page })
+        .call(fetchMoviesWorker, fetchMoviesRequest, page);
     });
   });
 });

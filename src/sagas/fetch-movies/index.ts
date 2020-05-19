@@ -4,17 +4,21 @@ import setAlert from "actions/set-alert";
 import { FETCH_MOVIES } from "constants/movies";
 import setMoviesToState from "actions/set-movies";
 
-export const fetchMoviesRequest = (): Promise<Response> => {
-  return fetch("https://eclipse-cinema-server.herokuapp.com/movies", {
-    credentials: "include",
-  });
+export const fetchMoviesRequest = (page?: number): Promise<Response> => {
+  return fetch(
+    `https://eclipse-cinema-server.herokuapp.com/movies?page=${page}`,
+    {
+      credentials: "include",
+    }
+  );
 };
 
 export function* fetchMoviesWorker(
-  fetchMoviesRequest: any
+  fetchMoviesRequest: any,
+  page?: number
 ): TFetchMoviesWorker {
   try {
-    const response = yield call(fetchMoviesRequest);
+    const response = yield call(fetchMoviesRequest, page);
     const data = yield response.json();
 
     if (data.error) {
@@ -22,7 +26,12 @@ export function* fetchMoviesWorker(
     }
 
     if (data.movies) {
-      yield put(setMoviesToState(data.movies));
+      yield put(
+        setMoviesToState({
+          movies: data.movies,
+          pagesCount: data.pagesCount,
+        })
+      );
     }
   } catch {
     yield put(
@@ -32,7 +41,9 @@ export function* fetchMoviesWorker(
 }
 
 export function* fetchMovies(): TFetchMoviesWatcher {
-  yield take(FETCH_MOVIES);
+  while (true) {
+    const { page = 1 } = yield take(FETCH_MOVIES);
 
-  yield call(fetchMoviesWorker, fetchMoviesRequest);
+    yield call(fetchMoviesWorker, fetchMoviesRequest, page);
+  }
 }

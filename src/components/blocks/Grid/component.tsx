@@ -10,12 +10,12 @@ const Grid: React.FC<TProps> = ({ movies, fetchMovies }) => {
   const [content, setContent] = useState<ReactElement[] | []>([]);
 
   useEffect(() => {
-    if (!movies.length) fetchMovies();
+    if (!movies.movies) fetchMovies();
   }, []);
 
   useEffect(() => {
-    if (movies.length) {
-      const newContent = movies.map((movie) => (
+    if (movies.movies?.length) {
+      const newContent = movies.movies.map((movie) => (
         <Card
           key={movie._id}
           name={movie.name}

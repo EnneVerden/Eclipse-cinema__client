@@ -1,10 +1,10 @@
-import Grid from "./component";
-import fetchMovies from "actions/fetch-movies";
-import { Dispatch } from "redux";
-import { connect, ConnectedProps } from "react-redux";
 import { TRootState } from "reducers";
 import { getMovies } from "selectors/movies";
+import { connect, ConnectedProps } from "react-redux";
+import Pagination from "./component";
 import { IMoviesData } from "types/movies";
+import { Dispatch } from "redux";
+import fetchMovies from "actions/fetch-movies";
 
 interface IMapStateToProps {
   movies: IMoviesData;
@@ -15,11 +15,11 @@ const mapStateToProps = (state: TRootState): IMapStateToProps => ({
 });
 
 const mapDispatchToProps = (dispatch: Dispatch) => ({
-  fetchMovies: () => dispatch(fetchMovies()),
+  fetchMovies: (page?: number) => dispatch(fetchMovies(page)),
 });
 
 const connector = connect(mapStateToProps, mapDispatchToProps);
 
 export type TProps = ConnectedProps<typeof connector> & IMapStateToProps;
 
-export default connect(mapStateToProps, mapDispatchToProps)(Grid);
+export default connector(Pagination);
