@@ -29,6 +29,8 @@ const Grid: React.FC<TProps> = ({ movies, fetchMovies }) => {
       ));
 
       setContent(newContent);
+    } else {
+      setContent([]);
     }
   }, [movies]);
 

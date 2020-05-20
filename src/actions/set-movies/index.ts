@@ -1,4 +1,4 @@
-import { IMovie, ISetMoviesToStateAction, IMoviesData } from "types/movies";
+import { ISetMoviesToStateAction, IMoviesData } from "types/movies";
 import { SET_MOVIES_TO_STATE } from "constants/movies";
 
 const setMoviesToState = (movies: IMoviesData): ISetMoviesToStateAction => ({

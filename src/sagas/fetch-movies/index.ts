@@ -4,9 +4,14 @@ import setAlert from "actions/set-alert";
 import { FETCH_MOVIES } from "constants/movies";
 import setMoviesToState from "actions/set-movies";
 
-export const fetchMoviesRequest = (page?: number): Promise<Response> => {
+export const fetchMoviesRequest = (
+  page?: number,
+  tag?: string
+): Promise<Response> => {
   return fetch(
-    `https://eclipse-cinema-server.herokuapp.com/movies?page=${page}`,
+    `https://eclipse-cinema-server.herokuapp.com/movies?page=${page}${
+      tag ? "&tag=" + tag : ""
+    }`,
     {
       credentials: "include",
     }
@@ -15,10 +20,11 @@ export const fetchMoviesRequest = (page?: number): Promise<Response> => {
 
 export function* fetchMoviesWorker(
   fetchMoviesRequest: any,
-  page?: number
+  page?: number,
+  tag?: string
 ): TFetchMoviesWorker {
   try {
-    const response = yield call(fetchMoviesRequest, page);
+    const response = yield call(fetchMoviesRequest, page, tag);
     const data = yield response.json();
 
     if (data.error) {
@@ -30,6 +36,8 @@ export function* fetchMoviesWorker(
         setMoviesToState({
           movies: data.movies,
           pagesCount: data.pagesCount,
+          currentPage: data.currentPage,
+          currentTag: data.currentTag,
         })
       );
     }
@@ -42,8 +50,8 @@ export function* fetchMoviesWorker(
 
 export function* fetchMovies(): TFetchMoviesWatcher {
   while (true) {
-    const { page = 1 } = yield take(FETCH_MOVIES);
+    const { page = 1, tag } = yield take(FETCH_MOVIES);
 
-    yield call(fetchMoviesWorker, fetchMoviesRequest, page);
+    yield call(fetchMoviesWorker, fetchMoviesRequest, page, tag);
   }
 }

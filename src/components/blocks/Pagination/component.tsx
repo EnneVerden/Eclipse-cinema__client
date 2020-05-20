@@ -7,7 +7,7 @@ import useStyles from "./styles";
 
 const Pagination: React.FC<TProps> = ({ movies, fetchMovies }) => {
   const styles = useStyles();
-  const [currentPage, setCurrentPage] = useState<number>(1);
+  const [currentPage, setCurrentPage] = useState<string>("1");
   const [pagesCount, setPagesCount] = useState<number>(2);
   const [pagesSize, setPagesSize] = useState<"medium" | "large">("large");
 
@@ -28,20 +28,29 @@ const Pagination: React.FC<TProps> = ({ movies, fetchMovies }) => {
   }, []);
 
   useEffect(() => {
-    fetchMovies(currentPage);
+    if (movies.currentTag) {
+      fetchMovies(currentPage, movies.currentTag);
+    } else {
+      fetchMovies(currentPage);
+    }
 
     window.scrollTo(0, 0);
   }, [currentPage]);
+
+  useEffect(() => {
+    setCurrentPage("1");
+  }, [movies.currentTag]);
 
   return (
     <div className={styles.pagination}>
       <Container>
         <MPagination
+          page={parseInt(currentPage)}
           count={movies.pagesCount}
           className={styles.pagination}
           siblingCount={pagesCount}
           size={pagesSize}
-          onChange={(event, page) => setCurrentPage(page)}
+          onChange={(event, page) => setCurrentPage(page.toString())}
         />
       </Container>
     </div>

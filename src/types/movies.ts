@@ -15,12 +15,15 @@ export interface IMovie {
 
 export interface IFetchMoviesAction {
   type: typeof FETCH_MOVIES;
-  page?: number;
+  page?: string | null;
+  tag?: string;
 }
 
 export interface IMoviesData {
   movies?: Array<IMovie>;
   pagesCount?: number;
+  currentPage?: number;
+  currentTag?: string | null;
 }
 
 export interface ISetMoviesToStateAction {
@@ -44,6 +47,7 @@ export type TFetchMoviesWorker = Generator<
 
 interface IWatcherNext {
   page?: number;
+  tag?: string;
 }
 
 export type TFetchMoviesWatcher = Generator<

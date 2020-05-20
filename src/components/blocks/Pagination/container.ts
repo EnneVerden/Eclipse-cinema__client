@@ -15,7 +15,8 @@ const mapStateToProps = (state: TRootState): IMapStateToProps => ({
 });
 
 const mapDispatchToProps = (dispatch: Dispatch) => ({
-  fetchMovies: (page?: number) => dispatch(fetchMovies(page)),
+  fetchMovies: (page?: string, tag?: string) =>
+    dispatch(fetchMovies(page, tag)),
 });
 
 const connector = connect(mapStateToProps, mapDispatchToProps);
