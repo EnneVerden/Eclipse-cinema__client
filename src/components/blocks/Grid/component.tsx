@@ -2,12 +2,16 @@ import React, { useState, useEffect, ReactElement } from "react";
 import { TProps } from "./container";
 import Card from "components/blocks/Card";
 import Container from "components/blocks/Container";
+import Loader from "components/blocks/Loader";
+import classNames from "classnames";
 
 import useStyles from "./styles";
 
 const Grid: React.FC<TProps> = ({ movies, fetchMovies }) => {
   const styles = useStyles();
-  const [content, setContent] = useState<ReactElement[] | []>([]);
+  const [content, setContent] = useState<
+    ReactElement[] | [] | "No movies found!"
+  >([]);
 
   useEffect(() => {
     if (!movies.movies) fetchMovies();
@@ -30,14 +34,22 @@ const Grid: React.FC<TProps> = ({ movies, fetchMovies }) => {
 
       setContent(newContent);
     } else {
-      setContent([]);
+      setContent("No movies found!");
     }
   }, [movies]);
 
   return (
     <div className={styles.grid}>
       <Container>
-        <div className={styles.wrapper}>{content}</div>
+        <div
+          className={classNames(
+            !movies.movies?.length
+              ? classNames(styles.warningWrapper, styles.warning)
+              : styles.wrapper
+          )}
+        >
+          {content}
+        </div>
       </Container>
     </div>
   );
