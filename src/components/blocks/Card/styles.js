@@ -9,6 +9,7 @@ import {
 const styles = makeStyles({
   card: {
     width: "48%",
+    margin: "30px 0",
     display: "flex",
     justifyContent: "space-between",
     fontFamily: `${font_gilroy}, sans-serif`,
@@ -23,7 +24,7 @@ const styles = makeStyles({
     },
     "@media(max-width: 600px)": {
       width: "100%",
-      margin: "20px 0",
+      margin: "30px 0",
       flexDirection: "column",
       alignItems: "center",
     },

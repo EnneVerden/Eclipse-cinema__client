@@ -1,9 +1,9 @@
 import { SET_ALERT } from "constants/alert";
-import { IAlert, ISetAlertAction } from "types/alert";
+import { IAlert, ISetAlertToStateAction } from "types/alert";
 
-const setAlert = (alert: IAlert): ISetAlertAction => ({
+const setAlertToState = (alert: IAlert): ISetAlertToStateAction => ({
   type: SET_ALERT,
   alert,
 });
 
-export default setAlert;
+export default setAlertToState;

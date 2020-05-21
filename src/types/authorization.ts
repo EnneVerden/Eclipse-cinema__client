@@ -8,7 +8,6 @@ import {
 } from "constants/authorization";
 import { IUser } from "./user";
 import { CallEffect, PutEffect, TakeEffect } from "redux-saga/effects";
-import { ISetAlertAction } from "./alert";
 
 export interface IAuthorizationAction {
   type: typeof AUTHORIZATION;
@@ -40,10 +39,7 @@ export interface IClearUserStateAction {
   type: typeof CLEAR_USER_STATE;
 }
 
-export type TUserAction =
-  | ISetUserToStateAction
-  | IClearUserStateAction
-  | ISetAlertAction;
+export type TUserAction = ISetUserToStateAction | IClearUserStateAction;
 
 interface IWorkerNext {
   json: () => CallEffect | PutEffect;

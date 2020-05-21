@@ -1,6 +1,8 @@
 import React, { useMemo } from "react";
 import Button from "@material-ui/core/Button";
 import ShoppingCartIcon from "@material-ui/icons/ShoppingCart";
+import { ITag } from "types/tags";
+import moment from "moment";
 
 import useStyles from "./styles";
 
@@ -8,7 +10,7 @@ interface IProps {
   name: string;
   poster: string;
   description: string;
-  tags: Array<string>;
+  tags: Array<ITag>;
   startDate: string;
   endDate: string;
   ticketPrice: number;
@@ -25,7 +27,13 @@ const Card: React.FC<IProps> = ({
 }) => {
   const styles = useStyles();
 
-  const displayedTags = useMemo(() => tags.join(", "), [tags]);
+  const tagsNamesArray = tags.map((tag) => tag.name);
+  const displayedTags = useMemo(() => tagsNamesArray.join(", "), [tags]);
+
+  const sDate = useMemo(() => moment(startDate).format("YYYY.MM.DD"), [
+    startDate,
+  ]);
+  const eDate = useMemo(() => moment(endDate).format("YYYY.MM.DD"), [endDate]);
 
   return (
     <div className={styles.card}>
@@ -40,7 +48,7 @@ const Card: React.FC<IProps> = ({
           <div className={styles.choice}>
             <p className={styles.price}>{ticketPrice}$</p>
             <p className={styles.date}>
-              {startDate.replace(/\-/g, ".")} - {endDate.replace(/\-/g, ".")}
+              {sDate} - {eDate}
             </p>
             <Button
               type="button"

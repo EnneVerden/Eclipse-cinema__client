@@ -116,9 +116,6 @@ const styles = makeStyles({
     transform: "translateY(0)",
     transition: "transform 0s",
   },
-  logo: {
-    // marginBottom: "20px",
-  },
 });
 
 export default styles;
