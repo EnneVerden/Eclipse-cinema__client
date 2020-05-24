@@ -8,7 +8,7 @@ const styles = makeStyles({
     alignItems: "center",
     background: "none",
     border: "none",
-    padding: "15px 10px",
+    padding: "15px 0",
   },
   active: {
     boxShadow: `0 0 10px 1px ${shadow_color}`,
@@ -41,8 +41,11 @@ const styles = makeStyles({
     fontFamily: `${font_gilroy}, sans-serif`,
     color: color_white,
     letterSpacing: "1px",
-    fontSize: "0.9rem",
+    fontSize: "1rem",
 
+    "@media(max-width: 600px)": {
+      fontSize: "0.9rem",
+    },
     "@media(max-width: 360px)": {
       fontSize: "0.8rem",
     },
