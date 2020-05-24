@@ -11,13 +11,14 @@ const NotFoundPage = lazy(() => import("components/pages/NotFound"));
 
 const Router: React.FC = () => (
   <BrowserRouter>
-    <Switch>
-      <Suspense fallback={<PageLoader />}>
-        <ProtectedRoute exact path={AUTH_PATH} url="/" component={AuthPage} />
+    <Suspense fallback={<PageLoader />}>
+      <Switch>
+        <ProtectedRoute auth exact path={AUTH_PATH} component={AuthPage} />
         <Route exact path={HOME_PATH} component={HomePage} />
-        <Route path={"*"} component={NotFoundPage} />
-      </Suspense>
-    </Switch>
+        <ProtectedRoute exact path="/profile" component={HomePage} />
+        <Route path="*" component={NotFoundPage} />
+      </Switch>
+    </Suspense>
   </BrowserRouter>
 );
 
