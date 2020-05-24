@@ -1,8 +1,7 @@
-import { IUser } from "types/user";
 import { TUserAction } from "types/authorization";
 import { SET_USER_TO_STATE, CLEAR_USER_STATE } from "constants/authorization";
 
-type TState = IUser | {};
+type TState = any;
 
 const initialState: TState = {};
 

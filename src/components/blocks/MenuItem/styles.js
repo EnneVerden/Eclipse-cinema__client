@@ -3,8 +3,10 @@ import { color_dark_l1 } from "theme/variables";
 
 const styles = makeStyles({
   item: {
-    padding: "7px 10px",
+    width: "100%",
+    padding: "8px 10px",
     display: "flex",
+    justifyContent: "flex-start",
     alignItems: "center",
 
     "&:hover": {

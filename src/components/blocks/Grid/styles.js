@@ -3,10 +3,10 @@ import { color_dark_l1, font_gilroy, color_metallic } from "theme/variables";
 
 const styles = makeStyles({
   grid: {
+    minHeight: "100vh",
     display: "flex",
     justifyContent: "center",
     backgroundColor: color_dark_l1,
-    height: "70vh",
   },
   wrapper: {
     display: "flex",
@@ -15,10 +15,10 @@ const styles = makeStyles({
     justifyContent: "space-between",
   },
   warningWrapper: {
+    height: "100%",
     display: "flex",
-    justifyContent: "center",
     alignItems: "center",
-    paddingTop: "200px",
+    justifyContent: "center",
   },
   warning: {
     fontFamily: `${font_gilroy}, sans-serif`,

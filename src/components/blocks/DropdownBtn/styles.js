@@ -1,5 +1,5 @@
 import { makeStyles } from "@material-ui/core/styles";
-import { font_gilroy, color_white, color_dark_l2 } from "theme/variables";
+import { font_gilroy, color_white, shadow_color } from "theme/variables";
 
 const styles = makeStyles({
   button: {
@@ -9,10 +9,9 @@ const styles = makeStyles({
     background: "none",
     border: "none",
     padding: "15px 10px",
-
-    "&:hover": {
-      backgroundColor: color_dark_l2,
-    },
+  },
+  active: {
+    boxShadow: `0 0 10px 1px ${shadow_color}`,
   },
   avatar: {
     width: "55px",
@@ -20,15 +19,38 @@ const styles = makeStyles({
     padding: "0 6px",
     borderRadius: "50%",
   },
+  info: {
+    height: "55px",
+    margin: "5px",
+    display: "flex",
+    flexDirection: "column",
+    justifyContent: "space-around",
+  },
   name: {
     fontFamily: `${font_gilroy}, sans-serif`,
     color: color_white,
     letterSpacing: "1px",
     fontSize: "1.1rem",
-    marginLeft: "5px",
+
+    "@media(max-width: 600px)": {
+      fontSize: "1rem",
+    },
   },
-  active: {
-    backgroundColor: color_dark_l2,
+  balance: {
+    display: "flex",
+    fontFamily: `${font_gilroy}, sans-serif`,
+    color: color_white,
+    letterSpacing: "1px",
+    fontSize: "0.9rem",
+
+    "@media(max-width: 360px)": {
+      fontSize: "0.8rem",
+    },
+  },
+  icon: {
+    "@media(max-width: 359px)": {
+      display: "none",
+    },
   },
 });
 

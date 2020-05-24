@@ -1,5 +1,5 @@
 import { makeStyles } from "@material-ui/core/styles";
-import { font_gilroy, color_white } from "theme/variables";
+import { font_gilroy, color_metallic } from "theme/variables";
 
 const styles = makeStyles({
   dropdown: {
@@ -11,7 +11,7 @@ const styles = makeStyles({
   },
   menuText: {
     fontFamily: `${font_gilroy}, sans-serif`,
-    color: color_white,
+    color: color_metallic,
     letterSpacing: "1px",
     marginLeft: "7px",
   },
