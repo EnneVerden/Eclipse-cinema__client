@@ -1,33 +1,38 @@
 import React, { useCallback } from "react";
-import { Route } from "react-router-dom";
-import { Redirect } from "react-router";
+import { Route, Redirect } from "react-router-dom";
 import { IUser } from "types/user";
+import UnauthorizedPage from "components/pages/Unauthorized";
 
 interface IProps {
   component: React.FC;
-  user?: IUser | {};
-  url: string;
-  exact: boolean;
+  user: IUser | {};
+  exact?: boolean;
   path: string;
+  auth?: boolean;
 }
 
 const ProtectedRoute: React.FC<IProps> = ({
   component: Component,
-  user = {},
-  url,
+  user,
+  auth,
   ...props
 }) => {
-  const protectRoute = useCallback(
+  const protectedRoute = useCallback(
     () =>
       Object.keys(user).length ? (
-        <Redirect to={url} />
-      ) : (
         <Component {...props} />
+      ) : (
+        <UnauthorizedPage />
       ),
-    [user, url, props]
+    [user, Component]
+  );
+  const protectedAuth = useCallback(
+    () =>
+      Object.keys(user).length ? <Redirect to="/" /> : <Component {...props} />,
+    [user, Component]
   );
 
-  return <Route {...props} render={(props) => protectRoute()} />;
+  return <Route {...props} render={auth ? protectedAuth : protectedRoute} />;
 };
 
 export default ProtectedRoute;

@@ -7,15 +7,19 @@ import ProtectedRoute from "components/blocks/ProtectedRoute";
 
 const AuthPage = lazy(() => import("components/pages/Auth"));
 const HomePage = lazy(() => import("components/pages/Home"));
+const NotFoundPage = lazy(() => import("components/pages/NotFound"));
 
 const Router: React.FC = () => (
   <BrowserRouter>
-    <Switch>
-      <Suspense fallback={<PageLoader />}>
-        <ProtectedRoute exact path={AUTH_PATH} url="/" component={AuthPage} />
+    <Suspense fallback={<PageLoader />}>
+      <Switch>
+        <ProtectedRoute auth exact path={AUTH_PATH} component={AuthPage} />
         <Route exact path={HOME_PATH} component={HomePage} />
-      </Suspense>
-    </Switch>
+        <ProtectedRoute exact path="/profile" component={HomePage} />
+        <ProtectedRoute exact path="/dashboard" component={HomePage} />
+        <Route path="*" component={NotFoundPage} />
+      </Switch>
+    </Suspense>
   </BrowserRouter>
 );
 
