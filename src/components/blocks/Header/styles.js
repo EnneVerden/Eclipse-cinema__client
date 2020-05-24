@@ -1,10 +1,5 @@
 import { makeStyles } from "@material-ui/core/styles";
-import {
-  color_dark_l1,
-  color_dark_l3,
-  color_pink,
-  color_red,
-} from "theme/variables";
+import { color_dark_l3, color_pink, color_red } from "theme/variables";
 
 const styles = makeStyles({
   header: {
