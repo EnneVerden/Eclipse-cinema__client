@@ -1,4 +1,4 @@
-import React, { useState, useCallback, useEffect } from "react";
+import React, { useEffect } from "react";
 import classNames from "classnames";
 
 import useStyles from "./styles";
@@ -10,12 +10,6 @@ import { TProps } from "./container";
 
 const Header: React.FC<TProps> = ({ user = {}, authorization }) => {
   const styles = useStyles();
-  const [isVisible, setIsVisible] = useState<boolean>(false);
-
-  const handleToggle = useCallback(
-    () => setIsVisible((visible) => !visible),
-    []
-  );
 
   useEffect(() => {
     if (!Object.keys(user).length) authorization();
@@ -30,11 +24,7 @@ const Header: React.FC<TProps> = ({ user = {}, authorization }) => {
               document.documentElement.clientWidth > 600 ? "100px" : "90px"
             }
           />
-          {Object.keys(user).length ? (
-            <Dropdown handleToggle={handleToggle} isVisible={isVisible} />
-          ) : (
-            <SignIn />
-          )}
+          {Object.keys(user).length ? <Dropdown /> : <SignIn />}
         </div>
       </Container>
     </header>

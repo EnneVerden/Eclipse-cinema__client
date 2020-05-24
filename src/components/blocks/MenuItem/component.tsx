@@ -1,11 +1,20 @@
 import React from "react";
+import Button from "@material-ui/core/Button";
 
 import useStyles from "./styles";
 
-const MenuItem: React.FC = ({ children }) => {
+interface IProps {
+  onClick?: () => void;
+}
+
+const MenuItem: React.FC<IProps> = ({ children, onClick }) => {
   const styles = useStyles();
 
-  return <div className={styles.item}>{children}</div>;
+  return (
+    <Button className={styles.item} onClick={onClick}>
+      {children}
+    </Button>
+  );
 };
 
 export default MenuItem;

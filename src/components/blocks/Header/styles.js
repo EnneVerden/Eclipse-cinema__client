@@ -16,6 +16,7 @@ const styles = makeStyles({
       height: "2px",
       bottom: "-2px",
       background: `linear-gradient(to right, ${color_pink}, ${color_red})`,
+      zIndex: "100",
     },
   },
   wrapper: {
