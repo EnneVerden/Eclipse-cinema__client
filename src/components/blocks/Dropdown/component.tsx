@@ -37,6 +37,7 @@ const Dropdown: React.FC<TProps> = ({
         avatarURL={avatar}
         fullName={fullName}
         balance={balance}
+        isVisible={isVisible}
         handleToggle={handleToggle}
       />
       <MenuList isVisible={isVisible}>

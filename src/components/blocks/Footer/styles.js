@@ -1,10 +1,10 @@
 import { makeStyles } from "@material-ui/core/styles";
 import {
   color_dark_l2,
-  color_dark_l3,
   font_gilroy,
   color_metallic,
   color_red,
+  shadow_color,
 } from "theme/variables";
 
 const styles = makeStyles({
@@ -13,7 +13,7 @@ const styles = makeStyles({
     display: "flex",
     justifyContent: "center",
     backgroundColor: color_dark_l2,
-    boxShadow: `0 0 10px 3px ${color_dark_l3}`,
+    boxShadow: `0 0 10px 3px ${shadow_color}`,
   },
   wrapper: {
     height: "100%",

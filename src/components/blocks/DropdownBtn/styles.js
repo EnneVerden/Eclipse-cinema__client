@@ -1,5 +1,5 @@
 import { makeStyles } from "@material-ui/core/styles";
-import { font_gilroy, color_white } from "theme/variables";
+import { font_gilroy, color_white, shadow_color } from "theme/variables";
 
 const styles = makeStyles({
   button: {
@@ -9,6 +9,9 @@ const styles = makeStyles({
     background: "none",
     border: "none",
     padding: "15px 10px",
+  },
+  active: {
+    boxShadow: `0 0 10px 1px ${shadow_color}`,
   },
   avatar: {
     width: "55px",
@@ -28,6 +31,10 @@ const styles = makeStyles({
     color: color_white,
     letterSpacing: "1px",
     fontSize: "1.1rem",
+
+    "@media(max-width: 600px)": {
+      fontSize: "1rem",
+    },
   },
   balance: {
     display: "flex",
@@ -35,6 +42,15 @@ const styles = makeStyles({
     color: color_white,
     letterSpacing: "1px",
     fontSize: "0.9rem",
+
+    "@media(max-width: 360px)": {
+      fontSize: "0.8rem",
+    },
+  },
+  icon: {
+    "@media(max-width: 359px)": {
+      display: "none",
+    },
   },
 });
 

@@ -4,6 +4,7 @@ import {
   color_red,
   color_white,
   font_information,
+  shadow_color,
 } from "theme/variables";
 
 const styles = makeStyles({
@@ -14,7 +15,7 @@ const styles = makeStyles({
     textAlign: "center",
     backgroundColor: color_dark_l1,
     padding: "15px 20px",
-    boxShadow: `0 0 10px 3px #222024`,
+    boxShadow: `0 0 10px 3px ${shadow_color}`,
   },
   form_signIn: {
     width: "420px",
