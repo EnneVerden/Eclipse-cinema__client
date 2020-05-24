@@ -16,6 +16,11 @@ const styles = makeStyles({
     backgroundColor: color_dark_l1,
     padding: "15px 40px",
     boxShadow: `0 0 10px 3px #222024`,
+
+    "@media(max-width: 360px)": {
+      width: "95%",
+      padding: "10px 0",
+    },
   },
   code: {
     fontFamily: font_gilroy,
@@ -25,6 +30,10 @@ const styles = makeStyles({
     "-webkit-text-fill-color": "transparent",
     color: color_red,
     textShadow: `0 0 10px ${color_red}`,
+
+    "@media(max-width: 360px)": {
+      fontSize: "9rem",
+    },
   },
   title: {
     padding: "10px 0",
@@ -32,6 +41,10 @@ const styles = makeStyles({
     fontSize: "1.5rem",
     color: color_metallic,
     letterSpacing: "1px",
+
+    "@media(max-width: 360px)": {
+      fontSize: "1.4rem",
+    },
   },
   btnWrapper: {
     padding: "20px 0",
