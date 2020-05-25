@@ -6,11 +6,14 @@ import Tab from "components/blocks/Tab";
 import Panel from "../Panel";
 import Container from "components/blocks/Container";
 import Button from "@material-ui/core/Button";
+import { TProps } from "./container";
 
 import useStyles from "./styles";
 import { color_pink, color_red } from "theme/variables.ts";
 
-const InfoPanel: React.FC = () => {
+const InfoPanel: React.FC<TProps> = ({
+  user: { avatar, fullName, balance } = {},
+}) => {
   const styles = useStyles();
   const history = useHistory();
   const [currentTabId, setCurrentTabId] = useState<number>(0);
@@ -26,16 +29,12 @@ const InfoPanel: React.FC = () => {
       <Container>
         <div className={styles.wrapper}>
           <div className={styles.person}>
-            <img
-              src="https://image.flaticon.com/icons/svg/236/236831.svg"
-              alt="avatar"
-              className={styles.avatar}
-            />
+            <img src={avatar} alt="avatar" className={styles.avatar} />
             <div className={styles.information}>
-              <span className={styles.name}>Pavel Adamovich</span>
+              <span className={styles.name}>{fullName}</span>
               <span className={styles.balance}>
                 <AccountBalanceWalletIcon className={styles.icon} />
-                Balance: 10$
+                Balance: {balance}$
               </span>
             </div>
           </div>

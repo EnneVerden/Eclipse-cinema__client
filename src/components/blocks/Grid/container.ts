@@ -4,13 +4,8 @@ import { Dispatch } from "redux";
 import { connect, ConnectedProps } from "react-redux";
 import { TRootState } from "reducers";
 import { getMovies } from "selectors/movies";
-import { IMoviesData } from "types/movies";
 
-interface IMapStateToProps {
-  movies: IMoviesData;
-}
-
-const mapStateToProps = (state: TRootState): IMapStateToProps => ({
+const mapStateToProps = (state: TRootState) => ({
   movies: getMovies(state),
 });
 
@@ -20,6 +15,6 @@ const mapDispatchToProps = (dispatch: Dispatch) => ({
 
 const connector = connect(mapStateToProps, mapDispatchToProps);
 
-export type TProps = ConnectedProps<typeof connector> & IMapStateToProps;
+export type TProps = ConnectedProps<typeof connector>;
 
 export default connect(mapStateToProps, mapDispatchToProps)(Grid);

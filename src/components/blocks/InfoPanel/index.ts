@@ -1,3 +1,3 @@
-import InfoPanel from "./component";
+import InfoPanel from "./container";
 
 export default InfoPanel;

@@ -6,11 +6,7 @@ import { IMoviesData } from "types/movies";
 import { Dispatch } from "redux";
 import fetchMovies from "actions/fetch-movies";
 
-interface IMapStateToProps {
-  movies: IMoviesData;
-}
-
-const mapStateToProps = (state: TRootState): IMapStateToProps => ({
+const mapStateToProps = (state: TRootState) => ({
   movies: getMovies(state),
 });
 
@@ -21,6 +17,6 @@ const mapDispatchToProps = (dispatch: Dispatch) => ({
 
 const connector = connect(mapStateToProps, mapDispatchToProps);
 
-export type TProps = ConnectedProps<typeof connector> & IMapStateToProps;
+export type TProps = ConnectedProps<typeof connector>;
 
 export default connector(Pagination);
