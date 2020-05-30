@@ -19,11 +19,6 @@ const AuthForm: React.FC<TProps> = ({
   const styles = useStyles();
   const [isVisible, setIsVisible] = useState<boolean>(false);
 
-  const setWarning = useCallback(
-    (message: string) => setAlert({ type: "warning", message }),
-    [setAlert]
-  );
-
   const hiddenInputClass = classNames(
     styles.hide,
     styles.input,
@@ -69,24 +64,40 @@ const AuthForm: React.FC<TProps> = ({
       }}
       onSubmit={({ email, password, fullName, confirmPassword }) => {
         if (!email) {
-          setWarning("Please, fill the email field");
+          setAlert({
+            type: "warning",
+            message: "Please, fill the email field",
+          });
           return;
         } else if (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i.test(email)) {
-          setWarning("Invalid email address");
+          setAlert({ type: "error", message: "Invalid email address" });
           return;
         } else if (!password) {
-          setWarning("Please, fill the password field");
+          setAlert({
+            type: "warning",
+            message: "Please, fill the password field",
+          });
           return;
         } else if (!isLoginForm && !fullName) {
-          setWarning("Please, fill the full name field");
+          setAlert({
+            type: "warning",
+            message: "Please, fill the full name field",
+          });
           return;
         }
 
         if (isLoginForm && email && password) {
           login(email, password);
         } else if (!isLoginForm && fullName && email && password) {
+          if (password.length < 6) {
+            setAlert({
+              type: "error",
+              message: "Password cannot be less than 6 characters",
+            });
+            return;
+          }
           if (password !== confirmPassword) {
-            setWarning("Password mismatch!");
+            setAlert({ type: "error", message: "Password mismatch!" });
             return;
           }
 

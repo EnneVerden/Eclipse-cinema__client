@@ -1,13 +1,7 @@
 import { makeStyles } from "@material-ui/core/styles";
-import { color_dark_l1, font_gilroy, color_metallic } from "theme/variables";
+import { font_gilroy, color_metallic } from "theme/variables";
 
 const styles = makeStyles({
-  grid: {
-    minHeight: "100vh",
-    display: "flex",
-    justifyContent: "center",
-    backgroundColor: color_dark_l1,
-  },
   wrapper: {
     display: "flex",
     flexDirection: "row",
