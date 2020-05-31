@@ -36,6 +36,7 @@ const styles = makeStyles({
     position: "fixed",
     left: 0,
     top: 0,
+    zIndex: 100,
     backgroundColor: color_dark_l3,
     height: "100vh",
     width: "300px",
@@ -123,6 +124,9 @@ const styles = makeStyles({
       backgroundColor: color_dark_l3,
       color: color_red,
     },
+  },
+  activeItem: {
+    color: color_white,
   },
   title: {
     paddingLeft: "12px",
