@@ -1,4 +1,4 @@
-import React, { useCallback } from "react";
+import React, { useCallback, useEffect } from "react";
 import { useHistory } from "react-router";
 import classNames from "classnames";
 import Button from "@material-ui/core/Button";
@@ -12,26 +12,24 @@ import Logo from "components/blocks/Logo";
 import MenuItem from "components/blocks/MenuItem";
 
 import useStyles from "./styles";
+import { TProps } from "./types";
 
-type TTabsNames = "movies" | "users" | "orders";
-
-interface IProps {
-  sideMenuIsVisible: boolean;
-  currentTab?: TTabsNames;
-  handleToggle: () => void;
-  handleTabChange: (tabName: TTabsNames) => void;
-}
-
-const SideMenu: React.FC<IProps> = ({
+const SideMenu: React.FC<TProps> = ({
+  user = {},
   sideMenuIsVisible,
   currentTab,
   handleTabChange,
   handleToggle,
+  authorization,
 }) => {
   const styles = useStyles({ sideMenuIsVisible });
   const history = useHistory();
 
   const handleLink = useCallback(() => history.push("/"), [history]);
+
+  useEffect(() => {
+    if (!Object.keys(user).length) authorization();
+  }, [user, authorization]);
 
   return (
     <>
@@ -65,7 +63,7 @@ const SideMenu: React.FC<IProps> = ({
           </div>
           <div className={styles.info}>
             <p className={styles.role}>Admin</p>
-            <p className={styles.name}>Pavel Adamovich</p>
+            <p className={styles.name}>{user.fullName}</p>
           </div>
           <Button
             variant="outlined"

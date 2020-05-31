@@ -1,4 +1,5 @@
-import React, { useState, useCallback } from "react";
+import React, { useState, useCallback, useEffect } from "react";
+import moment from "moment";
 import classNames from "classnames";
 import Button from "@material-ui/core/Button";
 import Fade from "@material-ui/core/Fade";
@@ -12,18 +13,51 @@ import Container from "components/blocks/Container";
 import Footer from "components/blocks/Footer";
 
 import useStyles from "./styles";
-import { moviesTableData, usersTableData, ordersTableData } from "./data";
+import { TTabsNames, TProps } from "./types";
+import { IOrder } from "types/orders";
 
 const moviesTableHead = ["movieName", "tags", "startDate", "endDate", "price"];
 const usersTableHead = ["avatar", "fullName", "email"];
 const ordersTableHead = ["avatar", "email", "movieName", "startDate", "price"];
 
-type TTabsNames = "movies" | "users" | "orders";
-
-const DashboardPage: React.FC = () => {
+const DashboardPage: React.FC<TProps> = ({
+  movies,
+  users,
+  orders,
+  fetchMovies,
+  fetchUsers,
+  fetchOrders,
+}) => {
   const styles = useStyles();
   const [currentTab, setCurrentTab] = useState<TTabsNames>("movies");
   const [sideMenuIsVisible, setSideMenuIsVisible] = useState<boolean>(true);
+  const [ordersData, setOrdersData] = useState<IOrder[] | []>([]);
+
+  const moviesData = movies.movies
+    ? movies.movies?.map((movie) => ({
+        _id: movie._id,
+        movieName: movie.movieName,
+        tags: movie.tags.map((tag, index) => {
+          if (movie.tags.length === index + 1) {
+            return tag.name.toLowerCase();
+          } else {
+            return `${tag.name.toLowerCase()}, `;
+          }
+        }),
+        startDate: moment(movie.startDate).format("YYYY.MM.DD"),
+        endDate: moment(movie.endDate).format("YYYY.MM.DD"),
+        price: movie.ticketPrice,
+      }))
+    : [];
+
+  const usersData = users
+    ? users.map((user) => ({
+        _id: user._id,
+        avatar: user.avatar,
+        fullName: user.fullName,
+        email: user.email,
+      }))
+    : [];
 
   const handleToggle = useCallback(
     () => setSideMenuIsVisible((visible) => !visible),
@@ -40,6 +74,39 @@ const DashboardPage: React.FC = () => {
     },
     [setCurrentTab, setSideMenuIsVisible]
   );
+
+  useEffect(() => {
+    if (!movies.movies) fetchMovies();
+  }, [fetchMovies, movies.movies]);
+
+  useEffect(() => {
+    if (!users.length) fetchUsers();
+  }, [fetchUsers, users.length]);
+
+  useEffect(() => {
+    if (!orders.length) fetchOrders();
+  }, [fetchOrders, orders.length]);
+
+  useEffect(() => {
+    if (orders.length) {
+      const arr: any[] = [];
+
+      orders.forEach((order) =>
+        order.tickets.forEach((ticket) => {
+          arr.push({
+            _id: ticket._id,
+            avatar: order.avatar,
+            email: order.email,
+            movieName: ticket.movieName,
+            startDate: moment(ticket.startDate).format("YYYY.MM.DD"),
+            price: ticket.ticketPrice,
+          });
+        })
+      );
+
+      setOrdersData(arr);
+    }
+  }, [orders, setOrdersData]);
 
   return (
     <PageFade>
@@ -63,7 +130,7 @@ const DashboardPage: React.FC = () => {
                 </div>
                 <Table
                   tableHead={moviesTableHead}
-                  tableData={moviesTableData}
+                  tableData={moviesData}
                   withEdit
                   withRemove
                 />
@@ -85,7 +152,7 @@ const DashboardPage: React.FC = () => {
                 </div>
                 <Table
                   tableHead={usersTableHead}
-                  tableData={usersTableData}
+                  tableData={usersData}
                   withRemove
                 />
               </div>
@@ -99,7 +166,7 @@ const DashboardPage: React.FC = () => {
                 </div>
                 <Table
                   tableHead={ordersTableHead}
-                  tableData={ordersTableData}
+                  tableData={ordersData}
                   withRemove
                 />
               </div>

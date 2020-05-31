@@ -48,7 +48,7 @@ const Table: React.FC<IProps> = ({
         </tr>
       </thead>
       <tbody>
-        {tableData.map((row: any, index: number) => (
+        {tableData.map((row: any) => (
           <tr key={row._id} className={styles.bodyTR}>
             {tableHead.map((headName) => {
               if (headName === "avatar") {

@@ -1,4 +1,4 @@
-import React, { useEffect, RefObject, SyntheticEvent, MouseEvent } from "react";
+import { useEffect, RefObject } from "react";
 
 export const useClickOutside = (
   ref: RefObject<HTMLDivElement | HTMLButtonElement>,

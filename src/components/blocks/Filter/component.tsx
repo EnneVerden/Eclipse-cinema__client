@@ -18,7 +18,7 @@ const Filter: React.FC<TProps> = ({ tags, fetchTags, fetchMovies }) => {
 
   useEffect(() => {
     if (!tags.length) fetchTags();
-  }, []);
+  }, [fetchTags, tags.length]);
 
   useEffect(() => {
     if (tags.length) {
@@ -34,7 +34,7 @@ const Filter: React.FC<TProps> = ({ tags, fetchTags, fetchMovies }) => {
 
       setContent(newContent);
     }
-  }, [tags]);
+  }, [tags, changeTag]);
 
   useEffect(() => {
     if (tagId === 0) {
@@ -42,7 +42,7 @@ const Filter: React.FC<TProps> = ({ tags, fetchTags, fetchMovies }) => {
     } else {
       fetchMovies("1", tags[tagId - 1]._id);
     }
-  }, [tagId]);
+  }, [tagId, fetchMovies, tags]);
 
   return (
     <Panel>

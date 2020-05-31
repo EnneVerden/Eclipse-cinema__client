@@ -24,12 +24,12 @@ const ProtectedRoute: React.FC<IProps> = ({
       ) : (
         <UnauthorizedPage />
       ),
-    [user, Component]
+    [user, props]
   );
   const protectedAuth = useCallback(
     () =>
       Object.keys(user).length ? <Redirect to="/" /> : <Component {...props} />,
-    [user, Component]
+    [user, props]
   );
 
   return <Route {...props} render={auth ? protectedAuth : protectedRoute} />;

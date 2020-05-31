@@ -39,7 +39,7 @@ const AuthForm: React.FC<TProps> = ({
 
   useEffect(() => {
     authorization();
-  }, []);
+  }, [authorization]);
 
   useEffect(() => {
     let timer: NodeJS.Timeout;

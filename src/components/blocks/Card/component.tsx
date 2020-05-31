@@ -29,7 +29,9 @@ const Card: React.FC<IProps> = ({
   const styles = useStyles();
 
   const tagsNamesArray = tags.map((tag) => tag.name);
-  const displayedTags = useMemo(() => tagsNamesArray.join(", "), [tags]);
+  const displayedTags = useMemo(() => tagsNamesArray.join(", "), [
+    tagsNamesArray,
+  ]);
 
   const sDate = useMemo(() => moment(startDate).format("YYYY.MM.DD"), [
     startDate,

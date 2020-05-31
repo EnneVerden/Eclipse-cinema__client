@@ -2,7 +2,7 @@ export const moviesTestData = {
   movies: [
     {
       _id: "1",
-      name: "test",
+      movieName: "test",
       poster: "test",
       description: "test",
       tags: [{ _id: "1", name: "testTag" }],
@@ -12,7 +12,7 @@ export const moviesTestData = {
     },
     {
       _id: "2",
-      name: "test",
+      movieName: "test",
       poster: "test",
       description: "test",
       tags: [{ _id: "1", name: "testTag" }],
@@ -22,7 +22,7 @@ export const moviesTestData = {
     },
     {
       _id: "3",
-      name: "test",
+      movieName: "test",
       poster: "test",
       description: "test",
       tags: [{ _id: "1", name: "testTag" }],

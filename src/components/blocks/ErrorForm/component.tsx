@@ -21,7 +21,7 @@ const NotFoundPage: React.FC<IProps> = ({
   const styles = useStyles();
   const history = useHistory();
 
-  const handleClick = useCallback(() => history.push(path), [history]);
+  const handleClick = useCallback(() => history.push(path), [history, path]);
 
   return (
     <div className={styles.wrapper}>

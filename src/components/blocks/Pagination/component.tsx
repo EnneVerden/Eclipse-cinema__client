@@ -25,7 +25,7 @@ const Pagination: React.FC<TProps> = ({ movies, fetchMovies }) => {
 
   useEffect(() => {
     if (!movies.pagesCount) fetchMovies();
-  }, []);
+  }, [fetchMovies, movies.pagesCount]);
 
   useEffect(() => {
     if (movies.currentTag) {
@@ -35,7 +35,7 @@ const Pagination: React.FC<TProps> = ({ movies, fetchMovies }) => {
     }
 
     window.scrollTo(0, 0);
-  }, [currentPage]);
+  }, [currentPage, fetchMovies, movies.currentTag]);
 
   useEffect(() => {
     setCurrentPage("1");

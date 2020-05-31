@@ -6,11 +6,7 @@ import Grid from "components/blocks/Grid";
 import Pagination from "components/blocks/Pagination";
 import Footer from "components/blocks/Footer";
 
-import useStyles from "./styles";
-
 const HomePage: React.FC = () => {
-  const styles = useStyles();
-
   return (
     <PageFade>
       <Header />

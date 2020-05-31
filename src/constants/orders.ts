@@ -1,0 +1,2 @@
+export const FETCH_ORDERS = "FETCH_ORDERS";
+export const SET_ORDERS_TO_STATE = "SET_ORDERS_TO_STATE";

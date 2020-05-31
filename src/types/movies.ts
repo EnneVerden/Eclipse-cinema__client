@@ -4,7 +4,7 @@ import { CallEffect, PutEffect, TakeEffect } from "redux-saga/effects";
 
 export interface IMovie {
   _id: string;
-  name: string;
+  movieName: string;
   poster: string;
   description: string;
   tags: Array<ITag>;

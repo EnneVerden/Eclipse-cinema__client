@@ -1,11 +1,11 @@
 import React, { useEffect } from "react";
 import classNames from "classnames";
-
-import useStyles from "./styles";
 import Logo from "components/blocks/Logo";
 import Container from "components/blocks/Container";
 import SignIn from "components/blocks/SignIn";
 import Dropdown from "components/blocks/Dropdown";
+
+import useStyles from "./styles";
 import { TProps } from "./container";
 
 const Header: React.FC<TProps> = ({ user = {}, authorization }) => {
@@ -13,7 +13,7 @@ const Header: React.FC<TProps> = ({ user = {}, authorization }) => {
 
   useEffect(() => {
     if (!Object.keys(user).length) authorization();
-  }, []);
+  }, [authorization, user]);
 
   return (
     <header className={styles.header}>

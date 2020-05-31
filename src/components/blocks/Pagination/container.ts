@@ -2,7 +2,6 @@ import { TRootState } from "reducers";
 import { getMovies } from "selectors/movies";
 import { connect, ConnectedProps } from "react-redux";
 import Pagination from "./component";
-import { IMoviesData } from "types/movies";
 import { Dispatch } from "redux";
 import fetchMovies from "actions/fetch-movies";
 

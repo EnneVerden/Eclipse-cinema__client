@@ -1,14 +1,8 @@
+import { IMovie } from "./movies";
+
 interface IRoles {
   _id: string;
   name: string;
-}
-
-interface ITickets {
-  _id: string;
-  name: string;
-  poster: string;
-  startDate: string;
-  endDate: string;
 }
 
 export interface IUser {
@@ -20,5 +14,5 @@ export interface IUser {
   accountStatus: string;
   balance: number;
   roles: Array<IRoles>;
-  tickets: Array<ITickets | []>;
+  tickets: Array<IMovie>;
 }

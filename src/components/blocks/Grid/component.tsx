@@ -1,5 +1,4 @@
 import React, { useState, useEffect, ReactElement } from "react";
-import Fade from "@material-ui/core/Fade";
 import { TProps } from "./container";
 import Card from "components/blocks/Card";
 import Background from "components/blocks/Background";
@@ -16,14 +15,14 @@ const Grid: React.FC<TProps> = ({ movies, fetchMovies }) => {
 
   useEffect(() => {
     if (!movies.movies) fetchMovies();
-  }, []);
+  }, [fetchMovies, movies.movies]);
 
   useEffect(() => {
     if (movies.movies?.length) {
       const newContent = movies.movies.map((movie) => (
         <Card
           key={movie._id}
-          name={movie.name}
+          name={movie.movieName}
           poster={movie.poster}
           description={movie.description}
           tags={movie.tags}
