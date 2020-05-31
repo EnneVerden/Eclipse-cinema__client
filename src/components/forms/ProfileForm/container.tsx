@@ -1,22 +1,21 @@
+import ProfileForm from "./component";
 import { TRootState } from "reducers";
-import { getMovies } from "selectors/movies";
+import { getUser } from "selectors/user";
 import { connect, ConnectedProps } from "react-redux";
-import Pagination from "./component";
-import { IMoviesData } from "types/movies";
 import { Dispatch } from "redux";
-import fetchMovies from "actions/fetch-movies";
+import { IAlert } from "types/alert";
+import setAlert from "actions/set-alert";
 
 const mapStateToProps = (state: TRootState) => ({
-  movies: getMovies(state),
+  user: getUser(state),
 });
 
 const mapDispatchToProps = (dispatch: Dispatch) => ({
-  fetchMovies: (page?: string, tag?: string) =>
-    dispatch(fetchMovies(page, tag)),
+  setAlert: (alert: IAlert) => dispatch(setAlert(alert)),
 });
 
 const connector = connect(mapStateToProps, mapDispatchToProps);
 
 export type TProps = ConnectedProps<typeof connector>;
 
-export default connector(Pagination);
+export default connector(ProfileForm);

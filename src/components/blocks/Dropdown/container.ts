@@ -4,13 +4,8 @@ import logout from "actions/logout";
 import { connect, ConnectedProps } from "react-redux";
 import { getUser } from "selectors/user";
 import { TRootState } from "reducers";
-import { IUser } from "types/user";
 
-interface IMapStateToProps {
-  user: IUser;
-}
-
-const mapStateToProps = (state: TRootState): IMapStateToProps => ({
+const mapStateToProps = (state: TRootState) => ({
   user: getUser(state),
 });
 
@@ -20,6 +15,6 @@ const mapDispatchToProps = (dispatch: Dispatch) => ({
 
 const connector = connect(mapStateToProps, mapDispatchToProps);
 
-export type TProps = ConnectedProps<typeof connector> & IMapStateToProps;
+export type TProps = ConnectedProps<typeof connector>;
 
 export default connector(Dropdown);

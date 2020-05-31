@@ -1,4 +1,5 @@
-import React, { useCallback, useState } from "react";
+import React, { useCallback, useState, useRef } from "react";
+import Fade from "@material-ui/core/Fade";
 import AccountCircleIcon from "@material-ui/icons/AccountCircle";
 import DashboardIcon from "@material-ui/icons/Dashboard";
 import ExitToAppIcon from "@material-ui/icons/ExitToApp";
@@ -18,13 +19,15 @@ const Dropdown: React.FC<TProps> = ({
   const styles = useStyles();
   const history = useHistory();
   const [isVisible, setIsVisible] = useState<boolean>(false);
+  const buttonRef = useRef<HTMLButtonElement | null>(null);
 
-  const handleToggle = useCallback(
-    () => setIsVisible((visible) => !visible),
-    []
-  );
+  const handleToggle = useCallback(() => setIsVisible((visible) => !visible), [
+    setIsVisible,
+  ]);
 
-  const handleLink = useCallback((url) => history.push(url), [history]);
+  const handleClose = useCallback(() => setIsVisible(false), [setIsVisible]);
+
+  const handleLink = useCallback((url: string) => history.push(url), [history]);
 
   const handleLogout = useCallback(() => {
     history.push("/");
@@ -39,21 +42,27 @@ const Dropdown: React.FC<TProps> = ({
         balance={balance}
         isVisible={isVisible}
         handleToggle={handleToggle}
+        handleClose={handleClose}
+        buttonRef={buttonRef}
       />
-      <MenuList isVisible={isVisible}>
-        <MenuItem onClick={() => handleLink("/profile")}>
-          <AccountCircleIcon style={{ color: color_metallic }} />
-          <p className={styles.menuText}>Profile</p>
-        </MenuItem>
-        <MenuItem onClick={() => handleLink("/dashboard")}>
-          <DashboardIcon style={{ color: color_metallic }} />
-          <p className={styles.menuText}>Dashboard</p>
-        </MenuItem>
-        <MenuItem onClick={handleLogout}>
-          <ExitToAppIcon style={{ color: color_metallic }} />
-          <p className={styles.menuText}>Logout</p>
-        </MenuItem>
-      </MenuList>
+      <Fade in={isVisible}>
+        <div>
+          <MenuList>
+            <MenuItem onClick={() => handleLink("/profile")}>
+              <AccountCircleIcon style={{ color: color_metallic }} />
+              <p className={styles.menuText}>Profile</p>
+            </MenuItem>
+            <MenuItem onClick={() => handleLink("/dashboard")}>
+              <DashboardIcon style={{ color: color_metallic }} />
+              <p className={styles.menuText}>Dashboard</p>
+            </MenuItem>
+            <MenuItem onClick={handleLogout}>
+              <ExitToAppIcon style={{ color: color_metallic }} />
+              <p className={styles.menuText}>Logout</p>
+            </MenuItem>
+          </MenuList>
+        </div>
+      </Fade>
     </div>
   );
 };

@@ -3,18 +3,10 @@ import classNames from "classnames";
 
 import useStyles from "./styles";
 
-interface IProps {
-  isVisible: boolean;
-}
-
-const MenuList: React.FC<IProps> = ({ children, isVisible }) => {
+const MenuList: React.FC = ({ children }) => {
   const styles = useStyles();
 
-  return (
-    <div className={classNames(styles.list, !isVisible ? styles.hidden : null)}>
-      {children}
-    </div>
-  );
+  return <div className={classNames(styles.list)}>{children}</div>;
 };
 
 export default MenuList;

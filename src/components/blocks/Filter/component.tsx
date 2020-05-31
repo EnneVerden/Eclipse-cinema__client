@@ -1,17 +1,18 @@
 import React, { useState, useCallback, useEffect, ReactElement } from "react";
 import Tabs from "@material-ui/core/Tabs";
-import { color_pink, color_red } from "theme/variables";
-import Tag from "components/blocks/Tag";
+import Tab from "components/blocks/Tab";
 import Container from "components/blocks/Container";
+import Panel from "components/blocks/Panel";
 import { TProps } from "./container";
-import useStyles from "./styles";
 import { ITag } from "types/tags";
 
-const Filter: React.FC<TProps> = ({ tags, fetchTags, movies, fetchMovies }) => {
+import useStyles from "./styles";
+import { color_pink, color_red } from "theme/variables";
+
+const Filter: React.FC<TProps> = ({ tags, fetchTags, fetchMovies }) => {
   const styles = useStyles();
   const [tagId, setTagId] = useState<number>(0);
   const [content, setContent] = useState<ReactElement[] | []>([]);
-  const [currentTagId, setCurrentTagId] = useState<string | null>(null);
 
   const changeTag = useCallback((newTagId: number) => setTagId(newTagId), []);
 
@@ -22,14 +23,12 @@ const Filter: React.FC<TProps> = ({ tags, fetchTags, movies, fetchMovies }) => {
   useEffect(() => {
     if (tags.length) {
       const newContent = tags.map((tag: ITag, index: number) => (
-        <Tag
+        <Tab
           key={tag._id}
           id={tag._id}
           label={tag.name}
-          tagId={index + 1}
-          changeTag={changeTag}
-          selected={tagId === index ? true : false}
-          setCurrentTagId={setCurrentTagId}
+          tabId={index + 1}
+          changeTab={changeTag}
         />
       ));
 
@@ -38,15 +37,15 @@ const Filter: React.FC<TProps> = ({ tags, fetchTags, movies, fetchMovies }) => {
   }, [tags]);
 
   useEffect(() => {
-    if (currentTagId === null) {
+    if (tagId === 0) {
       fetchMovies();
     } else {
-      fetchMovies("1", currentTagId);
+      fetchMovies("1", tags[tagId - 1]._id);
     }
-  }, [currentTagId]);
+  }, [tagId]);
 
   return (
-    <div className={styles.filter}>
+    <Panel>
       <Container>
         <div className={styles.wrapper}>
           <h2 className={styles.title}>Movies</h2>
@@ -60,18 +59,11 @@ const Filter: React.FC<TProps> = ({ tags, fetchTags, movies, fetchMovies }) => {
           }}
           variant="scrollable"
         >
-          <Tag
-            id={null}
-            label="All movies"
-            tagId={0}
-            changeTag={changeTag}
-            selected={tagId === 0 ? true : false}
-            setCurrentTagId={setCurrentTagId}
-          />
+          <Tab id={null} label="All movies" tabId={0} changeTab={changeTag} />
           {content}
         </Tabs>
       </Container>
-    </div>
+    </Panel>
   );
 };
 

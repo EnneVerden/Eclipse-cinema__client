@@ -1,8 +1,9 @@
 import React, { useState, useEffect, ReactElement } from "react";
+import Fade from "@material-ui/core/Fade";
 import { TProps } from "./container";
 import Card from "components/blocks/Card";
+import Background from "components/blocks/Background";
 import Container from "components/blocks/Container";
-import Loader from "components/blocks/Loader";
 import classNames from "classnames";
 
 import useStyles from "./styles";
@@ -39,7 +40,7 @@ const Grid: React.FC<TProps> = ({ movies, fetchMovies }) => {
   }, [movies]);
 
   return (
-    <div className={styles.grid}>
+    <Background heightElementsAbove={218} footerHeight={100}>
       <Container>
         <div
           className={classNames(
@@ -51,7 +52,7 @@ const Grid: React.FC<TProps> = ({ movies, fetchMovies }) => {
           {content}
         </div>
       </Container>
-    </div>
+    </Background>
   );
 };
 

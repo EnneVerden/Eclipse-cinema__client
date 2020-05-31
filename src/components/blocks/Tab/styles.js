@@ -1,11 +1,11 @@
 import { makeStyles } from "@material-ui/core/styles";
-import { font_gilroy, color_white, color_metallic } from "theme/variables";
+import { font_gilroy, color_white } from "theme/variables";
 
 const styles = makeStyles({
   wrapper: {
     marginRight: "15px",
   },
-  tag: {
+  tab: {
     padding: "6px 0",
     marginRight: "20px",
     color: color_white,
