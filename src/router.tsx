@@ -9,6 +9,7 @@ const AuthPage = lazy(() => import("components/pages/Auth"));
 const HomePage = lazy(() => import("components/pages/Home"));
 const NotFoundPage = lazy(() => import("components/pages/NotFound"));
 const ProfilePage = lazy(() => import("components/pages/Profile"));
+const DashboardPage = lazy(() => import("components/pages/Dashboard"));
 
 const Router: React.FC = () => (
   <BrowserRouter>
@@ -17,7 +18,7 @@ const Router: React.FC = () => (
         <ProtectedRoute auth exact path={AUTH_PATH} component={AuthPage} />
         <Route exact path={HOME_PATH} component={HomePage} />
         <Route exact path="/profile" component={ProfilePage} />
-        <ProtectedRoute exact path="/dashboard" component={HomePage} />
+        <Route exact path="/dashboard" component={DashboardPage} />
         <Route path="*" component={NotFoundPage} />
       </Switch>
     </Suspense>
