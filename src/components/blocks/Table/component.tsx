@@ -25,11 +25,21 @@ const Table: React.FC<IProps> = ({
     <table className={styles.table}>
       <thead>
         <tr>
-          {tableHead.map((name) => (
-            <td key={name} className={styles.th}>
-              {name.split(/(?=[A-Z])/).join(" ")}
-            </td>
-          ))}
+          {tableHead.map((name) => {
+            if (name === "price") {
+              return (
+                <td key={name} className={styles.th}>
+                  {name} ($)
+                </td>
+              );
+            } else {
+              return (
+                <td key={name} className={styles.th}>
+                  {name.split(/(?=[A-Z])/).join(" ")}
+                </td>
+              );
+            }
+          })}
           {withEdit || withRemove ? (
             <td key="actions" className={styles.th}>
               actions
