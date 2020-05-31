@@ -17,13 +17,14 @@ const styles = makeStyles({
 
     "@media(max-width: 1024px)": {
       width: "95%",
-      margin: "25px 0",
+      margin: "15px 0",
     },
     "@media(max-width: 768px)": {
       width: "93%",
     },
     "@media(max-width: 600px)": {
       width: "85%",
+      marginBottom: "50px",
     },
     "@media(max-width: 320px)": {
       width: "84%",

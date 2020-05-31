@@ -9,6 +9,9 @@ const mapStateToProps = (state: TRootState) => ({
 
 const connector = connect(mapStateToProps);
 
-export type TProps = ConnectedProps<typeof connector>;
+export type TProps = ConnectedProps<typeof connector> & {
+  currentTabId: number;
+  setCurrentTabId: (tabId: number) => void;
+};
 
 export default connector(InfoPanel);

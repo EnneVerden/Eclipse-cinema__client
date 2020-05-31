@@ -13,10 +13,11 @@ import { color_pink, color_red } from "theme/variables.ts";
 
 const InfoPanel: React.FC<TProps> = ({
   user: { avatar, fullName, balance } = {},
+  currentTabId,
+  setCurrentTabId,
 }) => {
   const styles = useStyles();
   const history = useHistory();
-  const [currentTabId, setCurrentTabId] = useState<number>(0);
 
   const handleLink = useCallback(() => history.push("/"), [history]);
 
