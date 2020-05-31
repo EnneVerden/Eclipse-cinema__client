@@ -27,7 +27,7 @@ const Table: React.FC<IProps> = ({
         <tr>
           {tableHead.map((name) => (
             <td key={name} className={styles.th}>
-              {name}
+              {name.split(/(?=[A-Z])/).join(" ")}
             </td>
           ))}
           {withEdit || withRemove ? (

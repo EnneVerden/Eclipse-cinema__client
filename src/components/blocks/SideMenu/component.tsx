@@ -1,4 +1,4 @@
-import React, { useCallback, useState } from "react";
+import React, { useCallback, useState, ChangeEvent } from "react";
 import { useHistory } from "react-router";
 import Button from "@material-ui/core/Button";
 import ArrowBackIcon from "@material-ui/icons/ArrowBack";
@@ -12,7 +12,13 @@ import MenuItem from "components/blocks/MenuItem";
 
 import useStyles from "./styles";
 
-const SideMenu: React.FC = () => {
+type TTabsNames = "movies" | "users" | "orders";
+
+interface IProps {
+  handleTabChange: (tabName: TTabsNames) => void;
+}
+
+const SideMenu: React.FC<IProps> = ({ handleTabChange }) => {
   const [sideMenuIsVisible, setSideMenuIsVisible] = useState<boolean>(true);
   const styles = useStyles({ sideMenuIsVisible });
   const history = useHistory();
@@ -67,15 +73,24 @@ const SideMenu: React.FC = () => {
           </Button>
         </div>
         <div className={styles.menu}>
-          <MenuItem className={styles.item}>
+          <MenuItem
+            className={styles.item}
+            onClick={() => handleTabChange("movies")}
+          >
             <MovieIcon />
             <span className={styles.title}>Movies</span>
           </MenuItem>
-          <MenuItem className={styles.item}>
+          <MenuItem
+            className={styles.item}
+            onClick={() => handleTabChange("users")}
+          >
             <GroupIcon />
             <span className={styles.title}>Users</span>
           </MenuItem>
-          <MenuItem className={styles.item}>
+          <MenuItem
+            className={styles.item}
+            onClick={() => handleTabChange("orders")}
+          >
             <ShopIcon />
             <span className={styles.title}>Orders</span>
           </MenuItem>

@@ -15,7 +15,7 @@ const styles = makeStyles({
     borderCollapse: "collapse",
     marginBottom: "30px",
 
-    "@media(max-width: 600px)": {
+    "@media(max-width: 768px)": {
       display: "block",
       overflow: "scroll",
     },
@@ -28,7 +28,7 @@ const styles = makeStyles({
     letterSpacing: "1px",
     textTransform: "uppercase",
 
-    "@media(max-width: 600px)": {
+    "@media(max-width: 768px)": {
       minWidth: "250px",
       fontSize: "0.9rem",
     },
@@ -53,6 +53,7 @@ const styles = makeStyles({
     minWidth: "30px",
     padding: "3px 5px",
     marginRight: "10px",
+    color: color_white,
 
     "@media(max-width: 600px)": {
       minWidth: "44px",

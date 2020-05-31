@@ -5,11 +5,13 @@ import {
   color_pink,
   color_red,
   color_metallic,
+  color_white,
   font_gilroy,
 } from "theme/variables";
 
 const styles = makeStyles({
   header: (props) => ({
+    display: "none",
     position: "relative",
     padding: "20px 0",
     backgroundColor: color_dark_l3,
@@ -24,6 +26,10 @@ const styles = makeStyles({
       bottom: "-2px",
       background: `linear-gradient(to right, ${color_pink}, ${color_red})`,
       zIndex: "100",
+    },
+
+    "@media(max-width: 1366px)": {
+      display: "flex",
     },
   }),
   sideMenu: (props) => ({
@@ -53,11 +59,16 @@ const styles = makeStyles({
     },
   },
   buttonClose: {
+    display: "none",
     margin: "0 20px",
     padding: "10px 0",
     borderColor: color_pink,
     minWidth: "50px",
     minHeight: "55px",
+
+    "@media(max-width: 1366px)": {
+      display: "flex",
+    },
   },
   closeIcon: {
     color: color_pink,
@@ -94,6 +105,7 @@ const styles = makeStyles({
     minWidth: "36px",
     padding: "7px 2px",
     borderColor: color_red,
+    color: color_white,
   },
   icon: {
     color: color_red,
