@@ -6,7 +6,7 @@ import useStyles from "./styles";
 
 interface IProps {
   className?: string;
-  onClick?: () => void;
+  onClick?: (...params: any) => void;
 }
 
 const MenuItem: React.FC<IProps> = ({ children, className, onClick }) => {
