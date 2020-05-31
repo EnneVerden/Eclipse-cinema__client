@@ -11,9 +11,10 @@ import {
 const styles = makeStyles({
   header: (props) => ({
     position: "relative",
-    display: `${!props.sideMenuIsVisible ? "flex" : "none"}`,
     padding: "20px 0",
     backgroundColor: color_dark_l3,
+    transition: "transform 0.3s",
+    transform: `translateY(${!props.sideMenuIsVisible ? "0" : "-97px"})`,
 
     "&::before": {
       content: '""',
@@ -27,6 +28,8 @@ const styles = makeStyles({
   }),
   sideMenu: (props) => ({
     position: "fixed",
+    left: 0,
+    top: 0,
     backgroundColor: color_dark_l3,
     height: "100vh",
     width: "300px",
@@ -60,7 +63,7 @@ const styles = makeStyles({
     color: color_pink,
   },
   img: {
-    padding: "7px 20px",
+    padding: "9px 20px",
   },
   profile: {
     padding: "20px",
