@@ -12,10 +12,11 @@ import Container from "components/blocks/Container";
 import Footer from "components/blocks/Footer";
 
 import useStyles from "./styles";
-import { moviesTableData, usersTableData } from "./data";
+import { moviesTableData, usersTableData, ordersTableData } from "./data";
 
-const moviesTableHead = ["name", "tags", "startDate", "endDate", "price"];
+const moviesTableHead = ["movieName", "tags", "startDate", "endDate", "price"];
 const usersTableHead = ["avatar", "fullName", "email"];
+const ordersTableHead = ["avatar", "email", "movieName", "startDate", "price"];
 
 type TTabsNames = "movies" | "users" | "orders";
 
@@ -85,6 +86,20 @@ const DashboardPage: React.FC = () => {
                 <Table
                   tableHead={usersTableHead}
                   tableData={usersTableData}
+                  withRemove
+                />
+              </div>
+            </Fade>
+          )}
+          {currentTab === "orders" && (
+            <Fade in={currentTab === "orders"}>
+              <div>
+                <div className={styles.wrapper}>
+                  <h2 className={styles.title}>Orders</h2>
+                </div>
+                <Table
+                  tableHead={ordersTableHead}
+                  tableData={ordersTableData}
                   withRemove
                 />
               </div>

@@ -12,21 +12,21 @@ import Footer from "components/blocks/Footer";
 
 import useStyles from "./styles";
 
-const tableHead = ["name", "date"];
+const tableHead = ["movieName", "date"];
 
 const tableData = [
-  { _id: 1, name: "Blade runner 2049", date: "2020.07.15" },
-  { _id: 2, name: "Blade runner 2048", date: "2020.07.15" },
-  { _id: 3, name: "Blade runner 2047", date: "2020.07.15" },
-  { _id: 4, name: "Blade runner 2046", date: "2020.07.15" },
-  { _id: 5, name: "Blade runner 2045", date: "2020.07.15" },
-  { _id: 6, name: "Blade runner 2044", date: "2020.07.15" },
-  { _id: 7, name: "Blade runner 2043", date: "2020.07.15" },
-  { _id: 8, name: "Blade runner 2042", date: "2020.07.15" },
-  { _id: 9, name: "Blade runner 2041", date: "2020.07.15" },
-  { _id: 10, name: "Blade runner 2039", date: "2020.07.15" },
-  { _id: 11, name: "Blade runner 2038", date: "2020.07.15" },
-  { _id: 12, name: "Blade runner 2037", date: "2020.07.15" },
+  { _id: 1, movieName: "Blade runner 2049", date: "2020.07.15" },
+  { _id: 2, movieName: "Blade runner 2048", date: "2020.07.15" },
+  { _id: 3, movieName: "Blade runner 2047", date: "2020.07.15" },
+  { _id: 4, movieName: "Blade runner 2046", date: "2020.07.15" },
+  { _id: 5, movieName: "Blade runner 2045", date: "2020.07.15" },
+  { _id: 6, movieName: "Blade runner 2044", date: "2020.07.15" },
+  { _id: 7, movieName: "Blade runner 2043", date: "2020.07.15" },
+  { _id: 8, movieName: "Blade runner 2042", date: "2020.07.15" },
+  { _id: 9, movieName: "Blade runner 2041", date: "2020.07.15" },
+  { _id: 10, movieName: "Blade runner 2039", date: "2020.07.15" },
+  { _id: 11, movieName: "Blade runner 2038", date: "2020.07.15" },
+  { _id: 12, movieName: "Blade runner 2037", date: "2020.07.15" },
 ];
 
 const ProfilePage: React.FC = () => {
