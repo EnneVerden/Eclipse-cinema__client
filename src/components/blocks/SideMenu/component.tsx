@@ -1,5 +1,6 @@
-import React, { useCallback, useState, ChangeEvent } from "react";
+import React, { useCallback } from "react";
 import { useHistory } from "react-router";
+import classNames from "classnames";
 import Button from "@material-ui/core/Button";
 import ArrowBackIcon from "@material-ui/icons/ArrowBack";
 import ArrowForwardIcon from "@material-ui/icons/ArrowForward";
@@ -15,18 +16,20 @@ import useStyles from "./styles";
 type TTabsNames = "movies" | "users" | "orders";
 
 interface IProps {
+  sideMenuIsVisible: boolean;
+  currentTab?: TTabsNames;
+  handleToggle: () => void;
   handleTabChange: (tabName: TTabsNames) => void;
 }
 
-const SideMenu: React.FC<IProps> = ({ handleTabChange }) => {
-  const [sideMenuIsVisible, setSideMenuIsVisible] = useState<boolean>(true);
+const SideMenu: React.FC<IProps> = ({
+  sideMenuIsVisible,
+  currentTab,
+  handleTabChange,
+  handleToggle,
+}) => {
   const styles = useStyles({ sideMenuIsVisible });
   const history = useHistory();
-
-  const handleToggle = useCallback(
-    () => setSideMenuIsVisible((visible) => !visible),
-    [setSideMenuIsVisible]
-  );
 
   const handleLink = useCallback(() => history.push("/"), [history]);
 
@@ -74,21 +77,30 @@ const SideMenu: React.FC<IProps> = ({ handleTabChange }) => {
         </div>
         <div className={styles.menu}>
           <MenuItem
-            className={styles.item}
+            className={classNames(
+              styles.item,
+              currentTab === "movies" && styles.activeItem
+            )}
             onClick={() => handleTabChange("movies")}
           >
             <MovieIcon />
             <span className={styles.title}>Movies</span>
           </MenuItem>
           <MenuItem
-            className={styles.item}
+            className={classNames(
+              styles.item,
+              currentTab === "users" && styles.activeItem
+            )}
             onClick={() => handleTabChange("users")}
           >
             <GroupIcon />
             <span className={styles.title}>Users</span>
           </MenuItem>
           <MenuItem
-            className={styles.item}
+            className={classNames(
+              styles.item,
+              currentTab === "orders" && styles.activeItem
+            )}
             onClick={() => handleTabChange("orders")}
           >
             <ShopIcon />

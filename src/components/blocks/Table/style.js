@@ -49,6 +49,9 @@ const styles = makeStyles({
       fontSize: "1.2rem",
     },
   },
+  avatar: {
+    width: "50px",
+  },
   button: {
     minWidth: "30px",
     padding: "3px 5px",

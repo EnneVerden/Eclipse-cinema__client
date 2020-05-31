@@ -40,11 +40,25 @@ const Table: React.FC<IProps> = ({
       <tbody>
         {tableData.map((row: any, index: number) => (
           <tr key={row._id} className={styles.bodyTR}>
-            {tableHead.map((headName) => (
-              <td key={headName} className={styles.bodyTD}>
-                <div>{row[headName]}</div>
-              </td>
-            ))}
+            {tableHead.map((headName) => {
+              if (headName === "avatar") {
+                return (
+                  <td key={headName} className={styles.bodyTD}>
+                    <img
+                      src={row[headName]}
+                      alt="avatar"
+                      className={styles.avatar}
+                    />
+                  </td>
+                );
+              } else {
+                return (
+                  <td key={headName} className={styles.bodyTD}>
+                    <div>{row[headName]}</div>
+                  </td>
+                );
+              }
+            })}
             {withEdit && withRemove ? (
               <td className={styles.bodyTD}>
                 <Button

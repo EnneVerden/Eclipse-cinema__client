@@ -34,6 +34,12 @@ const styles = makeStyles({
   btnText: {
     fontSize: "1rem",
   },
+  buttonRemove: {
+    background: "none",
+    borderColor: color_red,
+    color: color_red,
+    minWidth: "160px",
+  },
 });
 
 export default styles;
