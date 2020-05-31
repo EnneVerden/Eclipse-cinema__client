@@ -1,7 +1,7 @@
 import React, { useState } from "react";
+import Fade from "@material-ui/core/Fade";
+import PageFade from "components/blocks/PageFade/component";
 import Header from "components/blocks/Header";
-
-import useStyles from "./styles";
 import InfoPanel from "components/blocks/InfoPanel";
 import Background from "components/blocks/Background";
 import Container from "components/blocks/Container";
@@ -9,6 +9,8 @@ import ProfileForm from "components/forms/ProfileForm";
 import PasswordForm from "components/forms/PasswordForm";
 import Table from "components/blocks/Table";
 import Footer from "components/blocks/Footer";
+
+import useStyles from "./styles";
 
 const tableHead = ["name", "date"];
 
@@ -32,7 +34,7 @@ const ProfilePage: React.FC = () => {
   const [currentTabId, setCurrentTabId] = useState<number>(0);
 
   return (
-    <>
+    <PageFade>
       <Header />
       <InfoPanel
         currentTabId={currentTabId}
@@ -41,23 +43,27 @@ const ProfilePage: React.FC = () => {
       <Background heightElementsAbove={195} footerHeight={100}>
         <Container>
           {currentTabId === 0 && (
-            <div className={styles.panel}>
-              <ProfileForm />
-              <PasswordForm />
-            </div>
+            <Fade in={currentTabId === 0}>
+              <div className={styles.panel}>
+                <ProfileForm />
+                <PasswordForm />
+              </div>
+            </Fade>
           )}
           {currentTabId === 1 && (
-            <>
-              <div className={styles.wrapper}>
-                <h2 className={styles.title}>My tickets</h2>
+            <Fade in={currentTabId === 1}>
+              <div>
+                <div className={styles.wrapper}>
+                  <h2 className={styles.title}>My tickets</h2>
+                </div>
+                <Table tableHead={tableHead} tableData={tableData} withRemove />
               </div>
-              <Table tableHead={tableHead} tableData={tableData} withRemove />
-            </>
+            </Fade>
           )}
         </Container>
       </Background>
       <Footer />
-    </>
+    </PageFade>
   );
 };
 

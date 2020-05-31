@@ -1,4 +1,5 @@
 import React, { useState, useEffect, ReactElement } from "react";
+import Fade from "@material-ui/core/Fade";
 import { TProps } from "./container";
 import Card from "components/blocks/Card";
 import Background from "components/blocks/Background";

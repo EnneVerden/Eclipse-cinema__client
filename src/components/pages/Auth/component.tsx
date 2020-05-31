@@ -1,6 +1,7 @@
 import React, { useState, useCallback } from "react";
-
+import PageFade from "components/blocks/PageFade";
 import AuthForm from "components/forms/AuthForm";
+
 import useStyles from "./styles";
 
 const AuthPage: React.FC = () => {
@@ -13,9 +14,11 @@ const AuthPage: React.FC = () => {
   );
 
   return (
-    <div className={styles.wrapper}>
-      <AuthForm changeFormKind={changeFormKind} isLoginForm={isLoginForm} />
-    </div>
+    <PageFade>
+      <div className={styles.wrapper}>
+        <AuthForm changeFormKind={changeFormKind} isLoginForm={isLoginForm} />
+      </div>
+    </PageFade>
   );
 };
 

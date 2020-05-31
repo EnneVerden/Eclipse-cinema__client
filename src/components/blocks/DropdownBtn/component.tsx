@@ -2,6 +2,7 @@ import React from "react";
 import ArrowDropDownIcon from "@material-ui/icons/ArrowDropDown";
 import AccountBalanceWalletIcon from "@material-ui/icons/AccountBalanceWallet";
 import classNames from "classnames";
+import { useClickOutside } from "./hooks";
 
 import useStyles from "./styles";
 import { color_white } from "theme/variables";
@@ -11,7 +12,9 @@ interface IProps {
   fullName: string;
   balance: number;
   isVisible: boolean;
+  buttonRef: any;
   handleToggle: () => void;
+  handleClose: () => void;
 }
 
 const DropdownBtn: React.FC<IProps> = ({
@@ -19,9 +22,12 @@ const DropdownBtn: React.FC<IProps> = ({
   fullName,
   balance,
   isVisible,
+  buttonRef,
   handleToggle,
+  handleClose,
 }) => {
   const styles = useStyles();
+  useClickOutside(buttonRef, handleClose);
 
   return (
     <>
@@ -29,6 +35,7 @@ const DropdownBtn: React.FC<IProps> = ({
         type="button"
         className={classNames(styles.button, isVisible ? styles.active : null)}
         onClick={handleToggle}
+        ref={buttonRef}
       >
         <img src={avatarURL} alt="avatar" className={styles.avatar} />
         <div className={styles.info}>
