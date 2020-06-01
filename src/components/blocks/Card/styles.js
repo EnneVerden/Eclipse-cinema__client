@@ -4,6 +4,7 @@ import {
   color_white,
   color_red,
   color_metallic,
+  color_green,
 } from "theme/variables";
 
 const styles = makeStyles({
@@ -158,7 +159,7 @@ const styles = makeStyles({
     letterSpacing: "1px",
     textAlign: "center",
   },
-  btn: {
+  button: {
     color: color_red,
     borderColor: color_red,
 
@@ -171,6 +172,9 @@ const styles = makeStyles({
     "@media(max-width: 600px)": {
       padding: "8px 20px",
     },
+  },
+  disabledButton: {
+    backgroundColor: color_green,
   },
 });
 

@@ -7,6 +7,7 @@ export const color_pink = "#d6538e";
 export const color_red = "#de5059";
 export const color_metallic = "#D1D1D1";
 export const color_white = "#ffffff";
+export const color_green = "#2BDC9D";
 
 export const shadow_color = "#201d21";
 

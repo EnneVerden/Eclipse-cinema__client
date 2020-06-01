@@ -22,6 +22,7 @@ const Grid: React.FC<TProps> = ({ movies, fetchMovies }) => {
       const newContent = movies.movies.map((movie) => (
         <Card
           key={movie._id}
+          _id={movie._id}
           name={movie.movieName}
           poster={movie.poster}
           description={movie.description}

@@ -1,23 +1,16 @@
-import React, { useMemo } from "react";
+import React, { useMemo, useState, useEffect } from "react";
 import Fade from "@material-ui/core/Fade";
 import Button from "@material-ui/core/Button";
 import ShoppingCartIcon from "@material-ui/icons/ShoppingCart";
-import { ITag } from "types/tags";
+import CheckIcon from "@material-ui/icons/Check";
 import moment from "moment";
 
 import useStyles from "./styles";
+import { TProps } from "./types";
+import { ITag } from "types/tags";
 
-interface IProps {
-  name: string;
-  poster: string;
-  description: string;
-  tags: Array<ITag>;
-  startDate: string;
-  endDate: string;
-  ticketPrice: number;
-}
-
-const Card: React.FC<IProps> = ({
+const Card: React.FC<TProps> = ({
+  _id,
   name,
   poster,
   description,
@@ -25,10 +18,12 @@ const Card: React.FC<IProps> = ({
   startDate,
   endDate,
   ticketPrice,
+  user,
 }) => {
+  const [boughtTicket, setBoughtTicket] = useState<boolean>(false);
   const styles = useStyles();
 
-  const tagsNamesArray = tags.map((tag) => tag.name);
+  const tagsNamesArray = tags.map((tag: ITag) => tag.name);
   const displayedTags = useMemo(() => tagsNamesArray.join(", "), [
     tagsNamesArray,
   ]);
@@ -37,6 +32,16 @@ const Card: React.FC<IProps> = ({
     startDate,
   ]);
   const eDate = useMemo(() => moment(endDate).format("YYYY.MM.DD"), [endDate]);
+
+  useEffect(() => {
+    if (user.tickets.length) {
+      user.tickets.forEach((ticket) => {
+        if (ticket._id === _id) {
+          setBoughtTicket(true);
+        }
+      });
+    }
+  }, [user.tickets]);
 
   return (
     <Fade in>
@@ -58,9 +63,11 @@ const Card: React.FC<IProps> = ({
                 type="button"
                 variant="outlined"
                 size="large"
-                className={styles.btn}
+                className={styles.button}
+                disabled={boughtTicket ? true : false}
+                classes={{ disabled: styles.disabledButton }}
               >
-                <ShoppingCartIcon />
+                {boughtTicket ? <CheckIcon /> : <ShoppingCartIcon />}
               </Button>
             </div>
           </div>
