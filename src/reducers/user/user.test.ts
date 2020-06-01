@@ -1,6 +1,7 @@
-import { SET_USER_TO_STATE } from "constants/authorization";
-import { userTestData } from "utils/user";
+import { SET_USER_TO_STATE, CLEAR_USER_STATE } from "constants/authorization";
+import { userTestData, balanceTestData } from "utils/user";
 import userReducer from ".";
+import { SET_BALANCE_TO_STATE } from "constants/user";
 
 describe("Users reducer", () => {
   it("Should return state with user data if receiving type", () => {
@@ -10,5 +11,22 @@ describe("Users reducer", () => {
     });
 
     expect(state).toEqual(userTestData);
+  });
+
+  it("Should return state with new balance if receiving type", () => {
+    const state = userReducer(undefined, {
+      type: SET_BALANCE_TO_STATE,
+      balance: balanceTestData,
+    });
+
+    expect(state).toEqual(balanceTestData);
+  });
+
+  it("Should return state with empty user if receiving type", () => {
+    const state = userReducer(undefined, {
+      type: CLEAR_USER_STATE,
+    });
+
+    expect(state).toEqual({});
   });
 });

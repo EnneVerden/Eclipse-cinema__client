@@ -1,4 +1,4 @@
-import { IUser } from "types/user";
+import { IUser, IBalance } from "types/user";
 
 export const userTestData: IUser = {
   avatar: "https://image.flaticon.com/icons/svg/236/236831.svg",
@@ -15,4 +15,14 @@ export const userTestData: IUser = {
   fullName: "Test",
   email: "test@gmail.com",
   password: "",
+};
+
+export const balanceTestData: IBalance = {
+  balance: 5,
+};
+
+export const replenishBalanceResponse = (): Response => {
+  const json = JSON.stringify({ balance: balanceTestData });
+
+  return new Response(json, { status: 201 });
 };

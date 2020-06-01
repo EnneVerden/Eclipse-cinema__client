@@ -12,7 +12,7 @@ import Table from "components/blocks/Table";
 import Footer from "components/blocks/Footer";
 
 import useStyles from "./styles";
-import { TProps } from "./container";
+import { TProps } from "./types";
 
 const tableHead = ["movieName", "date"];
 

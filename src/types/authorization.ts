@@ -39,8 +39,6 @@ export interface IClearUserStateAction {
   type: typeof CLEAR_USER_STATE;
 }
 
-export type TUserAction = ISetUserToStateAction | IClearUserStateAction;
-
 interface IWorkerNext {
   json: () => CallEffect | PutEffect;
   auth: {

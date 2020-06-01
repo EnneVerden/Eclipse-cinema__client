@@ -34,7 +34,7 @@ const Card: React.FC<TProps> = ({
   const eDate = useMemo(() => moment(endDate).format("YYYY.MM.DD"), [endDate]);
 
   useEffect(() => {
-    if (user.tickets.length) {
+    if (user.tickets) {
       user.tickets.forEach((ticket) => {
         if (ticket._id === _id) {
           setBoughtTicket(true);

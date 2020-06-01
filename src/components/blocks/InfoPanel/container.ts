@@ -1,17 +1,18 @@
 import InfoPanel from "./component";
+import { Dispatch } from "redux";
+import { connect } from "react-redux";
 import { TRootState } from "reducers";
 import { getUser } from "selectors/user";
-import { connect, ConnectedProps } from "react-redux";
+import replenishBalance from "actions/replenish-balance";
 
 const mapStateToProps = (state: TRootState) => ({
   user: getUser(state),
 });
 
-const connector = connect(mapStateToProps);
+const mapDispatchToProps = (dispatch: Dispatch) => ({
+  replenishBalance: () => dispatch(replenishBalance()),
+});
 
-export type TProps = ConnectedProps<typeof connector> & {
-  currentTabId: number;
-  setCurrentTabId: (tabId: number) => void;
-};
+export const connector = connect(mapStateToProps, mapDispatchToProps);
 
 export default connector(InfoPanel);

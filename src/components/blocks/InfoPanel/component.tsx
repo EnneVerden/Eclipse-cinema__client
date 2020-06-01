@@ -6,15 +6,16 @@ import Tab from "components/blocks/Tab";
 import Panel from "../Panel";
 import Container from "components/blocks/Container";
 import Button from "@material-ui/core/Button";
-import { TProps } from "./container";
 
 import useStyles from "./styles";
 import { color_pink, color_red } from "theme/variables.ts";
+import { TProps } from "./types";
 
 const InfoPanel: React.FC<TProps> = ({
   user: { avatar, fullName, balance } = {},
   currentTabId,
   setCurrentTabId,
+  replenishBalance,
 }) => {
   const styles = useStyles();
   const history = useHistory();
@@ -23,6 +24,10 @@ const InfoPanel: React.FC<TProps> = ({
 
   const handleChange = useCallback((tabId) => setCurrentTabId(tabId), [
     setCurrentTabId,
+  ]);
+
+  const handleReplenish = useCallback(() => replenishBalance(), [
+    replenishBalance,
   ]);
 
   return (
@@ -82,6 +87,7 @@ const InfoPanel: React.FC<TProps> = ({
                 size="large"
                 variant="outlined"
                 className={styles.btnReplenish}
+                onClick={handleReplenish}
               >
                 Replenish
               </Button>
