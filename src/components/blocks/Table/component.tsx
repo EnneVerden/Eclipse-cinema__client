@@ -60,7 +60,16 @@ const Table: React.FC<IProps> = ({
               } else {
                 return (
                   <td key={headName} className={styles.bodyTD}>
-                    <div>{row[headName]}</div>
+                    <div
+                      className={
+                        headName === "accountStatus" &&
+                        row.accountStatus === "deletion"
+                          ? styles.deletionStatus
+                          : undefined
+                      }
+                    >
+                      {row[headName]}
+                    </div>
                   </td>
                 );
               }
@@ -85,7 +94,8 @@ const Table: React.FC<IProps> = ({
                   />
                 </Button>
               </td>
-            ) : (
+            ) : null}
+            {withRemove && !withEdit ? (
               <td className={styles.bodyTD}>
                 <Button
                   variant="outlined"
@@ -97,7 +107,7 @@ const Table: React.FC<IProps> = ({
                   />
                 </Button>
               </td>
-            )}
+            ) : null}
           </tr>
         ))}
       </tbody>

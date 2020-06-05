@@ -28,7 +28,7 @@ const styles = makeStyles({
       zIndex: "100",
     },
 
-    "@media(max-width: 1366px)": {
+    "@media(max-width: 1919px)": {
       display: "flex",
     },
   }),
@@ -67,7 +67,7 @@ const styles = makeStyles({
     minWidth: "50px",
     minHeight: "55px",
 
-    "@media(max-width: 1366px)": {
+    "@media(max-width: 1919px)": {
       display: "flex",
     },
   },

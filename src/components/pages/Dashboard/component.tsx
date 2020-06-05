@@ -17,7 +17,7 @@ import { TTabsNames, TProps } from "./types";
 import { IOrder } from "types/orders";
 
 const moviesTableHead = ["movieName", "tags", "startDate", "endDate", "price"];
-const usersTableHead = ["avatar", "fullName", "email"];
+const usersTableHead = ["avatar", "fullName", "email", "accountStatus"];
 const ordersTableHead = ["avatar", "email", "movieName", "startDate", "price"];
 
 const DashboardPage: React.FC<TProps> = ({
@@ -27,6 +27,7 @@ const DashboardPage: React.FC<TProps> = ({
   fetchMovies,
   fetchUsers,
   fetchOrders,
+  removeUsers,
 }) => {
   const styles = useStyles();
   const [currentTab, setCurrentTab] = useState<TTabsNames>("movies");
@@ -56,6 +57,7 @@ const DashboardPage: React.FC<TProps> = ({
         avatar: user.avatar,
         fullName: user.fullName,
         email: user.email,
+        accountStatus: user.accountStatus,
       }))
     : [];
 
@@ -74,6 +76,8 @@ const DashboardPage: React.FC<TProps> = ({
     },
     [setCurrentTab, setSideMenuIsVisible]
   );
+
+  const handleRemoveUsers = useCallback(() => removeUsers(), [removeUsers]);
 
   useEffect(() => {
     if (!movies.movies) fetchMovies();
@@ -145,16 +149,13 @@ const DashboardPage: React.FC<TProps> = ({
                   <Button
                     variant="outlined"
                     className={classNames(styles.button, styles.buttonRemove)}
+                    onClick={handleRemoveUsers}
                   >
                     <HighlightOffIcon />
                     <span className={styles.btnText}>Remove all</span>
                   </Button>
                 </div>
-                <Table
-                  tableHead={usersTableHead}
-                  tableData={usersData}
-                  withRemove
-                />
+                <Table tableHead={usersTableHead} tableData={usersData} />
               </div>
             </Fade>
           )}
@@ -164,11 +165,7 @@ const DashboardPage: React.FC<TProps> = ({
                 <div className={styles.wrapper}>
                   <h2 className={styles.title}>Orders</h2>
                 </div>
-                <Table
-                  tableHead={ordersTableHead}
-                  tableData={ordersData}
-                  withRemove
-                />
+                <Table tableHead={ordersTableHead} tableData={ordersData} />
               </div>
             </Fade>
           )}

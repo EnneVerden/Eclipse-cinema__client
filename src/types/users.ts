@@ -1,4 +1,8 @@
-import { FETCH_USERS, SET_USERS_TO_STATE } from "constants/users";
+import {
+  FETCH_USERS,
+  SET_USERS_TO_STATE,
+  SET_REMOVE_USERS_TO_STATE,
+} from "constants/users";
 import { IUser } from "./user";
 import { CallEffect, PutEffect, TakeEffect } from "redux-saga/effects";
 
@@ -11,7 +15,14 @@ export interface ISetUsersToStateAction {
   users: IUser[];
 }
 
-export type TUsersAction = ISetUsersToStateAction;
+export interface ISetRemoveUsersToStateAction {
+  type: typeof SET_REMOVE_USERS_TO_STATE;
+  deletedUsersId: string[];
+}
+
+export type TUsersAction =
+  | ISetUsersToStateAction
+  | ISetRemoveUsersToStateAction;
 
 interface IWorkerNext {
   json: () => CallEffect | PutEffect;

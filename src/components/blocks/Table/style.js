@@ -78,6 +78,9 @@ const styles = makeStyles({
   iconRemove: {
     color: color_red,
   },
+  deletionStatus: {
+    color: color_red,
+  },
 });
 
 export default styles;

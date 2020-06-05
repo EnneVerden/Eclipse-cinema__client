@@ -2,6 +2,7 @@ import DashboardPage from "./component";
 import fetchMovies from "actions/fetch-movies";
 import fetchUsers from "actions/fetch-users";
 import fetchOrders from "actions/fetch-orders";
+import removeUsers from "actions/remove-users";
 import { Dispatch } from "redux";
 import { connect } from "react-redux";
 import { TRootState } from "reducers";
@@ -19,6 +20,7 @@ const mapDispatchToProps = (dispatch: Dispatch) => ({
   fetchMovies: () => dispatch(fetchMovies()),
   fetchUsers: () => dispatch(fetchUsers()),
   fetchOrders: () => dispatch(fetchOrders()),
+  removeUsers: () => dispatch(removeUsers()),
 });
 
 export const connector = connect(mapStateToProps, mapDispatchToProps);
