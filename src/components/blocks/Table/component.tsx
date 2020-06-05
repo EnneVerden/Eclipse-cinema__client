@@ -1,17 +1,11 @@
-import React from "react";
+import React, { useCallback } from "react";
 import classNames from "classnames";
 import Button from "@material-ui/core/Button";
 import EditIcon from "@material-ui/icons/Edit";
 import DeleteIcon from "@material-ui/icons/DeleteOutline";
 
 import useStyles from "./style";
-
-interface IProps {
-  tableHead: string[];
-  tableData: any;
-  withEdit?: boolean;
-  withRemove?: boolean;
-}
+import { IProps } from "./types";
 
 const Table: React.FC<IProps> = ({
   tableHead,
@@ -20,6 +14,8 @@ const Table: React.FC<IProps> = ({
   withRemove,
 }) => {
   const styles = useStyles();
+
+  console.log(tableData);
 
   return (
     <table className={styles.table}>
@@ -82,6 +78,7 @@ const Table: React.FC<IProps> = ({
                 <Button
                   variant="outlined"
                   className={classNames(styles.button, styles.buttonRemove)}
+                  onClick={() => row.removeTicket(row._id)}
                 >
                   <DeleteIcon
                     className={classNames(styles.icon, styles.iconRemove)}
@@ -93,6 +90,7 @@ const Table: React.FC<IProps> = ({
                 <Button
                   variant="outlined"
                   className={classNames(styles.button, styles.buttonRemove)}
+                  onClick={() => row.removeTicket(row._id)}
                 >
                   <DeleteIcon
                     className={classNames(styles.icon, styles.iconRemove)}

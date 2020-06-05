@@ -1,23 +1,44 @@
 import { IMovie } from "./movies";
-import { SET_BALANCE_TO_STATE, REPLENISH_BALANCE } from "constants/user";
+import {
+  SET_BALANCE_TO_STATE,
+  REPLENISH_BALANCE,
+  BUY_MOVIE,
+  SET_BOUGHT_MOVIE_TO_STATE,
+  REMOVE_TICKET_FROM_STATE,
+} from "constants/user";
 import { ISetUserToStateAction, IClearUserStateAction } from "./authorization";
 import { CallEffect, PutEffect, TakeEffect } from "redux-saga/effects";
 
-interface IRoles {
+interface IRole {
   _id: string;
   name: string;
 }
 
 export interface IUser {
-  _id: string;
-  email: string;
-  avatar: string;
-  fullName: string;
+  _id?: string;
+  email?: string;
+  avatar?: string;
+  fullName?: string;
   password?: string;
-  accountStatus: string;
-  balance: number;
-  roles: Array<IRoles>;
-  tickets: Array<IMovie>;
+  accountStatus?: string;
+  balance?: number;
+  roles?: Array<IRole>;
+  tickets?: Array<IMovie>;
+}
+
+export interface IBuyMovieAction {
+  type: typeof BUY_MOVIE;
+  movieId: string;
+}
+
+export interface ISetBoughtMovieToState {
+  type: typeof SET_BOUGHT_MOVIE_TO_STATE;
+  movie: IMovie;
+}
+
+export interface IRemoveTicketFromState {
+  type: typeof REMOVE_TICKET_FROM_STATE;
+  movie: IMovie;
 }
 
 export interface IBalance {
@@ -36,7 +57,9 @@ export interface ISetBalanceToStateAction {
 export type TUserAction =
   | ISetUserToStateAction
   | IClearUserStateAction
-  | ISetBalanceToStateAction;
+  | ISetBalanceToStateAction
+  | ISetBoughtMovieToState
+  | IRemoveTicketFromState;
 
 interface IWorkerNext {
   json: () => CallEffect | PutEffect;

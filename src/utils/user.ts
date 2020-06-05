@@ -1,4 +1,5 @@
 import { IUser, IBalance } from "types/user";
+import { moviesTestData } from "./movies";
 
 export const userTestData: IUser = {
   avatar: "https://image.flaticon.com/icons/svg/236/236831.svg",
@@ -9,7 +10,7 @@ export const userTestData: IUser = {
       name: "user",
     },
   ],
-  tickets: [],
+  tickets: moviesTestData.movies,
   accountStatus: "active",
   _id: "1",
   fullName: "Test",
@@ -23,6 +24,20 @@ export const balanceTestData: IBalance = {
 
 export const replenishBalanceResponse = (): Response => {
   const json = JSON.stringify({ balance: balanceTestData });
+
+  return new Response(json, { status: 201 });
+};
+
+export const getMovieResponse = (): Response => {
+  const json = JSON.stringify({ userInfo: moviesTestData.movies[0] });
+
+  return new Response(json, { status: 201 });
+};
+
+export const errorMessage = "Test error";
+
+export const getErrorResponse = (): Response => {
+  const json = JSON.stringify({ error: { message: errorMessage } });
 
   return new Response(json, { status: 201 });
 };

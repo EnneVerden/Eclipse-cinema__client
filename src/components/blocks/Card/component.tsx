@@ -1,4 +1,4 @@
-import React, { useMemo, useState, useEffect } from "react";
+import React, { useMemo, useState, useEffect, useCallback } from "react";
 import Fade from "@material-ui/core/Fade";
 import Button from "@material-ui/core/Button";
 import ShoppingCartIcon from "@material-ui/icons/ShoppingCart";
@@ -19,6 +19,7 @@ const Card: React.FC<TProps> = ({
   endDate,
   ticketPrice,
   user,
+  buyMovie,
 }) => {
   const [boughtTicket, setBoughtTicket] = useState<boolean>(false);
   const styles = useStyles();
@@ -32,6 +33,8 @@ const Card: React.FC<TProps> = ({
     startDate,
   ]);
   const eDate = useMemo(() => moment(endDate).format("YYYY.MM.DD"), [endDate]);
+
+  const handleBuy = useCallback(() => buyMovie(_id), [buyMovie]);
 
   useEffect(() => {
     if (user.tickets) {
@@ -66,6 +69,7 @@ const Card: React.FC<TProps> = ({
                 className={styles.button}
                 disabled={boughtTicket ? true : false}
                 classes={{ disabled: styles.disabledButton }}
+                onClick={handleBuy}
               >
                 {boughtTicket ? <CheckIcon /> : <ShoppingCartIcon />}
               </Button>

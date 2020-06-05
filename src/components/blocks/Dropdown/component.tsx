@@ -37,9 +37,9 @@ const Dropdown: React.FC<TProps> = ({
   return (
     <div className={styles.dropdown}>
       <DropdownBtn
-        avatarURL={avatar}
-        fullName={fullName}
-        balance={balance}
+        avatarURL={avatar ? avatar : ""}
+        fullName={fullName ? fullName : ""}
+        balance={balance ? balance : 0}
         isVisible={isVisible}
         handleToggle={handleToggle}
         handleClose={handleClose}

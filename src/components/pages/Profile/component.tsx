@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect, useCallback } from "react";
 import moment from "moment";
 import Fade from "@material-ui/core/Fade";
 import PageFade from "components/blocks/PageFade/component";
@@ -12,21 +12,32 @@ import Table from "components/blocks/Table";
 import Footer from "components/blocks/Footer";
 
 import useStyles from "./styles";
-import { TProps } from "./types";
+import { TProps, IDataItemProps } from "./types";
 
 const tableHead = ["movieName", "date"];
 
-const ProfilePage: React.FC<TProps> = ({ user }) => {
+const ProfilePage: React.FC<TProps> = ({ user, removeTicket }) => {
   const styles = useStyles();
   const [currentTabId, setCurrentTabId] = useState<number>(0);
+  const [data, setData] = useState<IDataItemProps[]>([]);
 
-  const data = user.tickets
-    ? user.tickets.map((ticket) => ({
-        _id: ticket._id,
-        movieName: ticket.movieName,
-        date: moment(ticket.startDate).format("YYYY.MM.DD"),
-      }))
-    : [];
+  const handleRemoveTicket = useCallback(
+    (deletedTicketId: string) => removeTicket(deletedTicketId),
+    [removeTicket]
+  );
+
+  useEffect(() => {
+    if (user.tickets) {
+      setData(
+        user.tickets.map((ticket) => ({
+          _id: ticket._id,
+          movieName: ticket.movieName,
+          date: moment(ticket.startDate).format("YYYY.MM.DD"),
+          removeTicket: handleRemoveTicket,
+        }))
+      );
+    }
+  }, [user.tickets, removeTicket]);
 
   return (
     <PageFade>
