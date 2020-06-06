@@ -1,36 +1,42 @@
-import React, { useCallback } from "react";
+import React, {
+  useEffect,
+  useState,
+  useCallback,
+  useLayoutEffect,
+} from "react";
 import { Route, Redirect } from "react-router-dom";
-import { IUser } from "types/user";
 import UnauthorizedPage from "components/pages/Unauthorized";
+import { TProps } from "./types";
 
-interface IProps {
-  component: React.FC;
-  user: IUser | {};
-  exact?: boolean;
-  path: string;
-  auth?: boolean;
-}
-
-const ProtectedRoute: React.FC<IProps> = ({
+const ProtectedRoute: React.FC<TProps> = ({
+  authorization,
   component: Component,
   user,
   auth,
   ...props
 }) => {
+  const [accessIsAllowed, setAccessIsAllowed] = useState<boolean>(false);
+
   const protectedRoute = useCallback(
-    () =>
-      Object.keys(user).length ? (
-        <Component {...props} />
-      ) : (
-        <UnauthorizedPage />
-      ),
-    [user, props]
+    () => (accessIsAllowed ? <Component {...props} /> : <UnauthorizedPage />),
+    [accessIsAllowed, props]
   );
   const protectedAuth = useCallback(
-    () =>
-      Object.keys(user).length ? <Redirect to="/" /> : <Component {...props} />,
-    [user, props]
+    () => (accessIsAllowed ? <Redirect to="/" /> : <Component {...props} />),
+    [accessIsAllowed, props]
   );
+
+  useEffect(() => {
+    if (!Object.keys(user).length) {
+      authorization();
+    }
+  }, [user, authorization]);
+
+  useLayoutEffect(() => {
+    if (Object.keys(user).length) {
+      setAccessIsAllowed(true);
+    }
+  }, [user, setAccessIsAllowed]);
 
   return <Route {...props} render={auth ? protectedAuth : protectedRoute} />;
 };
