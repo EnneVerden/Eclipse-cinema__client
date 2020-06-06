@@ -38,6 +38,12 @@ export function* changeUserInfoWorker(
 
     if (data.userInfo) {
       yield put(setNewUserInfoToState(data.userInfo));
+      yield put(
+        setAlert({
+          type: "success",
+          message: "User information changed successfully",
+        })
+      );
     }
   } catch (error) {
     yield put(
