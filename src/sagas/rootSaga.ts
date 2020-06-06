@@ -11,6 +11,7 @@ import { fetchOrders } from "./fetch-orders";
 import { replenishBalance } from "./replenish-balance";
 import { buyMovie } from "./buy-movie";
 import { removeTicket } from "./remove-ticket";
+import { removeMovie } from "./remove-movie";
 import { removeUsers } from "./remove-users";
 
 export default function* rootSaga(): Generator<
@@ -28,6 +29,7 @@ export default function* rootSaga(): Generator<
     replenishBalance(),
     buyMovie(),
     removeTicket(),
+    removeMovie(),
     removeUsers(),
   ]);
 }

@@ -5,9 +5,15 @@ import { FETCH_MOVIES } from "constants/movies";
 import setMoviesToState from "actions/set-movies";
 
 export const fetchMoviesRequest = (
-  page?: number,
+  page?: string,
   tag?: string
 ): Promise<Response> => {
+  if (page === "0") {
+    return fetch(`https://eclipse-cinema-server.herokuapp.com/movies`, {
+      credentials: "include",
+    });
+  }
+
   return fetch(
     `https://eclipse-cinema-server.herokuapp.com/movies?page=${page}${
       tag ? "&tag=" + tag : ""

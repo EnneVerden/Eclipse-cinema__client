@@ -1,6 +1,6 @@
 import { expectSaga, testSaga } from "redux-saga-test-plan";
 import { fetchOrdersWorker, fetchOrders, fetchOrdersRequest } from ".";
-import { orderTestData, fetchOrdersResponse } from "utils/orders";
+import { orderTestData } from "utils/orders";
 import setOrdersToState from "actions/set-orders";
 import { getErrorResponse, errorMessage } from "utils/auth";
 import setAlert from "actions/set-alert";

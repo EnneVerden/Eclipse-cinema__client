@@ -34,7 +34,7 @@ const Card: React.FC<TProps> = ({
   ]);
   const eDate = useMemo(() => moment(endDate).format("YYYY.MM.DD"), [endDate]);
 
-  const handleBuy = useCallback(() => buyMovie(_id), [buyMovie]);
+  const handleBuy = useCallback(() => buyMovie(_id), [buyMovie, _id]);
 
   useEffect(() => {
     if (user.tickets) {
@@ -44,7 +44,7 @@ const Card: React.FC<TProps> = ({
         }
       });
     }
-  }, [user.tickets]);
+  }, [user.tickets, _id]);
 
   return (
     <Fade in>

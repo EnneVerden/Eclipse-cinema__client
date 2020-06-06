@@ -39,3 +39,17 @@ export const fetchMoviesResponse = (): Response => {
 
   return new Response(json, { status: 201 });
 };
+
+export const fetchRemoveMovieResponse = (): Response => {
+  const json = JSON.stringify({ deletedMovieId: "1" });
+
+  return new Response(json, { status: 201 });
+};
+
+export const errorMessage = "Test error";
+
+export const getErrorResponse = (): Response => {
+  const json = JSON.stringify({ error: { message: errorMessage } });
+
+  return new Response(json, { status: 201 });
+};

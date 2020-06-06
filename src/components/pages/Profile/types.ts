@@ -7,5 +7,5 @@ export interface IDataItemProps {
   _id: string;
   movieName: string;
   date: string;
-  removeTicket: (deletedTicketId: string) => void;
+  remove: (deletedTicketId: string) => void;
 }

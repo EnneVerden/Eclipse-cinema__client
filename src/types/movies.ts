@@ -1,4 +1,8 @@
-import { FETCH_MOVIES, SET_MOVIES_TO_STATE } from "constants/movies";
+import {
+  FETCH_MOVIES,
+  SET_MOVIES_TO_STATE,
+  SET_REMOVE_MOVIE_TO_STATE,
+} from "constants/movies";
 import { ITag } from "./tags";
 import { CallEffect, PutEffect, TakeEffect } from "redux-saga/effects";
 
@@ -30,6 +34,13 @@ export interface ISetMoviesToStateAction {
   type: typeof SET_MOVIES_TO_STATE;
   movies: IMoviesData;
 }
+
+export interface ISetRemoveMovieToState {
+  type: typeof SET_REMOVE_MOVIE_TO_STATE;
+  deletedMovieId: string;
+}
+
+export type TMovieAction = ISetMoviesToStateAction | ISetRemoveMovieToState;
 
 interface IWorkerNext {
   json: () => CallEffect | PutEffect;

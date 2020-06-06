@@ -16,6 +16,7 @@ const styles = makeStyles({
     bottom: `85%`,
     right: `0px`,
     overflow: "hidden",
+    zIndex: 100,
 
     "@media(max-width: 600px)": {
       maxWidth: "90%",

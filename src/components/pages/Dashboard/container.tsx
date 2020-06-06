@@ -2,6 +2,7 @@ import DashboardPage from "./component";
 import fetchMovies from "actions/fetch-movies";
 import fetchUsers from "actions/fetch-users";
 import fetchOrders from "actions/fetch-orders";
+import removeMovie from "actions/remove-movie";
 import removeUsers from "actions/remove-users";
 import { Dispatch } from "redux";
 import { connect } from "react-redux";
@@ -17,9 +18,11 @@ const mapStateToProps = (state: TRootState) => ({
 });
 
 const mapDispatchToProps = (dispatch: Dispatch) => ({
-  fetchMovies: () => dispatch(fetchMovies()),
+  fetchMovies: (page: string) => dispatch(fetchMovies(page)),
   fetchUsers: () => dispatch(fetchUsers()),
   fetchOrders: () => dispatch(fetchOrders()),
+  removeMovie: (movieIdToDelete: string) =>
+    dispatch(removeMovie(movieIdToDelete)),
   removeUsers: () => dispatch(removeUsers()),
 });
 

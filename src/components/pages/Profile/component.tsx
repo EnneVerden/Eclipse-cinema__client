@@ -33,11 +33,11 @@ const ProfilePage: React.FC<TProps> = ({ user, removeTicket }) => {
           _id: ticket._id,
           movieName: ticket.movieName,
           date: moment(ticket.startDate).format("YYYY.MM.DD"),
-          removeTicket: handleRemoveTicket,
+          remove: handleRemoveTicket,
         }))
       );
     }
-  }, [user.tickets, removeTicket]);
+  }, [user.tickets, removeTicket, handleRemoveTicket]);
 
   return (
     <PageFade>

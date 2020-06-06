@@ -15,6 +15,7 @@ import Footer from "components/blocks/Footer";
 import useStyles from "./styles";
 import { TTabsNames, TProps } from "./types";
 import { IOrder } from "types/orders";
+import { IUser } from "types/user";
 
 const moviesTableHead = ["movieName", "tags", "startDate", "endDate", "price"];
 const usersTableHead = ["avatar", "fullName", "email", "accountStatus"];
@@ -27,39 +28,20 @@ const DashboardPage: React.FC<TProps> = ({
   fetchMovies,
   fetchUsers,
   fetchOrders,
+  removeMovie,
   removeUsers,
 }) => {
   const styles = useStyles();
   const [currentTab, setCurrentTab] = useState<TTabsNames>("movies");
   const [sideMenuIsVisible, setSideMenuIsVisible] = useState<boolean>(true);
+  const [moviesData, setMoviesData] = useState<any[] | []>([]);
+  const [usersData, setUsersData] = useState<IUser[] | []>([]);
   const [ordersData, setOrdersData] = useState<IOrder[] | []>([]);
 
-  const moviesData = movies.movies
-    ? movies.movies?.map((movie) => ({
-        _id: movie._id,
-        movieName: movie.movieName,
-        tags: movie.tags.map((tag, index) => {
-          if (movie.tags.length === index + 1) {
-            return tag.name.toLowerCase();
-          } else {
-            return `${tag.name.toLowerCase()}, `;
-          }
-        }),
-        startDate: moment(movie.startDate).format("YYYY.MM.DD"),
-        endDate: moment(movie.endDate).format("YYYY.MM.DD"),
-        price: movie.ticketPrice,
-      }))
-    : [];
-
-  const usersData = users
-    ? users.map((user) => ({
-        _id: user._id,
-        avatar: user.avatar,
-        fullName: user.fullName,
-        email: user.email,
-        accountStatus: user.accountStatus,
-      }))
-    : [];
+  const handleRemoveMovie = useCallback(
+    (movieIdToDelete: string) => removeMovie(movieIdToDelete),
+    [removeMovie]
+  );
 
   const handleToggle = useCallback(
     () => setSideMenuIsVisible((visible) => !visible),
@@ -80,7 +62,7 @@ const DashboardPage: React.FC<TProps> = ({
   const handleRemoveUsers = useCallback(() => removeUsers(), [removeUsers]);
 
   useEffect(() => {
-    if (!movies.movies) fetchMovies();
+    if (!movies.movies) fetchMovies("0");
   }, [fetchMovies, movies.movies]);
 
   useEffect(() => {
@@ -90,6 +72,42 @@ const DashboardPage: React.FC<TProps> = ({
   useEffect(() => {
     if (!orders.length) fetchOrders();
   }, [fetchOrders, orders.length]);
+
+  useEffect(() => {
+    if (movies.movies) {
+      setMoviesData(
+        movies.movies?.map((movie) => ({
+          _id: movie._id,
+          movieName: movie.movieName,
+          tags: movie.tags.map((tag, index) => {
+            if (movie.tags.length === index + 1) {
+              return tag.name.toLowerCase();
+            } else {
+              return `${tag.name.toLowerCase()}, `;
+            }
+          }),
+          startDate: moment(movie.startDate).format("YYYY.MM.DD"),
+          endDate: moment(movie.endDate).format("YYYY.MM.DD"),
+          price: movie.ticketPrice,
+          remove: handleRemoveMovie,
+        }))
+      );
+    }
+  }, [movies, setMoviesData]);
+
+  useEffect(() => {
+    if (users.length) {
+      setUsersData(
+        users.map((user) => ({
+          _id: user._id,
+          avatar: user.avatar,
+          fullName: user.fullName,
+          email: user.email,
+          accountStatus: user.accountStatus,
+        }))
+      );
+    }
+  }, [users, setUsersData]);
 
   useEffect(() => {
     if (orders.length) {
