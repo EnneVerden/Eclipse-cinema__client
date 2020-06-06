@@ -6,9 +6,9 @@ import Button from "@material-ui/core/Button";
 import useStyles from "./styles";
 import { TProps } from "./container";
 
-type TFieldNames = "firstName" | "lastName" | "email";
+type TFieldNames = "firstName" | "lastName" | "email" | "oldPassword";
 
-const ProfileForm: React.FC<TProps> = ({ user, setAlert }) => {
+const ProfileForm: React.FC<TProps> = ({ fullName, email, setAlert }) => {
   const styles = useStyles();
 
   const validate = (fieldName: TFieldNames, value: string): boolean => {
@@ -39,14 +39,16 @@ const ProfileForm: React.FC<TProps> = ({ user, setAlert }) => {
     <Formik
       enableReinitialize
       initialValues={{
-        firstName: user.fullName ? user.fullName.split(" ")[0] : "",
-        lastName: user.fullName ? user.fullName.split(" ")[1] : "",
-        email: user.email ? user.email : "",
+        firstName: fullName ? fullName.split(" ")[0] : "",
+        lastName: fullName ? fullName.split(" ")[1] : "",
+        email: email ? email : "",
+        oldPassword: "",
       }}
-      onSubmit={({ firstName, lastName, email }) => {
+      onSubmit={({ firstName, lastName, email, oldPassword }) => {
         if (!validate("firstName", firstName)) return;
         if (!validate("lastName", lastName)) return;
         if (!validate("email", email)) return;
+        if (!validate("oldPassword", oldPassword)) return;
 
         console.log(email);
       }}
@@ -86,6 +88,14 @@ const ProfileForm: React.FC<TProps> = ({ user, setAlert }) => {
               size="small"
               name="email"
               value={email}
+              className={styles.input}
+              onChange={handleChange}
+            />
+            <TextField
+              label="Old password"
+              variant="outlined"
+              size="small"
+              name="oldPassword"
               className={styles.input}
               onChange={handleChange}
             />

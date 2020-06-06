@@ -12,7 +12,9 @@ import { color_pink, color_red } from "theme/variables.ts";
 import { TProps } from "./types";
 
 const InfoPanel: React.FC<TProps> = ({
-  user: { avatar, fullName, balance } = {},
+  avatar,
+  fullName,
+  balance,
   currentTabId,
   setCurrentTabId,
   replenishBalance,

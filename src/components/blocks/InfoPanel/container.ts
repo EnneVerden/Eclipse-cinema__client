@@ -2,11 +2,13 @@ import InfoPanel from "./component";
 import { Dispatch } from "redux";
 import { connect } from "react-redux";
 import { TRootState } from "reducers";
-import { getUser } from "selectors/user";
+import { getUserAvatar, getUserFullName, getUserBalance } from "selectors/user";
 import replenishBalance from "actions/replenish-balance";
 
 const mapStateToProps = (state: TRootState) => ({
-  user: getUser(state),
+  avatar: getUserAvatar(state),
+  fullName: getUserFullName(state),
+  balance: getUserBalance(state),
 });
 
 const mapDispatchToProps = (dispatch: Dispatch) => ({

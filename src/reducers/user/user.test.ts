@@ -1,7 +1,11 @@
 import { SET_USER_TO_STATE, CLEAR_USER_STATE } from "constants/authorization";
-import { userTestData, balanceTestData } from "utils/user";
+import { userTestData, balanceTestData, newUserInfoTestData } from "utils/user";
 import userReducer from ".";
-import { SET_BALANCE_TO_STATE, REMOVE_TICKET_FROM_STATE } from "constants/user";
+import {
+  SET_BALANCE_TO_STATE,
+  REMOVE_TICKET_FROM_STATE,
+  SET_NEW_USER_INFO_TO_STATE,
+} from "constants/user";
 import { moviesTestData } from "utils/movies";
 
 describe("Users reducer", () => {
@@ -21,6 +25,20 @@ describe("Users reducer", () => {
     });
 
     expect(state).toEqual(balanceTestData);
+  });
+
+  it("Should return state with new user info if receiving type", () => {
+    const initialState = userTestData;
+    const expectedData = userTestData;
+    expectedData.email = newUserInfoTestData.email;
+    expectedData.fullName = newUserInfoTestData.fullName;
+
+    const state = userReducer(initialState, {
+      type: SET_NEW_USER_INFO_TO_STATE,
+      newUserInfo: newUserInfoTestData,
+    });
+
+    expect(state).toEqual(expectedData);
   });
 
   it("Should return state without deleted movie if receiving type", () => {

@@ -2,11 +2,13 @@ import Dropdown from "./component";
 import { Dispatch } from "redux";
 import logout from "actions/logout";
 import { connect, ConnectedProps } from "react-redux";
-import { getUser } from "selectors/user";
+import { getUserAvatar, getUserFullName, getUserBalance } from "selectors/user";
 import { TRootState } from "reducers";
 
 const mapStateToProps = (state: TRootState) => ({
-  user: getUser(state),
+  avatar: getUserAvatar(state),
+  fullName: getUserFullName(state),
+  balance: getUserBalance(state),
 });
 
 const mapDispatchToProps = (dispatch: Dispatch) => ({

@@ -93,7 +93,7 @@ const DashboardPage: React.FC<TProps> = ({
         }))
       );
     }
-  }, [movies, setMoviesData]);
+  }, [movies, setMoviesData, handleRemoveMovie]);
 
   useEffect(() => {
     if (users.length) {

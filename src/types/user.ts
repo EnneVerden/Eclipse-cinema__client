@@ -5,6 +5,7 @@ import {
   BUY_MOVIE,
   SET_BOUGHT_MOVIE_TO_STATE,
   REMOVE_TICKET_FROM_STATE,
+  SET_NEW_USER_INFO_TO_STATE,
 } from "constants/user";
 import { ISetUserToStateAction, IClearUserStateAction } from "./authorization";
 import { CallEffect, PutEffect, TakeEffect } from "redux-saga/effects";
@@ -26,6 +27,19 @@ export interface IUser {
   tickets?: Array<IMovie>;
 }
 
+export interface IUserInfoToChange {
+  fullName?: string;
+  email?: string;
+  newPassword?: string;
+  oldPassword: string;
+}
+
+export interface INewUserInfo {
+  fullName?: string;
+  email?: string;
+  password?: boolean;
+}
+
 export interface IBuyMovieAction {
   type: typeof BUY_MOVIE;
   movieId: string;
@@ -34,6 +48,11 @@ export interface IBuyMovieAction {
 export interface ISetBoughtMovieToState {
   type: typeof SET_BOUGHT_MOVIE_TO_STATE;
   movie: IMovie;
+}
+
+export interface ISetNewUserInfoToState {
+  type: typeof SET_NEW_USER_INFO_TO_STATE;
+  newUserInfo: INewUserInfo;
 }
 
 export interface IRemoveTicketFromState {
@@ -59,6 +78,7 @@ export type TUserAction =
   | IClearUserStateAction
   | ISetBalanceToStateAction
   | ISetBoughtMovieToState
+  | ISetNewUserInfoToState
   | IRemoveTicketFromState;
 
 interface IWorkerNext {

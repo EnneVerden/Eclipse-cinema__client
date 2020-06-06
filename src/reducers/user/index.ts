@@ -4,6 +4,7 @@ import {
   SET_BALANCE_TO_STATE,
   SET_BOUGHT_MOVIE_TO_STATE,
   REMOVE_TICKET_FROM_STATE,
+  SET_NEW_USER_INFO_TO_STATE,
 } from "constants/user";
 
 type TState = IUser & {};
@@ -22,6 +23,20 @@ const user = (state = initialState, action: TUserAction): TState => {
         tickets: state.tickets ? [...state.tickets, action.movie] : [],
         balance: state.balance ? state.balance - action.movie.ticketPrice : 0,
       };
+    case SET_NEW_USER_INFO_TO_STATE:
+      if (action.newUserInfo.fullName) {
+        return { ...state, fullName: action.newUserInfo.fullName };
+      } else if (action.newUserInfo.email) {
+        return { ...state, email: action.newUserInfo.email };
+      } else if (action.newUserInfo.email && action.newUserInfo.fullName) {
+        return {
+          ...state,
+          fullName: action.newUserInfo.fullName,
+          email: action.newUserInfo.email,
+        };
+      }
+
+      return state;
     case REMOVE_TICKET_FROM_STATE:
       return {
         ...state,

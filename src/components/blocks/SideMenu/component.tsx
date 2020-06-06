@@ -15,7 +15,7 @@ import useStyles from "./styles";
 import { TProps } from "./types";
 
 const SideMenu: React.FC<TProps> = ({
-  user = {},
+  user,
   sideMenuIsVisible,
   currentTab,
   handleTabChange,

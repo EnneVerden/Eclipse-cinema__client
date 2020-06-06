@@ -82,10 +82,12 @@ const styles = makeStyles({
   },
   email: {
     padding: "25px 0",
+    display: "flex",
+    justifyContent: "space-between",
 
     "@media(max-width: 600px)": {
-      padding: 0,
-      marginBottom: "10px",
+      paddingTop: "0",
+      flexDirection: "column",
     },
   },
   button: {

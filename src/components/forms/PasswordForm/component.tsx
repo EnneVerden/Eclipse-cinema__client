@@ -8,7 +8,7 @@ import { TProps } from "./container";
 
 type TFieldNames = "newPassword" | "confirmPassword" | "oldPassword";
 
-const PasswordForm: React.FC<TProps> = ({ setAlert }) => {
+const PasswordForm: React.FC<TProps> = ({ setAlert, changeUserPassword }) => {
   const styles = useStyles();
 
   const validate = (
@@ -49,19 +49,16 @@ const PasswordForm: React.FC<TProps> = ({ setAlert }) => {
         if (!validate(oldPassword, "oldPassword")) return;
         if (!validate([newPassword, confirmPassword])) return;
 
-        console.log(newPassword);
+        changeUserPassword(newPassword, oldPassword);
       }}
     >
-      {({
-        handleChange,
-        values: { newPassword, confirmPassword, oldPassword },
-        handleSubmit,
-      }) => (
+      {({ handleChange, handleSubmit }) => (
         <form className={styles.form} onSubmit={handleSubmit}>
           <div className={styles.title}>Password information</div>
           <div className={styles.newPassword}>
             <TextField
               label="New password"
+              type="password"
               variant="outlined"
               color="primary"
               size="small"
@@ -71,6 +68,7 @@ const PasswordForm: React.FC<TProps> = ({ setAlert }) => {
             />
             <TextField
               label="Confirm password"
+              type="password"
               variant="outlined"
               size="small"
               name="confirmPassword"
@@ -81,6 +79,7 @@ const PasswordForm: React.FC<TProps> = ({ setAlert }) => {
           <div className={styles.oldPassword}>
             <TextField
               label="Old password"
+              type="password"
               variant="outlined"
               size="small"
               name="oldPassword"

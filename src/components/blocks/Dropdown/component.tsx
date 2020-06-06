@@ -12,10 +12,7 @@ import { TProps } from "./container";
 import { color_metallic } from "theme/variables";
 import useStyles from "./styles";
 
-const Dropdown: React.FC<TProps> = ({
-  user: { avatar, fullName, balance },
-  logout,
-}) => {
+const Dropdown: React.FC<TProps> = ({ avatar, fullName, balance, logout }) => {
   const styles = useStyles();
   const history = useHistory();
   const [isVisible, setIsVisible] = useState<boolean>(false);

@@ -13,6 +13,7 @@ import { buyMovie } from "./buy-movie";
 import { removeTicket } from "./remove-ticket";
 import { removeMovie } from "./remove-movie";
 import { removeUsers } from "./remove-users";
+import { changeUserInfo } from "./change-user-info";
 
 export default function* rootSaga(): Generator<
   AllEffect<Generator<TakeEffect | CallEffect>>
@@ -31,5 +32,6 @@ export default function* rootSaga(): Generator<
     removeTicket(),
     removeMovie(),
     removeUsers(),
+    changeUserInfo(),
   ]);
 }

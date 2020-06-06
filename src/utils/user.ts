@@ -18,6 +18,11 @@ export const userTestData: IUser = {
   password: "",
 };
 
+export const newUserInfoTestData = {
+  email: "test@gmail.com",
+  fullName: "test name",
+};
+
 export const balanceTestData: IBalance = {
   balance: 5,
 };
