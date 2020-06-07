@@ -1,5 +1,6 @@
-import React, { useCallback } from "react";
+import React, { useCallback, useState, useEffect } from "react";
 import { useHistory } from "react-router-dom";
+import PublishIcon from "@material-ui/icons/Publish";
 import AccountBalanceWalletIcon from "@material-ui/icons/AccountBalanceWallet";
 import Tabs from "@material-ui/core/Tabs";
 import Tab from "components/blocks/Tab";
@@ -19,6 +20,7 @@ const InfoPanel: React.FC<TProps> = ({
   setCurrentTabId,
   replenishBalance,
 }) => {
+  const [img, setImg] = useState<any>();
   const styles = useStyles();
   const history = useHistory();
 
@@ -32,19 +34,33 @@ const InfoPanel: React.FC<TProps> = ({
     replenishBalance,
   ]);
 
+  const handleChangeImg = useCallback((event: any) => {
+    return setImg(event.target.files[0]);
+  }, []);
+
+  useEffect(() => {
+    if (img) {
+      console.log(img);
+    }
+  }, [img]);
+
   return (
     <Panel>
       <Container>
         <div className={styles.wrapper}>
           <div className={styles.person}>
             <img src={avatar} alt="avatar" className={styles.avatar} />
-            <div className={styles.information}>
-              <span className={styles.name}>{fullName}</span>
-              <span className={styles.balance}>
-                <AccountBalanceWalletIcon className={styles.icon} />
-                Balance: {balance}$
-              </span>
-            </div>
+            <label htmlFor="file" className={styles.uploaderLabel}>
+              <input
+                type="file"
+                id="file"
+                accept=".jpg, .jpeg, .png"
+                className={styles.uploaderFile}
+                onChange={handleChangeImg}
+              />
+              <PublishIcon className={styles.uploaderIcon} />
+              <span className={styles.uploaderTitle}>Upload</span>
+            </label>
           </div>
           <div className={styles.control}>
             <div className={styles.tabsWrapper}>

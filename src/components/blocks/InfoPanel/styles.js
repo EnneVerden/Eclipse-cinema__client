@@ -17,6 +17,7 @@ const styles = makeStyles({
   },
   person: {
     display: "flex",
+    alignItems: "center",
     flex: 1,
     padding: "20px 0",
   },
@@ -27,6 +28,38 @@ const styles = makeStyles({
       width: "80px",
     },
   },
+  uploaderLabel: {
+    marginLeft: "15px",
+    display: "flex",
+    justifyContent: "center",
+    alignItems: "center",
+    width: "120px",
+    height: "35px",
+    fontFamily: `${font_gilroy}, sans-serif`,
+    fontSize: "1rem",
+    color: color_metallic,
+    letterSpacing: "1px",
+    background: `linear-gradient(to right, ${color_pink}, ${color_red})`,
+    cursor: "pointer",
+    borderRadius: "3px",
+
+    "& *": {
+      pointerEvents: "none",
+    },
+  },
+  uploaderFile: {
+    width: "0.1px",
+    height: "0.1px",
+    opacity: 0,
+    overflow: "hidden",
+    position: "absolute",
+    zIndex: -1,
+    textAlign: "center",
+  },
+  uploaderIcon: {
+    marginRight: "7px",
+  },
+  uploaderTitle: {},
   information: {
     padding: "0 15px",
     display: "flex",
