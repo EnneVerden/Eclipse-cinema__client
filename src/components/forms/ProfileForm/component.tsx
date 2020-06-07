@@ -122,7 +122,7 @@ const ProfileForm: React.FC<TProps> = ({
               onChange={handleChange}
             />
           </div>
-          <div>
+          <div className={styles.buttons}>
             <Button
               type="submit"
               variant="outlined"

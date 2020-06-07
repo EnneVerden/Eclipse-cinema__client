@@ -34,7 +34,7 @@ export const replenishBalanceResponse = (): Response => {
 };
 
 export const getMovieResponse = (): Response => {
-  const json = JSON.stringify({ userInfo: moviesTestData.movies[0] });
+  const json = JSON.stringify({ movie: moviesTestData.movies[0] });
 
   return new Response(json, { status: 201 });
 };
@@ -43,6 +43,12 @@ export const errorMessage = "Test error";
 
 export const getErrorResponse = (): Response => {
   const json = JSON.stringify({ error: { message: errorMessage } });
+
+  return new Response(json, { status: 201 });
+};
+
+export const getAccountStatusResponse = (): Response => {
+  const json = JSON.stringify({ status: { accountStatus: "deletion" } });
 
   return new Response(json, { status: 201 });
 };

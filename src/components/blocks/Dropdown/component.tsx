@@ -1,4 +1,4 @@
-import React, { useCallback, useState, useRef } from "react";
+import React, { useCallback, useState, useRef, useEffect } from "react";
 import Fade from "@material-ui/core/Fade";
 import AccountCircleIcon from "@material-ui/icons/AccountCircle";
 import DashboardIcon from "@material-ui/icons/Dashboard";
@@ -12,10 +12,17 @@ import { TProps } from "./container";
 import { color_metallic } from "theme/variables";
 import useStyles from "./styles";
 
-const Dropdown: React.FC<TProps> = ({ avatar, fullName, balance, logout }) => {
+const Dropdown: React.FC<TProps> = ({
+  avatar,
+  fullName,
+  balance,
+  roles,
+  logout,
+}) => {
   const styles = useStyles();
   const history = useHistory();
   const [isVisible, setIsVisible] = useState<boolean>(false);
+  const [isAdmin, setIsAdmin] = useState<boolean>(false);
   const buttonRef = useRef<HTMLButtonElement | null>(null);
 
   const handleToggle = useCallback(() => setIsVisible((visible) => !visible), [
@@ -30,6 +37,16 @@ const Dropdown: React.FC<TProps> = ({ avatar, fullName, balance, logout }) => {
     history.push("/");
     logout();
   }, [logout, history]);
+
+  useEffect(() => {
+    if (roles?.length) {
+      roles.forEach((role) => {
+        if (role.name === "admin" || role.name === "Admin") {
+          setIsAdmin(true);
+        }
+      });
+    }
+  }, [roles]);
 
   return (
     <div className={styles.dropdown}>
@@ -49,10 +66,12 @@ const Dropdown: React.FC<TProps> = ({ avatar, fullName, balance, logout }) => {
               <AccountCircleIcon style={{ color: color_metallic }} />
               <p className={styles.menuText}>Profile</p>
             </MenuItem>
-            <MenuItem onClick={() => handleLink("/dashboard")}>
-              <DashboardIcon style={{ color: color_metallic }} />
-              <p className={styles.menuText}>Dashboard</p>
-            </MenuItem>
+            {isAdmin && (
+              <MenuItem onClick={() => handleLink("/dashboard")}>
+                <DashboardIcon style={{ color: color_metallic }} />
+                <p className={styles.menuText}>Dashboard</p>
+              </MenuItem>
+            )}
             <MenuItem onClick={handleLogout}>
               <ExitToAppIcon style={{ color: color_metallic }} />
               <p className={styles.menuText}>Logout</p>

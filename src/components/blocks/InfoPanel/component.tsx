@@ -1,7 +1,7 @@
-import React, { useCallback, useState } from "react";
+import React, { useCallback } from "react";
+import classNames from "classnames";
 import { useHistory } from "react-router-dom";
 import PublishIcon from "@material-ui/icons/Publish";
-import AccountBalanceWalletIcon from "@material-ui/icons/AccountBalanceWallet";
 import Tabs from "@material-ui/core/Tabs";
 import Tab from "components/blocks/Tab";
 import Panel from "../Panel";
@@ -14,10 +14,12 @@ import { TProps } from "./types";
 
 const InfoPanel: React.FC<TProps> = ({
   avatar,
+  accountStatus,
   currentTabId,
   setCurrentTabId,
   replenishBalance,
   changeUserAvatar,
+  removeAccount,
 }) => {
   const styles = useStyles();
   const history = useHistory();
@@ -36,6 +38,10 @@ const InfoPanel: React.FC<TProps> = ({
     changeUserAvatar({ avatar: event.target });
   }, []);
 
+  const handleRemoveAccount = useCallback(() => removeAccount(), [
+    removeAccount,
+  ]);
+
   return (
     <Panel>
       <Container>
@@ -51,7 +57,7 @@ const InfoPanel: React.FC<TProps> = ({
                 onChange={handleChangeImg}
               />
               <PublishIcon className={styles.uploaderIcon} />
-              <span className={styles.uploaderTitle}>Upload</span>
+              <span>Upload</span>
             </label>
           </div>
           <div className={styles.control}>
@@ -91,6 +97,22 @@ const InfoPanel: React.FC<TProps> = ({
                 onClick={handleLink}
               >
                 Home
+              </Button>
+              <Button
+                type="button"
+                variant="outlined"
+                size="large"
+                className={classNames(
+                  styles.btnRemove,
+                  accountStatus !== "active"
+                    ? styles.btnRemoveActive
+                    : undefined
+                )}
+                onClick={handleRemoveAccount}
+              >
+                {accountStatus === "active"
+                  ? "Remove account"
+                  : "Cancel removing"}
               </Button>
               <Button
                 type="button"

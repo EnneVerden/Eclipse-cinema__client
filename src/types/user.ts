@@ -6,6 +6,7 @@ import {
   SET_BOUGHT_MOVIE_TO_STATE,
   REMOVE_TICKET_FROM_STATE,
   SET_NEW_USER_INFO_TO_STATE,
+  SET_REMOVE_ACCOUNT_TO_STATE,
 } from "constants/user";
 import { ISetUserToStateAction, IClearUserStateAction } from "./authorization";
 import { CallEffect, PutEffect, TakeEffect } from "redux-saga/effects";
@@ -62,6 +63,11 @@ export interface IRemoveTicketFromState {
   movie: IMovie;
 }
 
+export interface ISetRemoveAccountToState {
+  type: typeof SET_REMOVE_ACCOUNT_TO_STATE;
+  accountStatus: string;
+}
+
 export interface IBalance {
   balance: number;
 }
@@ -81,7 +87,8 @@ export type TUserAction =
   | ISetBalanceToStateAction
   | ISetBoughtMovieToState
   | ISetNewUserInfoToState
-  | IRemoveTicketFromState;
+  | IRemoveTicketFromState
+  | ISetRemoveAccountToState;
 
 interface IWorkerNext {
   json: () => CallEffect | PutEffect;

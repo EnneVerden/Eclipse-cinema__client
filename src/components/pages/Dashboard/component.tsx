@@ -11,6 +11,10 @@ import Table from "components/blocks/Table";
 import Background from "components/blocks/Background";
 import Container from "components/blocks/Container";
 import Footer from "components/blocks/Footer";
+import Backdrop from "@material-ui/core/Backdrop";
+import Modal from "@material-ui/core/Modal";
+import Paper from "@material-ui/core/Paper";
+import MovieForm from "components/forms/MovieForm";
 
 import useStyles from "./styles";
 import { TTabsNames, TProps } from "./types";
@@ -37,6 +41,7 @@ const DashboardPage: React.FC<TProps> = ({
   const [moviesData, setMoviesData] = useState<any[] | []>([]);
   const [usersData, setUsersData] = useState<IUser[] | []>([]);
   const [ordersData, setOrdersData] = useState<IOrder[] | []>([]);
+  const [modalIsOpen, setModalIsOpen] = useState<boolean>(false);
 
   const handleRemoveMovie = useCallback(
     (movieIdToDelete: string) => removeMovie(movieIdToDelete),
@@ -60,6 +65,14 @@ const DashboardPage: React.FC<TProps> = ({
   );
 
   const handleRemoveUsers = useCallback(() => removeUsers(), [removeUsers]);
+
+  const handleOpenModal = useCallback(() => setModalIsOpen(true), [
+    setModalIsOpen,
+  ]);
+
+  const handleCloseModal = useCallback(() => setModalIsOpen(false), [
+    setModalIsOpen,
+  ]);
 
   useEffect(() => {
     if (!movies.movies) fetchMovies("0");
@@ -145,7 +158,11 @@ const DashboardPage: React.FC<TProps> = ({
               <div>
                 <div className={styles.wrapper}>
                   <h2 className={styles.title}>Movies</h2>
-                  <Button variant="outlined" className={styles.button}>
+                  <Button
+                    variant="outlined"
+                    className={styles.button}
+                    onClick={handleOpenModal}
+                  >
                     <AddBoxIcon />
                     <span className={styles.btnText}>New movie</span>
                   </Button>
@@ -190,6 +207,22 @@ const DashboardPage: React.FC<TProps> = ({
         </Container>
       </Background>
       <Footer />
+      <Modal
+        open={modalIsOpen}
+        onClose={handleCloseModal}
+        closeAfterTransition
+        BackdropComponent={Backdrop}
+        BackdropProps={{
+          timeout: 500,
+        }}
+        className={styles.modal}
+      >
+        <Fade in={modalIsOpen}>
+          <Paper className={styles.modalBody}>
+            <MovieForm handleCloseModal={handleCloseModal} />
+          </Paper>
+        </Fade>
+      </Modal>
     </PageFade>
   );
 };

@@ -5,6 +5,7 @@ import {
   SET_BOUGHT_MOVIE_TO_STATE,
   REMOVE_TICKET_FROM_STATE,
   SET_NEW_USER_INFO_TO_STATE,
+  SET_REMOVE_ACCOUNT_TO_STATE,
 } from "constants/user";
 
 type TState = IUser & {};
@@ -46,6 +47,8 @@ const user = (state = initialState, action: TUserAction): TState => {
           (ticket) => ticket._id !== action.movie._id
         ),
       };
+    case SET_REMOVE_ACCOUNT_TO_STATE:
+      return { ...state, accountStatus: action.accountStatus };
     case CLEAR_USER_STATE:
       return initialState;
     default:

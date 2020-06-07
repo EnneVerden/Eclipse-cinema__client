@@ -60,7 +60,6 @@ const styles = makeStyles({
   uploaderIcon: {
     marginRight: "7px",
   },
-  uploaderTitle: {},
   information: {
     padding: "0 15px",
     display: "flex",
@@ -139,7 +138,7 @@ const styles = makeStyles({
   },
   buttons: {
     display: "flex",
-    flex: 1,
+    flex: 2,
     justifyContent: "flex-end",
     alignItems: "center",
 
@@ -147,13 +146,24 @@ const styles = makeStyles({
       padding: "10px 0",
     },
   },
-  btnHome: {
+  btnRemove: {
+    color: color_red,
+    borderColor: color_red,
     margin: "0 20px",
+
+    "@media(max-width: 600px)": {
+      marginLeft: 0,
+      padding: "10px 20px",
+    },
+  },
+  btnRemoveActive: {
+    color: color_white,
+  },
+  btnHome: {
     color: color_red,
     borderColor: color_red,
 
     "@media(max-width: 600px)": {
-      marginLeft: 0,
       padding: "10px 20px",
     },
   },

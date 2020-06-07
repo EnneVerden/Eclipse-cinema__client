@@ -5,6 +5,7 @@ import {
   SET_BALANCE_TO_STATE,
   REMOVE_TICKET_FROM_STATE,
   SET_NEW_USER_INFO_TO_STATE,
+  SET_REMOVE_ACCOUNT_TO_STATE,
 } from "constants/user";
 import { moviesTestData } from "utils/movies";
 
@@ -55,6 +56,18 @@ describe("Users reducer", () => {
     });
 
     expect(state).toEqual(expectedData);
+  });
+
+  it("Should return state without remove account status if receiving type", () => {
+    const expectedState = userTestData;
+    expectedState.accountStatus = "deletion";
+
+    const state = userReducer(userTestData, {
+      type: SET_REMOVE_ACCOUNT_TO_STATE,
+      accountStatus: "deletion",
+    });
+
+    expect(state).toEqual(expectedState);
   });
 
   it("Should return state with empty user if receiving type", () => {

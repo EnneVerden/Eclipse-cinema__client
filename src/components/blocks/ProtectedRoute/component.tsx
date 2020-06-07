@@ -34,7 +34,11 @@ const ProtectedRoute: React.FC<TProps> = ({
 
   useLayoutEffect(() => {
     if (Object.keys(user).length) {
-      setAccessIsAllowed(true);
+      user.roles?.forEach((role) => {
+        if (role.name === "admin" || role.name === "Admin") {
+          setAccessIsAllowed(true);
+        }
+      });
     }
   }, [user, setAccessIsAllowed]);
 

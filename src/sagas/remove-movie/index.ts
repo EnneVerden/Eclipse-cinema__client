@@ -27,7 +27,7 @@ export function* removeMovieWorker(
     if (data.error) {
       yield put(setAlert({ type: "error", message: data.error.message }));
     }
-    console.log(data);
+
     if (data.deletedMovieId) {
       yield put(setRemoveMovieToState(data.deletedMovieId));
     }

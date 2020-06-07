@@ -6,6 +6,8 @@ import {
   color_pink,
   color_red,
   color_white,
+  color_dark_l3,
+  shadow_color,
 } from "theme/variables";
 
 const styles = makeStyles({
@@ -39,6 +41,33 @@ const styles = makeStyles({
     borderColor: color_red,
     color: color_red,
     minWidth: "160px",
+  },
+  modal: {
+    display: "flex",
+    justifyContent: "center",
+    alignItems: "center",
+  },
+  modalBody: {
+    display: "flex",
+    flexDirection: "column",
+    position: "relative",
+    width: "400px",
+    height: "auto",
+    padding: "30px",
+    backgroundColor: color_dark_l3,
+    boxShadow: `0 0 10px 3px ${shadow_color}`,
+    borderTopLeftRadius: 0,
+    borderTopRightRadius: 0,
+
+    "&::before": {
+      content: '""',
+      position: "absolute",
+      top: "-4px",
+      left: 0,
+      width: "100%",
+      height: "4px",
+      background: `linear-gradient(to right, ${color_pink}, ${color_red})`,
+    },
   },
 });
 

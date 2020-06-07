@@ -102,6 +102,10 @@ const styles = makeStyles({
       flexDirection: "column",
     },
   },
+  buttons: {
+    display: "flex",
+    justifyContent: "space-between",
+  },
   button: {
     borderColor: color_red,
     color: color_red,

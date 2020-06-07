@@ -11,7 +11,7 @@ export const getUserEmail = createSelector(getUser, (user) => user.email);
 
 export const getUserAvatar = createSelector(getUser, (user) => user.avatar);
 
-export const getUserStatus = createSelector(
+export const getUserAccountStatus = createSelector(
   getUser,
   (user) => user.accountStatus
 );

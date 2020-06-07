@@ -25,6 +25,7 @@ const styles = makeStyles({
     display: "flex",
     flexDirection: "column",
     justifyContent: "space-around",
+    alignItems: "flex-start",
   },
   name: {
     fontFamily: `${font_gilroy}, sans-serif`,
