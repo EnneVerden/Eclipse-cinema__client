@@ -11,6 +11,7 @@ type TFieldNames = "firstName" | "lastName" | "email" | "oldPassword";
 const ProfileForm: React.FC<TProps> = ({
   fullName,
   email,
+  balance,
   setAlert,
   changeUserInfo,
 }) => {
@@ -64,9 +65,9 @@ const ProfileForm: React.FC<TProps> = ({
           changeUserInfo(oldPassword, { fullName: `${firstName} ${lastName}` });
         } else if (formEmail !== email) {
           changeUserInfo(oldPassword, { email: formEmail });
+        } else {
+          setAlert({ type: "error", message: "Change at least one field" });
         }
-
-        setAlert({ type: "error", message: "Change at least one field" });
       }}
     >
       {({
@@ -75,7 +76,10 @@ const ProfileForm: React.FC<TProps> = ({
         handleSubmit,
       }) => (
         <form className={styles.form} onSubmit={handleSubmit}>
-          <div className={styles.title}>Profile information</div>
+          <div className={styles.title}>
+            <span>Profile information</span>
+            <span className={styles.balance}>Balance: {balance}$</span>
+          </div>
           <div className={styles.name}>
             <TextField
               label="First name"

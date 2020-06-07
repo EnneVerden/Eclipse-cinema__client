@@ -22,7 +22,8 @@ const styles = makeStyles({
     padding: "20px 0",
   },
   avatar: {
-    width: "60px",
+    width: "70px",
+    borderRadius: "50%",
 
     "@media(max-width: 600px)": {
       width: "80px",
@@ -34,7 +35,7 @@ const styles = makeStyles({
     justifyContent: "center",
     alignItems: "center",
     width: "120px",
-    height: "35px",
+    height: "40px",
     fontFamily: `${font_gilroy}, sans-serif`,
     fontSize: "1rem",
     color: color_metallic,

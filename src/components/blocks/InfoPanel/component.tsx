@@ -1,4 +1,4 @@
-import React, { useCallback, useState, useEffect } from "react";
+import React, { useCallback, useState } from "react";
 import { useHistory } from "react-router-dom";
 import PublishIcon from "@material-ui/icons/Publish";
 import AccountBalanceWalletIcon from "@material-ui/icons/AccountBalanceWallet";
@@ -14,13 +14,11 @@ import { TProps } from "./types";
 
 const InfoPanel: React.FC<TProps> = ({
   avatar,
-  fullName,
-  balance,
   currentTabId,
   setCurrentTabId,
   replenishBalance,
+  changeUserAvatar,
 }) => {
-  const [img, setImg] = useState<any>();
   const styles = useStyles();
   const history = useHistory();
 
@@ -35,14 +33,8 @@ const InfoPanel: React.FC<TProps> = ({
   ]);
 
   const handleChangeImg = useCallback((event: any) => {
-    return setImg(event.target.files[0]);
+    changeUserAvatar({ avatar: event.target });
   }, []);
-
-  useEffect(() => {
-    if (img) {
-      console.log(img);
-    }
-  }, [img]);
 
   return (
     <Panel>

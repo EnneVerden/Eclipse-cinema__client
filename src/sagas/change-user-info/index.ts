@@ -8,12 +8,24 @@ import { IUserInfoToChange } from "types/user";
 export const changeUserInfoRequest = (
   userInfoToChange: IUserInfoToChange
 ): Promise<Response> => {
-  return fetch("https://eclipse-cinema-server.herokuapp.com/users", {
-    method: "PATCH",
-    headers: { "Content-type": "application/json" },
-    body: JSON.stringify(userInfoToChange),
-    credentials: "include",
-  });
+  if (userInfoToChange.avatar) {
+    const formData = new FormData();
+
+    formData.append("avatar", userInfoToChange.avatar.files[0]);
+
+    return fetch("https://eclipse-cinema-server.herokuapp.com/users", {
+      method: "PATCH",
+      body: formData,
+      credentials: "include",
+    });
+  } else {
+    return fetch("https://eclipse-cinema-server.herokuapp.com/users", {
+      method: "PATCH",
+      headers: { "Content-type": "application/json" },
+      body: JSON.stringify(userInfoToChange),
+      credentials: "include",
+    });
+  }
 };
 
 export function* changeUserInfoWorker(
@@ -31,14 +43,14 @@ export function* changeUserInfoWorker(
     }
 
     if (data.userInfo.password) {
-      yield put(
+      return yield put(
         setAlert({ type: "success", message: "Password changed successfully" })
       );
     }
 
     if (data.userInfo) {
       yield put(setNewUserInfoToState(data.userInfo));
-      yield put(
+      return yield put(
         setAlert({
           type: "success",
           message: "User information changed successfully",

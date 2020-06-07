@@ -31,12 +31,24 @@ const styles = makeStyles({
   },
   title: {
     display: "flex",
-    justifyContent: "flex-start",
+    justifyContent: "space-between",
     alignItems: "center",
     fontFamily: `${font_gilroy}, sans-serif`,
     fontSize: "1.3rem",
     color: color_white,
     letterSpacing: "1px",
+
+    "@media(max-width: 600px)": {
+      flexDirection: "column",
+      alignItems: "flex-start",
+    },
+  },
+  balance: {
+    color: color_red,
+
+    "@media(max-width: 600px)": {
+      marginTop: "15px",
+    },
   },
   input: {
     width: "47%",

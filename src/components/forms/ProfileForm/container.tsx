@@ -1,6 +1,6 @@
 import ProfileForm from "./component";
 import { TRootState } from "reducers";
-import { getUserFullName, getUserEmail } from "selectors/user";
+import { getUserFullName, getUserEmail, getUserBalance } from "selectors/user";
 import { connect, ConnectedProps } from "react-redux";
 import { Dispatch } from "redux";
 import { IAlert } from "types/alert";
@@ -10,6 +10,7 @@ import changeUserInfo from "actions/change-user-info";
 const mapStateToProps = (state: TRootState) => ({
   fullName: getUserFullName(state),
   email: getUserEmail(state),
+  balance: getUserBalance(state),
 });
 
 const mapDispatchToProps = (dispatch: Dispatch) => ({

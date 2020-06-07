@@ -31,12 +31,14 @@ export interface IUserInfoToChange {
   fullName?: string;
   email?: string;
   newPassword?: string;
-  oldPassword: string;
+  avatar?: any;
+  oldPassword?: string;
 }
 
 export interface INewUserInfo {
   fullName?: string;
   email?: string;
+  avatar?: string;
   password?: boolean;
 }
 

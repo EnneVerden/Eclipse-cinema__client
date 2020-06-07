@@ -34,6 +34,8 @@ const user = (state = initialState, action: TUserAction): TState => {
           fullName: action.newUserInfo.fullName,
           email: action.newUserInfo.email,
         };
+      } else if (action.newUserInfo.avatar) {
+        return { ...state, avatar: action.newUserInfo.avatar };
       }
 
       return state;
