@@ -13,14 +13,23 @@ const ProtectedRoute: React.FC<TProps> = ({
   component: Component,
   user,
   auth,
+  admin,
   ...props
 }) => {
   const [accessIsAllowed, setAccessIsAllowed] = useState<boolean>(false);
+  const [isAdmin, setIsAdmin] = useState<boolean>(false);
 
-  const protectedRoute = useCallback(
-    () => (accessIsAllowed ? <Component {...props} /> : <UnauthorizedPage />),
-    [accessIsAllowed, props]
-  );
+  const protectedRoute = useCallback(() => {
+    if (admin) {
+      return accessIsAllowed && isAdmin ? (
+        <Component {...props} />
+      ) : (
+        <UnauthorizedPage />
+      );
+    } else {
+      return accessIsAllowed ? <Component {...props} /> : <UnauthorizedPage />;
+    }
+  }, [accessIsAllowed, props]);
   const protectedAuth = useCallback(
     () => (accessIsAllowed ? <Redirect to="/" /> : <Component {...props} />),
     [accessIsAllowed, props]
@@ -34,13 +43,19 @@ const ProtectedRoute: React.FC<TProps> = ({
 
   useLayoutEffect(() => {
     if (Object.keys(user).length) {
+      setAccessIsAllowed(true);
+    }
+  }, [user, setAccessIsAllowed]);
+
+  useLayoutEffect(() => {
+    if (Object.keys(user).length) {
       user.roles?.forEach((role) => {
         if (role.name === "admin" || role.name === "Admin") {
-          setAccessIsAllowed(true);
+          setIsAdmin(true);
         }
       });
     }
-  }, [user, setAccessIsAllowed]);
+  }, [user, setIsAdmin]);
 
   return <Route {...props} render={auth ? protectedAuth : protectedRoute} />;
 };

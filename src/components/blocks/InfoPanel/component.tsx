@@ -114,15 +114,17 @@ const InfoPanel: React.FC<TProps> = ({
                   ? "Remove account"
                   : "Cancel removing"}
               </Button>
-              <Button
-                type="button"
-                size="large"
-                variant="outlined"
-                className={styles.btnReplenish}
-                onClick={handleReplenish}
-              >
-                Replenish
-              </Button>
+              <div className={styles.btnReplenishWrapper}>
+                <Button
+                  type="button"
+                  size="large"
+                  variant="outlined"
+                  className={styles.btnReplenish}
+                  onClick={handleReplenish}
+                >
+                  Replenish
+                </Button>
+              </div>
             </div>
           </div>
         </div>

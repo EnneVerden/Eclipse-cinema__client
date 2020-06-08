@@ -112,7 +112,7 @@ const ProfileForm: React.FC<TProps> = ({
               onChange={handleChange}
             />
             <TextField
-              label="Old password"
+              label="Current password"
               type="password"
               variant="outlined"
               size="small"

@@ -51,6 +51,7 @@ const styles = makeStyles({
   },
   avatar: {
     width: "50px",
+    borderRadius: "50%",
   },
   button: {
     minWidth: "30px",

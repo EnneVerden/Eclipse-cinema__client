@@ -86,6 +86,7 @@ const styles = makeStyles({
   },
   avatar: {
     width: "45px",
+    borderRadius: "50%",
   },
   info: {
     height: "45px",

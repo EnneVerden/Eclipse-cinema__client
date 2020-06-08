@@ -56,10 +56,7 @@ const SideMenu: React.FC<TProps> = ({
         </div>
         <div className={styles.profile}>
           <div className={styles.avatar}>
-            <img
-              src="https://image.flaticon.com/icons/svg/236/236831.svg"
-              alt="avatar"
-            />
+            <img src={user.avatar} alt="avatar" className={styles.avatar} />
           </div>
           <div className={styles.info}>
             <p className={styles.role}>Admin</p>

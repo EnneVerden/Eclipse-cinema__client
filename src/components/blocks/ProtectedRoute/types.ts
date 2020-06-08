@@ -8,4 +8,5 @@ export type TProps = ConnectedProps<typeof connector> & {
   exact?: boolean;
   path: string;
   auth?: boolean;
+  admin?: boolean;
 };

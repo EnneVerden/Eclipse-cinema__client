@@ -17,7 +17,12 @@ const Router: React.FC = () => (
         <ProtectedRoute auth exact path={AUTH_PATH} component={AuthPage} />
         <Route exact path={HOME_PATH} component={HomePage} />
         <ProtectedRoute exact path="/profile" component={ProfilePage} />
-        <ProtectedRoute exact path="/dashboard" component={DashboardPage} />
+        <ProtectedRoute
+          admin
+          exact
+          path="/dashboard"
+          component={DashboardPage}
+        />
         <Route path="*" component={NotFoundPage} />
       </Switch>
     </Suspense>

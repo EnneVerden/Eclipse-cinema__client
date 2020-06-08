@@ -144,6 +144,8 @@ const styles = makeStyles({
 
     "@media(max-width: 600px)": {
       padding: "10px 0",
+      flexWrap: "wrap",
+      justifyContent: "flex-start",
     },
   },
   btnRemove: {
@@ -152,7 +154,6 @@ const styles = makeStyles({
     margin: "0 20px",
 
     "@media(max-width: 600px)": {
-      marginLeft: 0,
       padding: "10px 20px",
     },
   },
@@ -167,6 +168,15 @@ const styles = makeStyles({
       padding: "10px 20px",
     },
   },
+  btnReplenishWrapper: {
+    "@media(max-width: 600px)": {
+      marginTop: "20px",
+      width: "100%",
+      display: "flex",
+      justifyContent: "center",
+      alignItems: "center",
+    },
+  },
   btnReplenish: {
     color: color_white,
     letterSpacing: "1px",
@@ -175,6 +185,7 @@ const styles = makeStyles({
 
     "@media(max-width: 600px)": {
       padding: "10px 20px",
+      marginTop: "20px",
     },
   },
 });
