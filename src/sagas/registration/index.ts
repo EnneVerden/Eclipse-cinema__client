@@ -12,7 +12,7 @@ export const registrationRequest = (
   email: string,
   password: string
 ): Promise<Response> => {
-  return fetch("https://eclipse-cinema-server.herokuapp.com/registration", {
+  return fetch("https://eclipse-cinema-deploy.herokuapp.com/registration", {
     method: "POST",
     headers: { "Content-type": "application/json" },
     body: JSON.stringify({

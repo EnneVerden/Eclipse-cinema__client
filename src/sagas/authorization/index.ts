@@ -8,7 +8,7 @@ import setUserToState from "actions/set-user";
 import { AUTHORIZATION } from "constants/authorization";
 
 export const authRequest = (): Promise<Response> => {
-  return fetch("https://eclipse-cinema-server.herokuapp.com/", {
+  return fetch("https://eclipse-cinema-deploy.herokuapp.com/", {
     credentials: "include",
   });
 };

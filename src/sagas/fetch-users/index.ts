@@ -5,7 +5,7 @@ import setUsersToState from "actions/set-users";
 import { FETCH_USERS } from "constants/users";
 
 export const fetchUsersRequest = (): Promise<Response> => {
-  return fetch("https://eclipse-cinema-server.herokuapp.com/users", {
+  return fetch("https://eclipse-cinema-deploy.herokuapp.com/users", {
     credentials: "include",
   });
 };

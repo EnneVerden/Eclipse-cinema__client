@@ -16,7 +16,7 @@ export const addNewMovieRequest = (movie: ICustomMovie) => {
   formData.append("endDate", movie.endDate);
   formData.append("ticketPrice", movie.ticketPrice.toString());
 
-  return fetch("https://eclipse-cinema-server.herokuapp.com/movies", {
+  return fetch("https://eclipse-cinema-deploy.herokuapp.com/movies", {
     method: "POST",
     body: formData,
     credentials: "include",

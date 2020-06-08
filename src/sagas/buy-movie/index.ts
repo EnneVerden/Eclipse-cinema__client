@@ -5,7 +5,7 @@ import { BUY_MOVIE } from "constants/user";
 import { TBuyMovieWorker, TBuyMovieWatcher } from "./types";
 
 export const buyMovieRequest = (movieId: string): Promise<Response> => {
-  return fetch("https://eclipse-cinema-server.herokuapp.com/users", {
+  return fetch("https://eclipse-cinema-deploy.herokuapp.com/users", {
     method: "PATCH",
     headers: { "Content-type": "application/json" },
     body: JSON.stringify({

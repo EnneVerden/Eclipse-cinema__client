@@ -9,13 +9,13 @@ export const fetchMoviesRequest = (
   tag?: string
 ): Promise<Response> => {
   if (page === "0") {
-    return fetch(`https://eclipse-cinema-server.herokuapp.com/movies`, {
+    return fetch(`https://eclipse-cinema-deploy.herokuapp.com/movies`, {
       credentials: "include",
     });
   }
 
   return fetch(
-    `https://eclipse-cinema-server.herokuapp.com/movies?page=${page}${
+    `https://eclipse-cinema-deploy.herokuapp.com/movies?page=${page}${
       tag ? "&tag=" + tag : ""
     }`,
     {

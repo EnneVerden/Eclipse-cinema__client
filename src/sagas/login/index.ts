@@ -11,7 +11,7 @@ export const loginRequest = (
   email: string,
   password: string
 ): Promise<Response> => {
-  return fetch("http://eclipse-cinema-server.herokuapp.com/login", {
+  return fetch("https://eclipse-cinema-deploy.herokuapp.com/login", {
     method: "POST",
     headers: { "Content-type": "application/json" },
     body: JSON.stringify({

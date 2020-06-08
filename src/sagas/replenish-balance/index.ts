@@ -5,7 +5,7 @@ import setBalanceToState from "actions/set-balance";
 import { REPLENISH_BALANCE } from "constants/user";
 
 export const replenishBalanceRequest = (): Promise<Response> => {
-  return fetch("https://eclipse-cinema-server.herokuapp.com/users/replenish", {
+  return fetch("https://eclipse-cinema-deploy.herokuapp.com/users/replenish", {
     method: "PATCH",
     credentials: "include",
   });

@@ -13,13 +13,13 @@ export const changeUserInfoRequest = (
 
     formData.append("avatar", userInfoToChange.avatar.files[0]);
 
-    return fetch("https://eclipse-cinema-server.herokuapp.com/users", {
+    return fetch("https://eclipse-cinema-deploy.herokuapp.com/users", {
       method: "PATCH",
       body: formData,
       credentials: "include",
     });
   } else {
-    return fetch("https://eclipse-cinema-server.herokuapp.com/users", {
+    return fetch("https://eclipse-cinema-deploy.herokuapp.com/users", {
       method: "PATCH",
       headers: { "Content-type": "application/json" },
       body: JSON.stringify(userInfoToChange),

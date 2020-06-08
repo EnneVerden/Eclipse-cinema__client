@@ -5,7 +5,7 @@ import setTagsToState from "actions/set-tags";
 import { FETCH_TAGS } from "constants/tags";
 
 export const fetchTagsRequest = (): Promise<Response> => {
-  return fetch("https://eclipse-cinema-server.herokuapp.com/tags", {
+  return fetch("https://eclipse-cinema-deploy.herokuapp.com/tags", {
     credentials: "include",
   });
 };

@@ -5,7 +5,7 @@ import setOrdersToState from "actions/set-orders";
 import { FETCH_ORDERS } from "constants/orders";
 
 export const fetchOrdersRequest = (): Promise<Response> => {
-  return fetch("https://eclipse-cinema-server.herokuapp.com/users/orders", {
+  return fetch("https://eclipse-cinema-deploy.herokuapp.com/users/orders", {
     credentials: "include",
   });
 };

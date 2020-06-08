@@ -8,7 +8,7 @@ import setAlert from "actions/set-alert";
 import clearUserState from "actions/clear-user";
 
 export const logoutRequest = (): Promise<Response> => {
-  return fetch("https://eclipse-cinema-server.herokuapp.com/logout", {
+  return fetch("https://eclipse-cinema-deploy.herokuapp.com/logout", {
     credentials: "include",
   });
 };

@@ -5,7 +5,7 @@ import { REMOVE_USERS } from "constants/users";
 import { TRemoveUsersWorker, TRemoveUsersWatcher } from "./types";
 
 export const removeUsersRequest = (): Promise<Response> => {
-  return fetch("https://eclipse-cinema-server.herokuapp.com/users/all", {
+  return fetch("https://eclipse-cinema-deploy.herokuapp.com/users/all", {
     method: "DELETE",
     credentials: "include",
   });

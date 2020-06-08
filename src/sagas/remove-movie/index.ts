@@ -8,7 +8,7 @@ export const removeMovieRequest = (
   movieIdToDelete: string
 ): Promise<Response> => {
   return fetch(
-    `https://eclipse-cinema-server.herokuapp.com/movies/${movieIdToDelete}`,
+    `https://eclipse-cinema-deploy.herokuapp.com/movies/${movieIdToDelete}`,
     {
       method: "DELETE",
       credentials: "include",
