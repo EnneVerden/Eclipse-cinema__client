@@ -5,6 +5,8 @@ const styles = makeStyles({
   wrapper: {
     padding: "20px 0",
     display: "flex",
+    justifyContent: "space-between",
+    alignItems: "center",
   },
   title: {
     color: color_white,

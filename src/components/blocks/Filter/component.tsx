@@ -5,6 +5,7 @@ import Container from "components/blocks/Container";
 import Panel from "components/blocks/Panel";
 import { TProps } from "./container";
 import { ITag } from "types/tags";
+import SearchBar from "components/blocks/SearchBar";
 
 import useStyles from "./styles";
 import { color_pink, color_red } from "theme/variables";
@@ -49,6 +50,7 @@ const Filter: React.FC<TProps> = ({ tags, fetchTags, fetchMovies }) => {
       <Container>
         <div className={styles.wrapper}>
           <h2 className={styles.title}>Movies</h2>
+          <SearchBar />
         </div>
         <Tabs
           value={tagId}

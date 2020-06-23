@@ -9,6 +9,7 @@
       "theme/*": ["theme/*"],
       "types/*": ["types/*"],
       "selectors/*": ["selectors/*"],
+      "hooks/*": ["hooks/*"],
       "utils/*": ["utils/*"]
     }
   }
