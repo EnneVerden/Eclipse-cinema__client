@@ -2,7 +2,7 @@ import React from "react";
 import ArrowDropDownIcon from "@material-ui/icons/ArrowDropDown";
 import AccountBalanceWalletIcon from "@material-ui/icons/AccountBalanceWallet";
 import classNames from "classnames";
-import { useClickOutside } from "./hooks";
+import { useClickOutside } from "hooks/click-outside";
 
 import useStyles from "./styles";
 import { color_white } from "theme/variables";

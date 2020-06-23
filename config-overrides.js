@@ -11,6 +11,7 @@ module.exports = function override(config, env) {
     actions: path.resolve(__dirname, "./src/actions"),
     theme: path.resolve(__dirname, "./src/theme"),
     selectors: path.resolve(__dirname, "./src/selectors"),
+    hooks: path.resolve(__dirname, "./src/hooks"),
     types: path.resolve(__dirname, "./src/types"),
     utils: path.resolve(__dirname, "./src/utils"),
   })(config, env);
