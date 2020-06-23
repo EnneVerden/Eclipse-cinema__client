@@ -77,6 +77,7 @@ const Table: React.FC<IProps> = ({
                 <Button
                   variant="outlined"
                   className={classNames(styles.button, styles.buttonEdit)}
+                  onClick={() => row.update(row._id)}
                 >
                   <EditIcon
                     className={classNames(styles.icon, styles.iconEdit)}

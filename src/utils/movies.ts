@@ -34,6 +34,13 @@ export const moviesTestData = {
   pageCount: 1,
 };
 
+export const newMovieInfo = {
+  movie: {
+    _id: "1",
+    movieName: "newTest",
+  },
+};
+
 export const fetchMoviesResponse = (): Response => {
   const json = JSON.stringify({ movies: moviesTestData });
 

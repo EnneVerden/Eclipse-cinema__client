@@ -3,6 +3,13 @@ import { connector } from "./container";
 
 export type TProps = ConnectedProps<typeof connector> & {
   handleCloseModal: () => void;
+  _id?: string;
+  oldMovieName?: string;
+  oldDescription?: string;
+  oldTags?: Array<string>;
+  oldStartDate?: string;
+  oldEndDate?: string;
+  oldTicketPrice?: number;
 };
 
 export type TFieldNames =

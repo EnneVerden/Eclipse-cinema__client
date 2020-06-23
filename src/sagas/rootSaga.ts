@@ -17,6 +17,7 @@ import { changeUserInfo } from "./change-user-info";
 import { addNewMovie } from "./add-movie";
 import { removeAccount } from "./remove-account";
 import { searchMovie } from "./search-movie";
+import { changeMovieInfo } from "./change-movie-info";
 
 export default function* rootSaga(): Generator<
   AllEffect<Generator<TakeEffect | CallEffect>>
@@ -39,5 +40,6 @@ export default function* rootSaga(): Generator<
     addNewMovie(),
     removeAccount(),
     searchMovie(),
+    changeMovieInfo(),
   ]);
 }

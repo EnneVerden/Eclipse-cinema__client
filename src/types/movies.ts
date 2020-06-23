@@ -3,9 +3,20 @@ import {
   SET_MOVIES_TO_STATE,
   SET_REMOVE_MOVIE_TO_STATE,
   SET_NEW_MOVIE_TO_STATE,
+  SET_UPDATED_MOVIE_TO_STATE,
 } from "constants/movies";
 import { ITag } from "./tags";
 import { CallEffect, PutEffect, TakeEffect } from "redux-saga/effects";
+
+export interface INewMovieInfo {
+  movieName?: string;
+  poster?: any;
+  description?: string;
+  tags?: any;
+  startDate?: string;
+  endDate?: string;
+  ticketPrice?: number;
+}
 
 export interface IMovie {
   _id: string;
@@ -56,10 +67,16 @@ export interface ISetRemoveMovieToState {
   deletedMovieId: string;
 }
 
+export interface ISetNewMovieInfoToState {
+  type: typeof SET_UPDATED_MOVIE_TO_STATE;
+  movie: IMovie;
+}
+
 export type TMovieAction =
   | ISetMoviesToStateAction
   | ISetNewMovieToState
-  | ISetRemoveMovieToState;
+  | ISetRemoveMovieToState
+  | ISetNewMovieInfoToState;
 
 interface IWorkerNext {
   json: () => CallEffect | PutEffect;

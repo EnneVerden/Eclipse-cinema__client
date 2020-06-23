@@ -32,7 +32,6 @@ export function* searchMovieWorker(
       yield put(setMoviesToState(data));
     }
   } catch (error) {
-    console.log(error);
     yield put(
       setAlert({ type: "error", message: "Something wrong! Try again later." })
     );

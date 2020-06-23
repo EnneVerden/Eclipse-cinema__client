@@ -3,8 +3,9 @@ import {
   SET_MOVIES_TO_STATE,
   SET_NEW_MOVIE_TO_STATE,
   SET_REMOVE_MOVIE_TO_STATE,
+  SET_UPDATED_MOVIE_TO_STATE,
 } from "constants/movies";
-import { moviesTestData } from "utils/movies";
+import { moviesTestData, newMovieInfo } from "utils/movies";
 
 describe("Movies reducer", () => {
   it("Should return state with movies data if receiving type", () => {
@@ -48,6 +49,23 @@ describe("Movies reducer", () => {
     const state = moviesReducer(initialState, {
       type: SET_REMOVE_MOVIE_TO_STATE,
       deletedMovieId: "1",
+    });
+
+    expect(state).toEqual(expectedData);
+  });
+
+  it("Should return state with new movie info if receiving type", () => {
+    const initialState = moviesTestData;
+    const expectedData = {
+      ...moviesTestData,
+      movies: moviesTestData.movies.map((movie) =>
+        movie._id === "1" ? Object.assign(movie, newMovieInfo) : movie
+      ),
+    };
+
+    const state = moviesReducer(initialState, {
+      type: SET_UPDATED_MOVIE_TO_STATE,
+      movie: moviesTestData.movies[1],
     });
 
     expect(state).toEqual(expectedData);

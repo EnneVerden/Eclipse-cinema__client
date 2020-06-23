@@ -20,6 +20,7 @@ import useStyles from "./styles";
 import { TTabsNames, TProps } from "./types";
 import { IOrder } from "types/orders";
 import { IUser } from "types/user";
+import { IMovie } from "types/movies";
 
 const moviesTableHead = ["movieName", "tags", "startDate", "endDate", "price"];
 const usersTableHead = ["avatar", "fullName", "email", "accountStatus"];
@@ -42,6 +43,18 @@ const DashboardPage: React.FC<TProps> = ({
   const [usersData, setUsersData] = useState<IUser[] | []>([]);
   const [ordersData, setOrdersData] = useState<IOrder[] | []>([]);
   const [modalIsOpen, setModalIsOpen] = useState<boolean>(false);
+  const [updateModalIsOpen, setUpdateModalIsOpen] = useState<boolean>(false);
+  const [currentMovieId, setCurrentMovieId] = useState<string>("");
+  const [currentMovie, setCurrentMovie] = useState<IMovie>({
+    _id: "",
+    movieName: "",
+    poster: "",
+    description: "",
+    tags: [],
+    startDate: "",
+    endDate: "",
+    ticketPrice: 0,
+  });
 
   const handleRemoveMovie = useCallback(
     (movieIdToDelete: string) => removeMovie(movieIdToDelete),
@@ -50,33 +63,36 @@ const DashboardPage: React.FC<TProps> = ({
 
   const handleToggle = useCallback(
     () => setSideMenuIsVisible((visible) => !visible),
-    [setSideMenuIsVisible]
+    []
   );
 
-  const handleTabChange = useCallback(
-    (tabName: TTabsNames) => {
-      setCurrentTab(tabName);
+  const handleTabChange = useCallback((tabName: TTabsNames) => {
+    setCurrentTab(tabName);
 
-      if (window.innerWidth <= 1366) {
-        setSideMenuIsVisible(false);
-      }
-    },
-    [setCurrentTab, setSideMenuIsVisible]
+    if (window.innerWidth <= 1366) {
+      setSideMenuIsVisible(false);
+    }
+  }, []);
+
+  const handleRemoveUsers = useCallback(() => removeUsers(), []);
+
+  const handleOpenModal = useCallback(() => setModalIsOpen(true), []);
+
+  const handleOpenUpdateModal = useCallback((movieId: string) => {
+    setCurrentMovieId(movieId);
+    setUpdateModalIsOpen(true);
+  }, []);
+
+  const handleCloseModal = useCallback(() => setModalIsOpen(false), []);
+
+  const handleCloseUpdateModal = useCallback(
+    () => setUpdateModalIsOpen(false),
+    []
   );
-
-  const handleRemoveUsers = useCallback(() => removeUsers(), [removeUsers]);
-
-  const handleOpenModal = useCallback(() => setModalIsOpen(true), [
-    setModalIsOpen,
-  ]);
-
-  const handleCloseModal = useCallback(() => setModalIsOpen(false), [
-    setModalIsOpen,
-  ]);
 
   useEffect(() => {
-    if (!movies.movies) fetchMovies("0");
-  }, [fetchMovies, movies.movies]);
+    fetchMovies("0");
+  }, [fetchMovies]);
 
   useEffect(() => {
     if (!users.length) fetchUsers();
@@ -102,6 +118,7 @@ const DashboardPage: React.FC<TProps> = ({
           startDate: moment(movie.startDate).format("YYYY.MM.DD"),
           endDate: moment(movie.endDate).format("YYYY.MM.DD"),
           price: movie.ticketPrice,
+          update: handleOpenUpdateModal,
           remove: handleRemoveMovie,
         }))
       );
@@ -142,6 +159,16 @@ const DashboardPage: React.FC<TProps> = ({
       setOrdersData(arr);
     }
   }, [orders, setOrdersData]);
+
+  useEffect(() => {
+    let movie: any = [];
+
+    movies.movies?.forEach((item) =>
+      item._id === currentMovieId ? movie.push(item) : null
+    );
+
+    setCurrentMovie((val) => (movie[0] ? movie[0] : val));
+  }, [currentMovieId, movies.movies]);
 
   return (
     <PageFade>
@@ -220,6 +247,31 @@ const DashboardPage: React.FC<TProps> = ({
         <Fade in={modalIsOpen}>
           <Paper className={styles.modalBody}>
             <MovieForm handleCloseModal={handleCloseModal} />
+          </Paper>
+        </Fade>
+      </Modal>
+      <Modal
+        open={updateModalIsOpen}
+        onClose={handleCloseUpdateModal}
+        closeAfterTransition
+        BackdropComponent={Backdrop}
+        BackdropProps={{
+          timeout: 500,
+        }}
+        className={styles.modal}
+      >
+        <Fade in={updateModalIsOpen}>
+          <Paper className={styles.modalBody}>
+            <MovieForm
+              handleCloseModal={handleCloseUpdateModal}
+              _id={currentMovie._id}
+              oldMovieName={currentMovie.movieName}
+              oldDescription={currentMovie.description}
+              oldTags={currentMovie.tags.map((tag) => tag.name)}
+              oldStartDate={moment(currentMovie.startDate).format("YYYY-MM-DD")}
+              oldEndDate={moment(currentMovie.endDate).format("YYYY-MM-DD")}
+              oldTicketPrice={currentMovie.ticketPrice}
+            />
           </Paper>
         </Fade>
       </Modal>

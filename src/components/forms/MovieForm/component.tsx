@@ -30,11 +30,19 @@ const MovieForm: React.FC<TProps> = ({
   fetchTags,
   addMovie,
   handleCloseModal,
+  updateMovie,
+  _id,
+  oldMovieName,
+  oldDescription,
+  oldTags,
+  oldStartDate,
+  oldEndDate,
+  oldTicketPrice,
 }) => {
   const styles = useStyles();
   const [poster, setPoster] = useState<any>();
   const [tagsId, setTagsId] = useState<string[]>([]);
-  const [tagsName, setTagsName] = useState<string[]>([]);
+  const [tagsName, setTagsName] = useState<string[]>(oldTags || []);
 
   const handleChangeImg = useCallback((event: any) => {
     setPoster(event.target);
@@ -91,11 +99,11 @@ const MovieForm: React.FC<TProps> = ({
   return (
     <Formik
       initialValues={{
-        movieName: "",
-        description: "",
-        startDate: "",
-        endDate: "",
-        ticketPrice: "",
+        movieName: oldMovieName || "",
+        description: oldDescription || "",
+        startDate: oldStartDate || "",
+        endDate: oldEndDate || "",
+        ticketPrice: oldTicketPrice?.toString() || "",
       }}
       onSubmit={({
         movieName,
@@ -104,7 +112,9 @@ const MovieForm: React.FC<TProps> = ({
         endDate,
         ticketPrice,
       }) => {
-        if (!validate("poster", poster)) return;
+        if (!_id) {
+          if (!validate("poster", poster)) return;
+        }
         if (!validate("movieName", movieName)) return;
         if (!validate("description", description)) return;
         if (!validate("tags", tagsId)) return;
@@ -112,15 +122,30 @@ const MovieForm: React.FC<TProps> = ({
         if (!validate("endDate", endDate)) return;
         if (!validate("ticketPrice", ticketPrice)) return;
 
-        addMovie({
-          poster,
-          movieName,
-          description,
-          tags: tagsId,
-          startDate,
-          endDate,
-          ticketPrice: parseInt(ticketPrice),
-        });
+        if (_id && poster) {
+          updateMovie(_id, {
+            poster,
+          });
+        } else if (_id) {
+          updateMovie(_id, {
+            movieName,
+            description,
+            tags: tagsId,
+            startDate,
+            endDate,
+            ticketPrice: parseInt(ticketPrice),
+          });
+        } else {
+          addMovie({
+            poster,
+            movieName,
+            description,
+            tags: tagsId,
+            startDate,
+            endDate,
+            ticketPrice: parseInt(ticketPrice),
+          });
+        }
         handleCloseModal();
       }}
     >

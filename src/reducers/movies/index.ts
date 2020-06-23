@@ -3,6 +3,7 @@ import {
   SET_MOVIES_TO_STATE,
   SET_REMOVE_MOVIE_TO_STATE,
   SET_NEW_MOVIE_TO_STATE,
+  SET_UPDATED_MOVIE_TO_STATE,
 } from "constants/movies";
 
 export type TState = IMoviesData & {};
@@ -23,6 +24,13 @@ const movies = (state = initialState, action: TMovieAction): TState => {
         ...state,
         movies: state.movies?.filter(
           (movie) => movie._id !== action.deletedMovieId
+        ),
+      };
+    case SET_UPDATED_MOVIE_TO_STATE:
+      return {
+        ...state,
+        movies: state.movies?.map((movie) =>
+          movie._id === action.movie._id ? action.movie : movie
         ),
       };
     default:
